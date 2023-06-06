@@ -1,222 +1,294 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_fargment"
-    android:padding="20dp"
+    android:paddingHorizontal="20dp"
     tools:context=".view.Home">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
+        android:id="@+id/tvhome"
         style="@style/textheading20bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hei, Mau Kemana?"
-        android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:layout_below="@id/tb_home"
+        android:text="Hei, Mau Kemana?" />
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_below="@id/tvhome"
+        android:layout_marginTop="5dp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="10dp">
 
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp">
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_keberangkatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pesawat" />
+                app:cardBackgroundColor="@color/emas"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="40dp"
-                android:src="@drawable/pesawat" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="15dp"
-                android:text="From" />
+                    <ImageView
+                        android:id="@+id/iv_pesawatdari"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_toStartOf="@id/tv_darimana"
+                        android:src="@drawable/pesawat" />
 
-            <EditText
-                android:id="@+id/asal"
+                    <ImageView
+                        android:id="@+id/iv_pesawatke"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_below="@id/iv_pesawatdari"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginEnd="19dp"
+                        android:layout_toStartOf="@id/tv_kemana"
+                        android:src="@drawable/pesawat" />
+
+                    <TextView
+                        android:id="@+id/tv_darimana"
+                        style="@style/textbody12reguler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginEnd="11dp"
+                        android:layout_toStartOf="@id/et_asallokasi"
+                        android:text="Dari" />
+
+                    <EditText
+                        android:id="@+id/et_asallokasi"
+                        style="@style/texttitle16bold"
+                        android:layout_width="252dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:hint="Jakarta (JKT)"
+                        android:minHeight="48dp"
+                        tools:ignore="TextSizeCheck"
+                        android:inputType="text" />
+
+                    <TextView
+                        android:id="@+id/tv_kemana"
+                        style="@style/textbody12reguler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_darimana"
+                        android:layout_marginTop="33dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_toStartOf="@id/et_tujuanlokasi"
+                        android:text="Ke" />
+
+                    <EditText
+                        android:id="@+id/et_tujuanlokasi"
+                        style="@style/texttitle16bold"
+                        android:layout_width="252dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/et_asallokasi"
+                        android:layout_alignParentEnd="true"
+                        android:hint="Melbourne (MLB)"
+                        android:minHeight="48dp"
+                        tools:ignore="TextSizeCheck"
+                        android:inputType="text" />
+
+                    <Switch
+                        android:id="@+id/switch_pp"
+                        style="@style/textbody14reguler"
+                        android:layout_width="173dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/et_tujuanlokasi"
+                        android:layout_centerHorizontal="true"
+                        android:minHeight="48dp"
+                        android:text="Pulang - Pergi?" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:hint="Jakarta (JKT)"
-                android:minHeight="48dp"
-                android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
+                android:layout_below="@id/cv_keberangkatan"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="45dp"
-                android:text="To" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_penumpang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:strokeColor="@color/black"
+                    app:strokeWidth="2dp">
 
-            <EditText
-                android:id="@+id/tujuan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="30dp"
-                android:hint="Melbourne (MLB)"
-                android:minHeight="48dp"
-                android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp">
 
+                        <TextView
+                            android:id="@+id/tv_departure"
+                            style="@style/textbody14reguler"
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:text="Keberangkatan" />
 
-        </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/img_departure"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/tv_departure"
+                            android:src="@drawable/calendar_month" />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginRight="20dp" />
+                        <EditText
+                            android:id="@+id/ET_departure"
+                            style="@style/textbody14bold"
+                            android:layout_width="107dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_departure"
+                            android:layout_toEndOf="@id/img_departure"
+                            android:hint="1 maret 2023"
+                            android:inputType="text"
+                            android:minHeight="48dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="113dp"
-            android:text="Pulang-Pergi?" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="65dp"
-            android:layout_marginTop="150dp"
-            android:text="Departure" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="165dp"
-            android:hint="1 maret 2023"
-            android:minHeight="48dp"
-            android:textSize="15dp"
-            tools:ignore="TextSizeCheck" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="155dp"
-            android:src="@drawable/calendar_month" />
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="230dp"
-            android:text="Seat Class" />
-
-        <EditText
-            android:layout_width="99dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="245dp"
-            android:layout_marginTop="245dp"
-            android:minHeight="48dp"
-            android:text="Business"
-            android:textSize="15dp"
-            tools:ignore="TextSizeCheck" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="155dp"
-            android:src="@drawable/calendar_month" />
+                        <TextView
+                            android:id="@+id/tv_return"
+                            style="@style/textbody14reguler"
+                            android:layout_width="153dp"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/iv_return"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginBottom="2dp"
+                            android:text="Kembali" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="150dp"
-            android:text="Return" />
+                        <ImageView
+                            android:id="@+id/iv_return"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/tv_departure"
+                            android:layout_toStartOf="@id/et_return"
+                            android:src="@drawable/calendar_month" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="245dp"
-            android:layout_marginTop="165dp"
-            android:minHeight="48dp"
-            android:text="Pilih Tanggal"
-            android:textColor="@color/purple_500"
-            android:textSize="15dp"
-            tools:ignore="TextSizeCheck" />
+                        <EditText
+                            android:id="@+id/et_return"
+                            style="@style/textbody14bold"
+                            android:layout_width="108dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_departure"
+                            android:layout_alignParentEnd="true"
+                            android:minHeight="48dp"
+                            android:text="Pilih Tanggal"
+                            tools:ignore="TextSizeCheck"
+                            android:inputType="text" />
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="235dp"
-            android:src="@drawable/airline_seat" />
+                        <TextView
+                            android:id="@+id/tv_passengers"
+                            style="@style/textbody14reguler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ET_departure"
+                            android:text="Penumpang" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="65dp"
-            android:layout_marginTop="230dp"
-            android:text="Passengers" />
+                        <ImageView
+                            android:id="@+id/iv_passengers"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/tv_passengers"
+                            android:src="@drawable/person" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="245dp"
-            android:hint="2 Penumpang"
-            android:minHeight="48dp"
-            android:textSize="15dp"
-            tools:ignore="TextSizeCheck" />
+                        <EditText
+                            android:id="@+id/ET_passenger"
+                            style="@style/textbody14bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_passengers"
+                            android:layout_toEndOf="@id/iv_passengers"
+                            android:hint="2 Penumpang"
+                            android:minHeight="48dp"
+                            tools:ignore="TextSizeCheck"
+                            android:inputType="text" />
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="235dp"
-            android:src="@drawable/person" />
+                        <TextView
+                            android:id="@+id/tv_kelaskursi"
+                            style="@style/textbody14reguler"
+                            android:layout_width="153dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/et_return"
+                            android:layout_alignParentEnd="true"
+                            android:text="Kelas Kursi" />
 
-        <Button
-            android:layout_width="330dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="300dp"
-            style="@style/btn"
-            android:text="Cari Penerbangan" />
+                        <EditText
+                            android:id="@+id/et_kelaskursi"
+                            style="@style/textbody14bold"
+                            android:layout_width="108dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_kelaskursi"
+                            android:layout_alignParentEnd="true"
+                            android:minHeight="48dp"
+                            android:text="Business"
+                            tools:ignore="TextSizeCheck"
+                            android:inputType="text" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="370dp"
-            android:text="Destinasi Favorit"
-            android:textStyle="bold" />
+                        <ImageView
+                            android:id="@+id/iv_kelaskursi"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/tv_kelaskursi"
+                            android:layout_toStartOf="@id/et_kelaskursi"
+                            android:src="@drawable/airline_seat" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvHome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="400dp" />
 
-    </androidx.cardview.widget.CardView>
+                        <Button
+                            style="@style/btngold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/et_kelaskursi"
+                            android:text="Cari Penerbangan" />
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </RelativeLayout>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <TextView
+        android:layout_below="@id/cv_home"
+        android:id="@+id/tv_favdestinasi"
+        style="@style/texttitle16bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Destinasi Favorit" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_favdestinasi" />
 
 </RelativeLayout>
