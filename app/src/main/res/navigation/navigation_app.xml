@@ -3,20 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/login2">
+    app:startDestination="@id/splashScreen">
 
     <fragment
         android:id="@+id/home2"
-        android:name="com.aerotech.flytix.view.home.Home"
+        android:name="com.aerotech.flytix.view.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_home2_to_login2"
-            app:destination="@id/login2" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/history"
-        android:name="com.aerotech.flytix.view.riwayat.History"
+        android:name="com.aerotech.flytix.view.History"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
     <fragment
@@ -34,11 +30,6 @@
         android:name="com.aerotech.flytix.view.Detail"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
-    <fragment
-        android:id="@+id/login2"
-        android:name="com.aerotech.flytix.view.Login"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.aerotech.flytix.view.SplashScreen"
