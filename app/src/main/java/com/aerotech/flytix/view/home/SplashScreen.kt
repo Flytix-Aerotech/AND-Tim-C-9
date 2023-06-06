@@ -37,12 +37,12 @@ class SplashScreen : Fragment() {
             var progress = 0
             while (progress <= 1000) {
                 progressBar.progress = progress
-                progress += 10
-                handler.postDelayed({ }, 1000)
+                progress += 5
+                handler.postDelayed({ }, 300)
             }
             findNavController().navigate(R.id.action_splashScreen_to_login2)
         }
-        handler.postDelayed(progressRunnable, 3000)
+        handler.postDelayed(progressRunnable, 5000)
     }
 
 }
