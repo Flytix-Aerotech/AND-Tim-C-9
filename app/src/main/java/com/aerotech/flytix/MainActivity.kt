@@ -1,5 +1,6 @@
 package com.aerotech.flytix
 
+import android.os.Build.VERSION_CODES.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,28 +19,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        navController = navHostFragment.navController
-
-        val bottomNavView = findViewById<BottomNavigationView>(R.id.bottomnav)
-        //navcontroler,nacdestination,bundle
-        navController.addOnDestinationChangedListener { navcontroler, destination, bundle ->
-
-            when (destination.id) {
-                R.id.detail, R.id.splashScreen -> {
-                    bottomNavView.visibility = View.GONE
-                }
-                else -> {
-                    bottomNavView.visibility = View.VISIBLE
-                }
-            }
-        }
-        NavigationUI.setupWithNavController(bottomNavView, navController)
     }
 
-    fun clearBackStackInclusive(tag: String?) {
-        supportFragmentManager.popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-    }
+//        val navHostFragment =
+//            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+//        navController = navHostFragment.navController
+//
+//        val bottomNavView = findViewById<BottomNavigationView>(R.id.bottomnav)
+//        //navcontroler,nacdestination,bundle
+//        navController.addOnDestinationChangedListener { navcontroler, destination, bundle ->
+//
+//            when (destination.id) {
+//                R.id.detail -> {
+//                    bottomNavView.visibility = View.GONE
+//                }
+//                else -> {
+//                    bottomNavView.visibility = View.VISIBLE
+//                }
+//            }
+//        }
+//        NavigationUI.setupWithNavController(bottomNavView, navController)
+//    }
+//
+//    fun clearBackStackInclusive(tag: String?) {
+//        supportFragmentManager.popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+//    }
 }
