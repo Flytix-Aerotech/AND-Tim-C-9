@@ -4,51 +4,216 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.Home"
-    android:padding="30dp"
+    android:padding="20dp"
     android:background="@color/black">
+
+    <TextView
+        style="@style/textjudul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hei, Mau Kemana?"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        >
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/pesawat" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/pesawat" />
 
             <TextView
                 android:layout_marginLeft="50dp"
                 android:text="From"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"/>
 
             <EditText
                 android:id="@+id/asal"
-                android:hint="Jakarta (JKT)"
-                android:layout_marginLeft="100dp"
-                android:textSize="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:hint="Jakarta (JKT)"
+                android:minHeight="48dp"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck" />
 
             <TextView
                 android:layout_marginLeft="50dp"
                 android:text="To"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="45dp"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"/>
 
             <EditText
                 android:id="@+id/tujuan"
-                android:hint="Melbourne (MLB)"
-                android:layout_marginLeft="100dp"
-                android:textSize="15dp"
-                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="30dp"
+                android:hint="Melbourne (MLB)"
+                android:minHeight="48dp"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck" />
 
 
         </androidx.cardview.widget.CardView>
 
+        <androidx.appcompat.widget.SwitchCompat
+            android:layout_marginTop="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:text="Pulang-Pergi?"
+            android:layout_marginTop="113dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Departure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+           android:layout_marginLeft="65dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="165dp"
+            android:hint="1 maret 2023"
+            android:minHeight="48dp"
+            android:textSize="15dp"
+            tools:ignore="TextSizeCheck" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="155dp"
+            android:src="@drawable/calendar_month" />
+
+        <TextView
+            android:text="Seat Class"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:layout_marginLeft="250dp"/>
+
+        <EditText
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="245dp"
+            android:layout_marginTop="245dp"
+            android:minHeight="48dp"
+            android:text="Business"
+            android:textSize="15dp"
+            tools:ignore="TextSizeCheck" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="155dp"
+            android:src="@drawable/calendar_month" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="150dp"
+            android:text="Return" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="245dp"
+            android:layout_marginTop="165dp"
+            android:minHeight="48dp"
+            android:text="Pilih Tanggal"
+            android:textColor="@color/purple_500"
+            android:textSize="15dp"
+            tools:ignore="TextSizeCheck" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="235dp"
+            android:src="@drawable/airline_seat" />
+
+        <TextView
+            android:text="Passengers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:layout_marginLeft="65dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="245dp"
+            android:hint="2 Penumpang"
+            android:minHeight="48dp"
+            android:textSize="15dp"
+            tools:ignore="TextSizeCheck" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="235dp"
+            android:src="@drawable/person" />
+
+        <Button
+            android:layout_marginTop="300dp"
+            android:layout_width="330dp"
+            android:text="Cari Penerbangan"
+            android:layout_marginLeft="20dp"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:text="Destinasi Favorit"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="370dp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHome"
+            android:layout_marginTop="400dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </androidx.cardview.widget.CardView>
 
