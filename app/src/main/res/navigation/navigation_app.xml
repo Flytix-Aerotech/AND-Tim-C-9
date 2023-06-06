@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_app"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.aerotech.flytix.view.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/history"
+        android:name="com.aerotech.flytix.view.History"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/notifikasi"
+        android:name="com.aerotech.flytix.view.Notifikasi"
+        android:label="fragment_notifikasi"
+        tools:layout="@layout/fragment_notifikasi" />
+    <fragment
+        android:id="@+id/akun"
+        android:name="com.aerotech.flytix.view.Akun"
+        android:label="fragment_akun"
+        tools:layout="@layout/fragment_akun" />
+    <fragment
+        android:id="@+id/detail"
+        android:name="com.aerotech.flytix.view.Detail"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+</navigation>

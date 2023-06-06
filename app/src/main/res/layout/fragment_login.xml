@@ -5,50 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.Login"
-    android:padding="30dp">
+    android:background="@color/black">
 
 
-    <TextView
-        style="@style/textjudul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Masuk"
-        android:textColor="@color/black"
-        android:textSize="30sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
-        android:text="Email"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
-
-    <com.google.android.material.textfield.TextInputLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contoh: dian@gmail.com"
-        android:layout_marginTop="150dp"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/black">
+        android:background="@color/black">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_emailLogin"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+            android:layout_height="match_parent">
+        </RelativeLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
+        android:id="@+id/tv_headingLogin"
+        style="@style/textheading24bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
-        android:text="Password"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
+        android:layout_below="@id/tb_login"
+        android:text="Masuk"
+        android:textSize="30sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        app:boxBackgroundColor="@color/emas"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/black"
+        android:layout_below="@id/tv_headingLogin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_emaillogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/lupaPassword"
@@ -61,48 +59,50 @@
         android:textSize="15sp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/laypass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Password"
-        android:layout_marginTop="250dp"
+        android:hint="Password"
+        android:layout_below="@id/layemail"
         app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/black"
-        app:endIconMode="password_toggle">
+        app:endIconMode="password_toggle"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordLogin"
+            android:id="@+id/et_passwordlogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <Button
         android:id="@+id/btnLogin"
-        android:text="Masuk"
-        android:layout_marginTop="320dp"
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/laypass"
+        android:text="Masuk" />
 
     <TextView
         android:id="@+id/blmPunyaAkun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Belum punya akun?"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="35dp"
-        android:layout_marginLeft="50dp"
         android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/tv_dftardisini"
         android:textSize="15sp" />
 
     <TextView
+        android:id="@+id/tv_dftardisini"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="35dp"
-        android:layout_toRightOf="@id/blmPunyaAkun"
+        android:layout_centerHorizontal="true"
         android:text="Daftar di sini"
         android:textColor="@color/purple_500"
         android:textSize="15sp"

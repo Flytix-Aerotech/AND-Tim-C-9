@@ -1,23 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="textjudul">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAlignment">center</item>
+
+<!--    style text body-->
+    <style name="textbody10reguler">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
     </style>
 
-    <style name="textbody">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">12sp</item>
+    <style name="textbody10bold">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+        <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="textbody12reguler">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+    </style>
+
+    <style name="textbody12bold">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textbody14reguler">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+    </style>
+
+    <style name="textbody14bold">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+<!--    style text title-->
+    <style name="texttitle16reguler">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+    </style>
+
+    <style name="texttitle16bold">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="texttitle18reguler">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+    </style>
+
+    <style name="texttitle18bold">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+<!--    style text heading-->
+    <style name="textheading20reguler">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+    </style>
+
+    <style name="textheading20bold">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textheading24reguler">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+    </style>
+
+    <style name="textheading24bold">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/poppin</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 
     <style name="textasing" tools:ignore="UnusedResources">
         <item name="android:textStyle">italic</item>
     </style>
 
+
+<!--    style button-->
     <style name="btn">
-        <item name="android:backgroundTint">@color/abu</item>
+        <item name="android:backgroundTint">@color/white</item>
         <item name="android:textColor">@color/putih</item>
     </style>
 
