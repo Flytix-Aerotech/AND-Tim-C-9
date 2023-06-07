@@ -1,119 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgregister"
-    android:padding="20dp"
-    tools:context=".view.Register">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.Register"
+    android:background="@drawable/bg_fargment"
+    android:padding="30dp">
 
+    <TextView
+        android:id="@+id/titleRegister"
+        style="@style/textheading24bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Daftar"
+        android:textSize="30sp" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_daftar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/sdhPunyaAkun"
+        android:layout_below="@id/titleRegister"
+        android:layout_marginTop="5dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:padding="10dp">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvdaftar"
-                style="@style/textheading24bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:fontFamily="@font/gothambold"
-                android:text="Daftar"
-                android:textColor="@color/emas" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama Lengkap"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/black">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/frame_etnamadaftar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvdaftar"
-                android:hint="Nama Lengkap"
-                app:boxBackgroundColor="@color/white"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeColor="@color/black">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/namaLengkap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/namaLengkap"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
-            </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/frame_etemaildaftar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/frame_etnamadaftar"
-                android:hint="Email"
-                app:boxBackgroundColor="@color/white"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeColor="@color/black">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:layout_marginTop="75dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/black">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailRegister"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_emailLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/frame_ettelepondaftar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/frame_etemaildaftar"
-                android:hint="Nomor Telepon"
-                app:boxBackgroundColor="@color/white"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeColor="@color/black">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nomor Telepon"
+        android:layout_marginTop="150dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/black">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/nmrTlp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nmrTlp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/frame_etpassdaftar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/frame_ettelepondaftar"
-                android:hint="Password"
-                app:boxBackgroundColor="@color/white"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeColor="@color/black"
-                app:endIconMode="password_toggle">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_marginTop="230dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/black"
+        app:endIconMode="password_toggle">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passwordRegister"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/btnRegister"
-                style="@style/btngold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/frame_etpassdaftar"
-                android:text="Daftar"
-                android:textColor="@color/white" />
+    <Button
+        android:id="@+id/btnRegister"
+        android:text="Daftar"
+        android:layout_marginTop="300dp"
+        style="@style/btngold"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
 
         </RelativeLayout>
 
@@ -124,20 +117,21 @@
         android:id="@+id/sdhPunyaAkun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/masukdisini"
-        android:layout_centerHorizontal="true"
         android:text="Sudah punya akun?"
-        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="50dp"
+        android:textColor="@color/black"
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/masukdisini"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:layout_toRightOf="@id/sdhPunyaAkun"
         android:text="Masuk di sini"
-        android:textColor="@color/gold"
+        android:textColor="@color/purple_500"
         android:textSize="15sp"
         android:textStyle="bold" />
 
