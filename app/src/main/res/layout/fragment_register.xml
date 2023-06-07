@@ -5,30 +5,35 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.Register"
+    android:background="@drawable/bg_fargment"
     android:padding="30dp">
 
     <TextView
+        android:id="@+id/titleRegister"
         style="@style/textheading24bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Daftar"
-        android:textColor="@color/black"
         android:textSize="30sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
-        android:text="Nama"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
+        android:layout_below="@id/titleRegister"
+        android:layout_marginTop="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nama Lengkap"
-        android:layout_marginTop="150dp"
         app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/black">
@@ -42,19 +47,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
-        android:text="Email"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contoh: dian@gmail.com"
-        android:layout_marginTop="240dp"
+        android:hint="Email"
+        android:layout_marginTop="75dp"
         app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/black">
@@ -67,20 +64,11 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="310dp"
-        android:text="Nomor Telepon"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="+62"
-        android:layout_marginTop="330dp"
+        android:hint="Nomor Telepon"
+        android:layout_marginTop="150dp"
         app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/black">
@@ -93,21 +81,11 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
-        android:text="Password"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Password"
-        android:layout_marginTop="420dp"
+        android:hint="Password"
+        android:layout_marginTop="230dp"
         app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/black"
@@ -125,9 +103,15 @@
     <Button
         android:id="@+id/btnRegister"
         android:text="Daftar"
-        android:layout_marginTop="490dp"
+        android:layout_marginTop="300dp"
+        style="@style/btngold"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 
     <TextView
         android:id="@+id/sdhPunyaAkun"
