@@ -49,8 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
-        app:boxBackgroundColor="@color/emas"
+        app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="outline"
+        app:boxStrokeWidth="2dp"
         app:boxStrokeColor="@color/black"
         android:layout_below="@id/tv_headingLogin"
         tools:ignore="NotSibling">
@@ -58,7 +59,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_emaillogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            style="@style/textbody12reguler"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,6 +82,7 @@
         android:layout_below="@id/layemail"
         app:boxBackgroundColor="@color/white"
         app:boxBackgroundMode="outline"
+        app:boxStrokeWidth="2dp"
         app:boxStrokeColor="@color/black"
         app:endIconMode="password_toggle"
         android:layout_marginTop="10dp"
@@ -94,7 +97,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         style="@style/btngold"
         android:layout_width="match_parent"
@@ -102,6 +105,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_below="@id/laypass"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/black"
         android:text="Masuk" />
 
         </RelativeLayout>
