@@ -9,30 +9,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11d894e8-67f0-4e5b-a957-ab92b6c93d59" name="Changes" comment="pelengkapan reset password">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bgregister.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bguniversal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/font_gotham.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/gothambold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/bottom_sheet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/coba_aja.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/Home.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/Home.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_checkout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_checkout.xml" afterDir="false" />
+    <list default="true" id="11d894e8-67f0-4e5b-a957-ab92b6c93d59" name="Changes" comment="data diri, login, register, lupa password">
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_forget_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_forget_password.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/navigation_app.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/navigation_app.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686145800627</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="data diri, login, register, lupa password">
+      <created>1686257634152</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1686257634152</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -320,6 +305,7 @@
     <MESSAGE value="First Commit" />
     <MESSAGE value="pelengkapan login dan register" />
     <MESSAGE value="pelengkapan reset password" />
-    <option name="LAST_COMMIT_MESSAGE" value="pelengkapan reset password" />
+    <MESSAGE value="data diri, login, register, lupa password" />
+    <option name="LAST_COMMIT_MESSAGE" value="data diri, login, register, lupa password" />
   </component>
 </project>
