@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/resultSearch">
+    app:startDestination="@id/home2">
 
     <fragment
         android:id="@+id/home2"
         android:name="com.aerotech.flytix.view.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_login2"
+            app:destination="@id/login2" />
+    </fragment>
     <fragment
         android:id="@+id/history"
         android:name="com.aerotech.flytix.view.History"
@@ -31,17 +35,8 @@
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
     <fragment
-        android:id="@+id/splashScreen"
-        android:name="com.aerotech.flytix.view.SplashScreen"
-        android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
-        <action
-            android:id="@+id/action_splashScreen_to_home2"
-            app:destination="@id/home2" />
-    </fragment>
-    <fragment
-        android:id="@+id/resultSearch"
-        android:name="com.aerotech.flytix.view.ResultSearch"
-        android:label="fragment_result_search"
-        tools:layout="@layout/fragment_result_search" />
+        android:id="@+id/login2"
+        android:name="com.aerotech.flytix.view.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
