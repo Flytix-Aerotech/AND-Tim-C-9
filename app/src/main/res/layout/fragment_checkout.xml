@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.Checkout"
-    android:background="@drawable/bg_fargment"
+    android:background="@drawable/bg_duawarna"
     android:padding="30dp">
 
     <androidx.appcompat.widget.Toolbar
@@ -43,7 +43,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama Lengkap"
-                android:layout_below="@id/tv_checkout"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/black">
