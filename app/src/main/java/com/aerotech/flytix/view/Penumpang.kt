@@ -5,19 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.aerotech.flytix.databinding.FragmentHomeBinding
+import com.aerotech.flytix.databinding.FragmentPenumpangBinding
 
+class Penumpang : Fragment() {
 
-class Home : Fragment() {
-
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentPenumpangBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentPenumpangBinding.inflate(inflater, container, false)
         return binding.root
     }
 
