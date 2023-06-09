@@ -1,32 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:padding="20dp"
     tools:context=".view.Login">
 
 
-    <TextView
-        android:id="@+id/tvlogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
-        android:fontFamily="@font/gothambold"
-        android:text="LOGIN"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/emas"
-        android:textSize="50dp"
-        app:boxStrokeColor="@color/black"/>
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvlogin"
-        android:layout_marginTop="180dp"
+        android:layout_above="@id/tv_blmPunyaAkun"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp">
 
@@ -35,78 +22,87 @@
             android:layout_height="wrap_content"
             android:padding="20dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/black">
+            <TextView
+                android:id="@+id/tvlogin"
+                style="@style/textheading24bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gothambold"
+                android:text="MASUK"
+                android:textColor="@color/emas" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvlogin"
+                android:hint="Email"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/black">
 
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_emaillogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/pass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/emailLogin"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxBackgroundMode="outline"
-        app:boxBackgroundColor="@color/white"
-        app:boxStrokeColor="@color/black"
-        app:endIconMode="password_toggle"
-        app:endIconTint="@color/black"
+            </com.google.android.material.textfield.TextInputLayout>
 
-        >
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/frame_passlogin"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emailLogin"
+                android:layout_marginTop="10dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/black"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/black">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_passlogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@id/pass"
-        android:text="LOGIN"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/gold"/>
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/frame_passlogin"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/gold"
+                android:text="MASUK" />
 
-    <TextView
-        android:id="@+id/lupaPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/login"
-        android:layout_alignParentRight="true"
-        android:text="lupa Kata Sandi"
-        android:textColor="@color/gold"
-        android:textSize="15sp" />
+            <TextView
+                android:id="@+id/tv_lupaPassword"
+                style="@style/textbody14bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_login"
+                android:layout_alignParentRight="true"
+                android:text="lupa Kata Sandi" />
 
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/blmPunyaAkun"
+        android:id="@+id/tv_blmPunyaAkun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@id/tv_dftardisini"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:text="Belum punya akun?"
         android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/tv_dftardisini"
         android:textSize="15sp" />
 
     <TextView
@@ -119,8 +115,6 @@
         android:textColor="@color/gold"
         android:textSize="15sp"
         android:textStyle="bold" />
-
-
 
 
 </RelativeLayout>
