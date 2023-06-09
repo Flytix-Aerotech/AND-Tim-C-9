@@ -31,7 +31,7 @@ class Home : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnCariPenerbangan.setOnClickListener {
-            findNavController().navigate(R.id.action_home2_to_login2)
+
         }
     }
 
