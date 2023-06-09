@@ -262,6 +262,7 @@
 
 
                         <Button
+                            android:id="@+id/btn_caripenerbangan"
                             style="@style/btngold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
