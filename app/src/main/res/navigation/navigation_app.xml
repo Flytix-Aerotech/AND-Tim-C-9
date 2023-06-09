@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/splashScreen">
+    app:startDestination="@id/resultSearch">
 
     <fragment
         android:id="@+id/home2"
@@ -39,4 +39,9 @@
             android:id="@+id/action_splashScreen_to_home2"
             app:destination="@id/home2" />
     </fragment>
+    <fragment
+        android:id="@+id/resultSearch"
+        android:name="com.aerotech.flytix.view.ResultSearch"
+        android:label="fragment_result_search"
+        tools:layout="@layout/fragment_result_search" />
 </navigation>
