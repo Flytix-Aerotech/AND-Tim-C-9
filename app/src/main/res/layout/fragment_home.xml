@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_duawarna"
+    android:background="@drawable/bg_fargment"
     android:paddingHorizontal="20dp"
     tools:context=".view.Home">
 
@@ -262,9 +262,8 @@
 
 
                         <Button
-                            android:id="@+id/btnCariPenerbangan"
+                            android:id="@+id/btn_caripenerbangan"
                             style="@style/btngold"
-                            android:textColor="@color/white"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/et_kelaskursi"
@@ -292,6 +291,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_favdestinasi" />
-
 
 </RelativeLayout>
