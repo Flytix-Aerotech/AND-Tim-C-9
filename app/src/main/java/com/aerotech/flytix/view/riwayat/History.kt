@@ -1,4 +1,4 @@
-package com.aerotech.flytix.view
+package com.aerotech.flytix.view.riwayat
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

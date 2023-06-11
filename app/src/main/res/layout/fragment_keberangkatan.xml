@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.home.Keberangkatan">
+
+    <TextView
+        android:id="@+id/tv_btmkeberangkatan"
+        style="@style/texttitle18bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Atur Jadwal Keberangkatan"
+        android:textAllCaps="true" />
+
+    <DatePicker
+        android:id="@+id/dp_keberangkatan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_btmkeberangkatan"
+        android:layout_centerHorizontal="true"
+        android:calendarViewShown="false"
+        android:datePickerMode="calendar" />
+
+</RelativeLayout>
