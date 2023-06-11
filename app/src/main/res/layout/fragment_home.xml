@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bguniversal"
-    tools:context=".view.Home">
+    tools:context=".view.home.Home">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -149,59 +149,71 @@
                             android:layout_margin="10dp">
 
                             <TextView
-                                android:id="@+id/tv_departure"
+                                android:id="@+id/tv_keberangkatan"
                                 style="@style/textbody14reguler"
                                 android:layout_width="140dp"
                                 android:layout_height="wrap_content"
                                 android:text="Keberangkatan" />
 
                             <ImageView
-                                android:id="@+id/img_departure"
+                                android:id="@+id/iv_keberangkatan"
                                 android:layout_width="45dp"
                                 android:layout_height="45dp"
-                                android:layout_below="@id/tv_departure"
+                                android:layout_below="@id/tv_keberangkatan"
                                 android:src="@drawable/calendar_month" />
 
                             <EditText
-                                android:id="@+id/ET_departure"
+                                android:id="@+id/et_keberangkatan"
                                 style="@style/textbody14bold"
                                 android:layout_width="107dp"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/tv_departure"
-                                android:layout_toEndOf="@id/img_departure"
-                                android:hint="1 maret 2023"
-                                android:inputType="text"
+                                android:layout_below="@id/tv_keberangkatan"
+                                android:layout_toEndOf="@id/iv_keberangkatan"
+                                android:hint="DD/MM/YYYY"
+                                android:focusable="false"
+                                android:clickable="true"
+                                android:cursorVisible="false"
+                                android:inputType="date"
                                 android:minHeight="48dp" />
 
                             <TextView
-                                android:id="@+id/tv_return"
+                                android:id="@+id/tv_kepulangan"
+                                android:visibility="gone"
+                                tools:visibility="visible"
                                 style="@style/textbody14reguler"
                                 android:layout_width="153dp"
                                 android:layout_height="wrap_content"
-                                android:layout_above="@id/iv_return"
+                                android:layout_above="@id/iv_kepulangan"
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginBottom="2dp"
                                 android:text="Kembali" />
 
 
                             <ImageView
-                                android:id="@+id/iv_return"
+                                android:id="@+id/iv_kepulangan"
                                 android:layout_width="45dp"
                                 android:layout_height="45dp"
-                                android:layout_below="@id/tv_departure"
-                                android:layout_toStartOf="@id/et_return"
+                                android:visibility="gone"
+                                tools:visibility="visible"
+                                android:layout_below="@id/tv_keberangkatan"
+                                android:layout_toStartOf="@id/et_kepulangan"
                                 android:src="@drawable/calendar_month" />
 
                             <EditText
-                                android:id="@+id/et_return"
+                                android:id="@+id/et_kepulangan"
                                 style="@style/textbody14bold"
                                 android:layout_width="108dp"
+                                android:visibility="gone"
+                                tools:visibility="visible"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/tv_departure"
+                                android:layout_below="@id/tv_keberangkatan"
                                 android:layout_alignParentEnd="true"
-                                android:inputType="text"
+                                android:inputType="date"
                                 android:minHeight="48dp"
-                                android:text="Pilih Tanggal"
+                                android:focusable="false"
+                                android:clickable="true"
+                                android:cursorVisible="false"
+                                android:hint="DD/MM/YYYY"
                                 tools:ignore="TextSizeCheck" />
 
                             <TextView
@@ -209,7 +221,7 @@
                                 style="@style/textbody14reguler"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/ET_departure"
+                                android:layout_below="@id/et_keberangkatan"
                                 android:text="Penumpang" />
 
                             <ImageView
@@ -220,14 +232,17 @@
                                 android:src="@drawable/person" />
 
                             <EditText
-                                android:id="@+id/ET_passenger"
+                                android:id="@+id/et_penumpang"
                                 style="@style/textbody14bold"
-                                android:layout_width="wrap_content"
+                                android:layout_width="107dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/tv_passengers"
                                 android:layout_toEndOf="@id/iv_passengers"
-                                android:hint="2 Penumpang"
-                                android:inputType="text"
+                                android:hint="Total"
+                                android:focusable="false"
+                                android:clickable="true"
+                                android:cursorVisible="false"
+                                android:inputType="number"
                                 android:minHeight="48dp"
                                 tools:ignore="TextSizeCheck" />
 
@@ -236,7 +251,7 @@
                                 style="@style/textbody14reguler"
                                 android:layout_width="153dp"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/et_return"
+                                android:layout_above="@id/iv_kelaskursi"
                                 android:layout_alignParentEnd="true"
                                 android:text="Kelas Kursi" />
 
@@ -245,18 +260,21 @@
                                 style="@style/textbody14bold"
                                 android:layout_width="108dp"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/tv_kelaskursi"
+                                android:layout_above="@id/btn_caripenerbangan"
                                 android:layout_alignParentEnd="true"
                                 android:inputType="text"
                                 android:minHeight="48dp"
-                                android:text="Business"
+                                android:focusable="false"
+                                android:clickable="true"
+                                android:cursorVisible="false"
+                                android:hint="Pilih Kelas"
                                 tools:ignore="TextSizeCheck" />
 
                             <ImageView
                                 android:id="@+id/iv_kelaskursi"
                                 android:layout_width="45dp"
                                 android:layout_height="45dp"
-                                android:layout_below="@id/tv_kelaskursi"
+                                android:layout_above="@id/btn_caripenerbangan"
                                 android:layout_toStartOf="@id/et_kelaskursi"
                                 android:src="@drawable/airline_seat" />
 
@@ -266,7 +284,7 @@
                                 style="@style/btngold"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/et_kelaskursi"
+                                android:layout_below="@id/et_penumpang"
                                 android:text="Cari Penerbangan" />
                         </RelativeLayout>
 
