@@ -8,10 +8,11 @@ import androidx.fragment.app.Fragment
 import com.aerotech.flytix.databinding.FragmentHomeBinding
 
 
-class Home : Fragment(), Keberangkatan.DatePickerListener, Kembali.DatePickerListener,
-    Penumpang.totalPenumpangListener {
+class Home : Fragment(),
+    Penumpang.totalPenumpangListener, Keberangkatan.DatePickerListener, Kembali.DatePickerListener {
 
     private lateinit var binding: FragmentHomeBinding
+    private var editTextChoosed = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,13 +43,13 @@ class Home : Fragment(), Keberangkatan.DatePickerListener, Kembali.DatePickerLis
             datePickerKepulanganFragment.show(parentFragmentManager, "datePicker")
         }
 
-        binding.switchPp.setOnCheckedChangeListener {switchView, ischecked ->
-            if (ischecked){
+        binding.switchPp.setOnCheckedChangeListener { switchView, ischecked ->
+            if (ischecked) {
                 binding.tvKepulangan.visibility = View.VISIBLE
                 binding.ivKepulangan.visibility = View.VISIBLE
                 binding.etKepulangan.visibility = View.VISIBLE
 
-            }else{
+            } else {
                 binding.tvKepulangan.visibility = View.GONE
                 binding.ivKepulangan.visibility = View.GONE
                 binding.etKepulangan.visibility = View.GONE
@@ -56,11 +57,21 @@ class Home : Fragment(), Keberangkatan.DatePickerListener, Kembali.DatePickerLis
         }
     }
 
+//    private fun showDatePickerDialog(fieldNumber: Int) {
+//        val datePickerFragment = Keberangkatan()
+//        datePickerFragment.setOnDateSelectedListener { date->
+//            when (fieldNumber) {
+//                1 -> binding.etKeberangkatan.setText(date)
+//                2 -> binding.etKepulangan.setText(date)
+//            }
+//        }
+//        datePickerFragment.show(parentFragmentManager, "datePicker")
+//    }
 
-    override fun onDateSelected(date: String) {
-        // Set the selected date in the EditText
-        binding.etKeberangkatan.setText(date)
-    }
+//
+//    override fun onDateSelectedKepulangan(date: String) {
+//        binding.etKepulangan.setText(date)
+//    }
 
     override fun onDateSelectedKepulangan(date: String) {
         // Set the selected date in the EditText
@@ -71,4 +82,11 @@ class Home : Fragment(), Keberangkatan.DatePickerListener, Kembali.DatePickerLis
         binding.etPenumpang.setText("$total Penumpang")
     }
 
+    override fun onDateSelected(date: String) {
+        binding.etKeberangkatan.setText(date)
+    }
 }
+
+//    override fun onDateSelectedKepulangan(date: String) {
+//    }
+
