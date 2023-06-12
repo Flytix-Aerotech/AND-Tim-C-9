@@ -11,6 +11,9 @@ import androidx.navigation.ui.NavigationUI
 import com.aerotech.flytix.databinding.ActivityMainBinding
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding

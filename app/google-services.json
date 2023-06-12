@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "206206196640",
+    "project_id": "flytix-f6ee4",
+    "storage_bucket": "flytix-f6ee4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206206196640:android:eff5da2eb2cc1c86c7e2c5",
+        "android_client_info": {
+          "package_name": "com.aerotech.flytix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206206196640-k7mrl9tq25rms6allpmrli5lhmpt3ar3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aerotech.flytix",
+            "certificate_hash": "1f7e9e2e9f074e5be976359156c591b6ef3ab276"
+          }
+        },
+        {
+          "client_id": "206206196640-f1saq5k6sr38sgbmlo6k9pr2djfs3pa8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR-Y1bQlQtti4gvf1v7pH8tV9nxzwuOlg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206206196640-f1saq5k6sr38sgbmlo6k9pr2djfs3pa8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
