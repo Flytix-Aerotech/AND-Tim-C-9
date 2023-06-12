@@ -29,6 +29,7 @@ class Kembali : BottomSheetDialogFragment() {
 
         // Set initial date to current date
         val calendar = Calendar.getInstance()
+        binding.dpKepulangan.minDate = calendar.timeInMillis
         binding.dpKepulangan.init(
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),

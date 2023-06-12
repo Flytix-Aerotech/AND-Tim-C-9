@@ -10,11 +10,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import kotlin.properties.Delegates
 
 class Keberangkatan : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentKeberangkatanBinding
     internal var listener: DatePickerListener? = null
+    var fieldNumber by Delegates.notNull<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +33,7 @@ class Keberangkatan : BottomSheetDialogFragment() {
 
         // Set initial date to current date
         val calendar = Calendar.getInstance()
+        binding.dpKeberangkatan.minDate = calendar.timeInMillis
             binding.dpKeberangkatan.init(
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
