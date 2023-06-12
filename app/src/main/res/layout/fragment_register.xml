@@ -61,7 +61,7 @@
                 app:boxStrokeColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_emailLogin"
+                    android:id="@+id/emailRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
@@ -98,7 +98,7 @@
                 app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passwordLogin"
+                    android:id="@+id/passwordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
