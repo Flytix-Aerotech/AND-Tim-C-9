@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentResultSearchBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ResultSearch : Fragment() {
     lateinit var binding : FragmentResultSearchBinding
 

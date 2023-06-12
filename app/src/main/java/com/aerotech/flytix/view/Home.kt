@@ -12,8 +12,9 @@ import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentHomeBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class Home : Fragment() {
 
     private lateinit var bottomSheetDialog: BottomSheetDialog
@@ -30,7 +31,7 @@ class Home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnCariPenerbangan.setOnClickListener {
+        binding.btnCaripenerbangan.setOnClickListener {
 
         }
     }
