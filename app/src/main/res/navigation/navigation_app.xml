@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home2"
-        android:name="com.aerotech.flytix.view.Home"
+        android:name="com.aerotech.flytix.view.home.Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
@@ -55,5 +55,9 @@
         android:id="@+id/login2"
         android:name="com.aerotech.flytix.view.Login"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login2_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
 </navigation>

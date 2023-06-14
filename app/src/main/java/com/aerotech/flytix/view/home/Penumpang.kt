@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.aerotech.flytix.databinding.FragmentPenumpangBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Penumpang : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentPenumpangBinding

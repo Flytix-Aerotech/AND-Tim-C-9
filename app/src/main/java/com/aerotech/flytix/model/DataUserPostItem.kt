@@ -2,7 +2,7 @@ package com.aerotech.flytix.model
 
 import com.google.gson.annotations.SerializedName
 
-data class UserRegistItem (
+data class DataUserPostItem(
     @SerializedName("email")
     val email: String,
     @SerializedName("full_name")
@@ -15,4 +15,4 @@ data class UserRegistItem (
     val photo: String,
     @SerializedName("username")
     val username: String
-    )
+)

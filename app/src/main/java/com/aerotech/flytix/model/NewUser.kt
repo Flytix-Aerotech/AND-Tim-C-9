@@ -1,8 +1,9 @@
 package com.aerotech.flytix.model
 
+
 import com.google.gson.annotations.SerializedName
 
-data class NewUser (
+data class NewUser(
     @SerializedName("email")
     val email: String,
     @SerializedName("full_name")

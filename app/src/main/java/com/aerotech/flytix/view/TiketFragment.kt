@@ -1,18 +1,16 @@
 package com.aerotech.flytix.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.aerotech.flytix.R
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class TiketFragment : Fragment() {
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

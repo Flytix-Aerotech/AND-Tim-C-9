@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.aerotech.flytix.databinding.FragmentKeberangkatanBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import kotlin.properties.Delegates
-
+@AndroidEntryPoint
 class Keberangkatan : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentKeberangkatanBinding
