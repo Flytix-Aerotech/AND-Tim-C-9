@@ -34,6 +34,10 @@ class Register : Fragment() {
         binding.btnRegister.setOnClickListener {
             register()
         }
+
+        binding.masukdisini.setOnClickListener {
+            findNavController().navigate(R.id.action_register_to_login2)
+        }
     }
     private fun register() {
         val username = binding.username.text.toString()
