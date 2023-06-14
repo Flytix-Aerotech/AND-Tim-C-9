@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.aerotech.flytix.databinding.FragmentKembaliBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-
+@AndroidEntryPoint
 class Kembali : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentKembaliBinding
