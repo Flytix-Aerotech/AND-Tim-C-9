@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.aerotech.flytix.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class Home : Fragment(),
     Penumpang.totalPenumpangListener, Keberangkatan.DatePickerListener, Kembali.DatePickerListener {
 

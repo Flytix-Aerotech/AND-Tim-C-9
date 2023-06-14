@@ -1,13 +1,11 @@
 package com.aerotech.flytix.view
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
@@ -16,16 +14,15 @@ import com.aerotech.flytix.model.NewUser
 import com.aerotech.flytix.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class Register : Fragment() {
     lateinit var binding: FragmentRegisterBinding
     lateinit var userVM: RegisterViewModel
-    lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         // Inflate the layout for this fragment
         binding = FragmentRegisterBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -37,9 +34,7 @@ class Register : Fragment() {
         binding.btnRegister.setOnClickListener {
             register()
         }
-        sharedPreferences = requireActivity().getSharedPreferences("Register", Context.MODE_PRIVATE)
     }
-
     private fun register() {
         val username = binding.username.text.toString()
         val email = binding.etEmailLogin.text.toString()
@@ -47,33 +42,14 @@ class Register : Fragment() {
         val fullName = binding.namaLengkap.text.toString()
         val noHp = binding.nmrTlp.text.toString()
         val alamat = binding.address.text.toString()
+        val poto = binding.foto.text.toString()
         //val currentDateTime: LocalDateTime = LocalDateTime.now()
-
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || fullName.isEmpty() || noHp.isEmpty() || alamat.isEmpty()) {
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || fullName.isEmpty() ||noHp.isEmpty() ||alamat.isEmpty()) {
             Toast.makeText(requireContext(), "Please fill all the field", Toast.LENGTH_SHORT).show()
         } else {
-            userVM.postUserRegister(
-                dataUsers = NewUser(
-                    email,
-                    fullName,
-                    password,
-                    "user",
-                    noHp,
-                    "",
-                    username,
-                    alamat
-                )
-            )
-            Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT)
-                .show()
-                    sharedPreferences = requireActivity().getSharedPreferences("Register", Context.MODE_PRIVATE)
-                    val sharedPref =sharedPreferences.edit()
-                    sharedPref.putString("email", email)
-                    sharedPref.putString("password", password)
-                    sharedPref.apply()
-
+            userVM.postUserRegister(dataUsers = NewUser(email,fullName,0,password,noHp,poto, "user", username))
+            Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_register_to_login2)
-
         }
     }
 }
