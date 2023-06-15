@@ -1,5 +1,6 @@
 package com.aerotech.flytix.viewmodel
 
+import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,29 +20,29 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(var Client: ApiService) : ViewModel() {
 
 
-//    private val _userLogin = MutableLiveData<DataUserResponse>()
-//    val userLogin : LiveData<DataUserResponse> = _userLogin
-//
-//    fun authLogin(login : DataUserLoginItem){
-//        Client.postLogin(login).enqueue(object : Callback<DataUserResponse> {
-//            override fun onResponse(call: Call<DataUserResponse>, response: Response<DataUserResponse>) {
-//                if (response.isSuccessful){
-//                    val data = response.body()
-//                    if (data != null){
-//                        _userLogin.postValue(data!!)
-//                    }
-//                }else{
-//                    Log.e("Error: ", "onFailure : ${response.message()}")
-//                }
-//
-//            }
-//
-//            override fun onFailure(call: Call<DataUserResponse>, t: Throwable) {
-//                Log.d(ContentValues.TAG, "onFailure: ${t.message}")
-//            }
-//
-//        })
-//    }
+    private val authUserLogin = MutableLiveData<DataUserResponse>()
+    val authLiveDataUserLogin : LiveData<DataUserResponse> = authUserLogin
+
+    fun authLoginUser(login : DataUserLoginItem){
+        Client.postLoginUser(login).enqueue(object : Callback<DataUserResponse> {
+            override fun onResponse(call: Call<DataUserResponse>, response: Response<DataUserResponse>) {
+                if (response.isSuccessful){
+                    val data = response.body()
+                    if (data != null){
+                        authUserLogin.postValue(data!!)
+                    }
+                }else{
+                    Log.e("Error: ", "onFailure : ${response.message()}")
+                }
+
+            }
+
+            override fun onFailure(call: Call<DataUserResponse>, t: Throwable) {
+                Log.d(ContentValues.TAG, "onFailure: ${t.message}")
+            }
+
+        })
+    }
 
 
 //    fun authLogin(callback: Callback<User> ) {

@@ -3,6 +3,7 @@ package com.aerotech.flytix.view
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +40,7 @@ class Login : Fragment() {
         userLoginVM = ViewModelProvider(this).get(LoginViewModel::class.java)
         sharedPref = requireContext().getSharedPreferences("LOGGED_IN", Context.MODE_PRIVATE)
         binding.btnLogin.setOnClickListener {
-            prosesLogin()
+            doLogin()
         }
 
         binding.tvDftardisini.setOnClickListener {
@@ -50,7 +51,6 @@ class Login : Fragment() {
     private fun prosesLogin() {
         val email = binding.etEmaillogin.text.toString()
         val password = binding.etPasslogin.text.toString()
-
 
         if (email.isNotEmpty() || password.isNotEmpty()) {
             userLoginVM.authLogin()
@@ -66,7 +66,7 @@ class Login : Fragment() {
             } else {
 //            if (emailUser == email && passUser == password) {
                 userLoginVM.userLogin(DataUserLoginItem(email, password))
-            userLoginVM.dataPostLoginUser.observe(viewLifecycleOwner) { loginresult ->
+                userLoginVM.dataPostLoginUser.observe(viewLifecycleOwner) { loginresult ->
 //                    emailUser = loginresult.user.email
 //                    passUser = loginresult.user.password
 //                    emailUser = email
@@ -88,18 +88,35 @@ class Login : Fragment() {
         }
     }
 
-//    fun doLogin(){
-//        userLoginVM.authLogin(DataUserLoginItem(binding.etEmaillogin.text.toString(),binding.etEmaillogin.text.toString()))
-//        userLoginVM.userLogin.observe(viewLifecycleOwner){
-//            if (it!=null){
-//                Log.i("tokenn", "token: ${it.token}")
-//                token =it.token
-//                // input to sharedpreferences
-//                val userData = sharedPref.edit()
-//                userData.putString("token", it.token)
-//                userData.apply()
-//                findNavController().navigate(R.id.action_login2_to_home2)
-//            }
-//        }
-//    }
+    fun doLogin() {
+        val emailInputUser = binding.etEmaillogin.text.toString()
+        val passInputUser = binding.etPasslogin.text.toString()
+
+        if (emailInputUser.isNotEmpty() || passInputUser.isNotEmpty()) {
+            userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner) {
+                emailUser = it.user.email
+                passUser = it.user.password
+                emailUser = emailInputUser
+                passUser = passInputUser
+            }
+
+            if (emailUser != emailInputUser && passUser != passInputUser) {
+                Toast.makeText(requireContext(), "Gagal Login", Toast.LENGTH_SHORT).show()
+            } else {
+                userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser, passInputUser))
+                userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        Log.i("tokenn", "token: ${it.token}")
+                        token = it.token
+                        // input to sharedpreferences
+                        val userData = sharedPref.edit()
+                        userData.putString("token", it.token)
+                        userData.apply()
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_login2_to_home3)
+                    }
+                }
+            }
+        }
+    }
 }

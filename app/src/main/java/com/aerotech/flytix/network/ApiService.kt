@@ -18,6 +18,9 @@ interface ApiService {
     )
     @POST("auth/login")
     fun postLogin(@Body request: DataUserLoginItem): Call<DataUserResponse>
+
+    @POST("auth/login")
+    fun postLoginUser(@Body request: DataUserLoginItem): Call<DataUserResponse>
     @GET("auth/getusers")
     fun postUserLogin(): Call<User>
 }
