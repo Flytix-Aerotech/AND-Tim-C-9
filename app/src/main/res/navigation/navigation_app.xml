@@ -3,28 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/splashScreen">
+    app:startDestination="@id/home3">
 
     <fragment
         android:id="@+id/notifikasi"
-        android:name="com.aerotech.flytix.view.Notifikasi"
+        android:name="com.aerotech.flytix.view.notifikasi.Notifikasi"
         android:label="fragment_notifikasi"
         tools:layout="@layout/fragment_notifikasi" />
     <fragment
         android:id="@+id/akun"
-        android:name="com.aerotech.flytix.view.Akun"
+        android:name="com.aerotech.flytix.view.akun.Akun"
         android:label="fragment_akun"
         tools:layout="@layout/fragment_akun" />
     <fragment
         android:id="@+id/detail"
-        android:name="com.aerotech.flytix.view.Detail"
+        android:name="com.aerotech.flytix.view.home.Detail"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
     <fragment
         android:id="@+id/splashScreen"
-        android:name="com.aerotech.flytix.view.SplashScreen"
+        android:name="com.aerotech.flytix.view.home.SplashScreen"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
+        tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/action_splashScreen_to_register"
             app:destination="@id/register" />
@@ -34,23 +34,23 @@
     </fragment>
     <fragment
         android:id="@+id/resultSearch"
-        android:name="com.aerotech.flytix.view.ResultSearch"
+        android:name="com.aerotech.flytix.view.home.ResultSearch"
         android:label="fragment_result_search"
         tools:layout="@layout/fragment_result_search" />
     <fragment
         android:id="@+id/register"
-        android:name="com.aerotech.flytix.view.Register"
+        android:name="com.aerotech.flytix.view.user.Register"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_register_to_login2"
             app:destination="@id/login2" />
     </fragment>
     <fragment
         android:id="@+id/login2"
-        android:name="com.aerotech.flytix.view.Login"
+        android:name="com.aerotech.flytix.view.user.Login"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_login2_to_register"
             app:destination="@id/register" />
@@ -63,4 +63,9 @@
         android:name="com.aerotech.flytix.view.home.Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/history2"
+        android:name="com.aerotech.flytix.view.riwayat.History"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 </navigation>

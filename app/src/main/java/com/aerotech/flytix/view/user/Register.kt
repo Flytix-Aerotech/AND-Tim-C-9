@@ -1,4 +1,4 @@
-package com.aerotech.flytix.view
+package com.aerotech.flytix.view.user
 
 import android.os.Bundle
 import android.view.LayoutInflater

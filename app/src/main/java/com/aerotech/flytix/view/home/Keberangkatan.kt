@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import kotlin.properties.Delegates
+
 @AndroidEntryPoint
 class Keberangkatan : BottomSheetDialogFragment() {
 
@@ -35,17 +36,17 @@ class Keberangkatan : BottomSheetDialogFragment() {
         // Set initial date to current date
         val calendar = Calendar.getInstance()
         binding.dpKeberangkatan.minDate = calendar.timeInMillis
-            binding.dpKeberangkatan.init(
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-            ) { _, year, monthOfYear, dayOfMonth ->
-                // Handle date selection here
-                // Handle date selection here
-                val selectedDate = formatDate(year, monthOfYear, dayOfMonth)
-                listener?.onDateSelected(selectedDate)
-                dismiss() // Close the bottom sheet dialog
-            }
+        binding.dpKeberangkatan.init(
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        ) { _, year, monthOfYear, dayOfMonth ->
+            // Handle date selection here
+            // Handle date selection here
+            val selectedDate = formatDate(year, monthOfYear, dayOfMonth)
+            listener?.onDateSelected(selectedDate)
+            dismiss() // Close the bottom sheet dialog
+        }
     }
 
     private fun formatDate(year: Int, month: Int, day: Int): String {

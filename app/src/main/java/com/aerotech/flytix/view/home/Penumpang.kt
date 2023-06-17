@@ -37,7 +37,7 @@ class Penumpang : BottomSheetDialogFragment() {
 //        updateTotalPenumpang()
     }
 
-    private fun updateTotal(){
+    private fun updateTotal() {
         binding.tvJumlahdewasa.text = totalDewasa.toString()
         binding.tvJumlahanak.text = totalAnak.toString()
         binding.tvJumlahbayi.text = totalBayi.toString()
@@ -93,6 +93,6 @@ class Penumpang : BottomSheetDialogFragment() {
     }
 
     interface totalPenumpangListener {
-        fun totalPenumpang(total:String)
+        fun totalPenumpang(total: String)
     }
 }

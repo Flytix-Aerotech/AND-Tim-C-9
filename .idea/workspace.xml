@@ -10,14 +10,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11d894e8-67f0-4e5b-a957-ab92b6c93d59" name="Changes" comment="Done Register + Login">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Darimana.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/KelasKursi.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Tujuan.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_businessclass.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_economyclass.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_firstclass.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_quietclass.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_search.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_darimana.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_kelas_kursi.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tujuan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/network/ApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/network/ApiService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/Login.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/Login.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/Akun.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/akun/Akun.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/Detail.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Detail.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/ForgetPassword.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/user/ForgetPassword.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/Login.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/user/Login.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/Notifikasi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/notifikasi/Notifikasi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/Register.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/user/Register.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/ResultSearch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/ResultSearch.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/SplashScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/SplashScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Home.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Home.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Keberangkatan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Keberangkatan.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Kembali.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Kembali.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Penumpang.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Penumpang.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/riwayat/History.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/riwayat/History.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/viewmodel/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/viewmodel/LoginViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/viewmodel/RegisterViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/viewmodel/RegisterViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_akun.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_akun.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_forget_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_forget_password.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_keberangkatan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_keberangkatan.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_kembali.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_kembali.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notifikasi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notifikasi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_penumpang.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_penumpang.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_result_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_result_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_splash_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_splash_screen.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/navigation_app.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/navigation_app.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,10 +175,11 @@
       <recent name="C:\Users\USER\AndroidStudioProjects\AND-Tim-C-9\app\src\main\res\font" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="com.aerotech.flytix.network" />
-      <recent name="com.aerotech.flytix.view.riwayat" />
       <recent name="com.aerotech.flytix.view.home" />
-      <recent name="com.aerotech.flytix.view" />
+      <recent name="com.aerotech.flytix.view.notifikasi" />
+      <recent name="com.aerotech.flytix.view.user" />
+      <recent name="com.aerotech.flytix.view.akun" />
+      <recent name="com.aerotech.flytix.network" />
     </key>
   </component>
   <component name="RunManager">
@@ -343,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686764796310</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Done Register + Login">
+      <created>1686819516352</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1686819516352</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

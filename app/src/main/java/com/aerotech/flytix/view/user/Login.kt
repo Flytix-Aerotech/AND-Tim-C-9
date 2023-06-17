@@ -1,4 +1,4 @@
-package com.aerotech.flytix.view
+package com.aerotech.flytix.view.user
 
 import android.content.Context
 import android.content.SharedPreferences

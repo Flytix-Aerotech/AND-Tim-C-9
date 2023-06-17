@@ -21,17 +21,20 @@ class LoginViewModel @Inject constructor(var Client: ApiService) : ViewModel() {
 
 
     private val authUserLogin = MutableLiveData<DataUserResponse>()
-    val authLiveDataUserLogin : LiveData<DataUserResponse> = authUserLogin
+    val authLiveDataUserLogin: LiveData<DataUserResponse> = authUserLogin
 
-    fun authLoginUser(login : DataUserLoginItem){
+    fun authLoginUser(login: DataUserLoginItem) {
         Client.postLoginUser(login).enqueue(object : Callback<DataUserResponse> {
-            override fun onResponse(call: Call<DataUserResponse>, response: Response<DataUserResponse>) {
-                if (response.isSuccessful){
+            override fun onResponse(
+                call: Call<DataUserResponse>,
+                response: Response<DataUserResponse>
+            ) {
+                if (response.isSuccessful) {
                     val data = response.body()
-                    if (data != null){
+                    if (data != null) {
                         authUserLogin.postValue(data!!)
                     }
-                }else{
+                } else {
                     Log.e("Error: ", "onFailure : ${response.message()}")
                 }
 
@@ -44,28 +47,6 @@ class LoginViewModel @Inject constructor(var Client: ApiService) : ViewModel() {
         })
     }
 
-
-//    fun authLogin(callback: Callback<User> ) {
-//        Client.postUserLogin().enqueue(object : Callback<User> {
-//            override fun onResponse(call: Call<User>, response: Response<User>) {
-//                if (response.isSuccessful) {
-//                    val data = response.body()
-//                    if (data != null) {
-//                        _userLogin.postValue(data!!)
-//                    }
-//                } else {
-//                    Log.e("Error: ", "onFailure : ${response.message()}")
-//                }
-//
-//            }
-//
-//            override fun onFailure(call: Call<User>, t: Throwable) {
-//                Log.d(ContentValues.TAG, "onFailure: ${t.message}")
-//            }
-//
-//        })
-//    }
-
     private val _userLogin = MutableLiveData<User>()
     val livedatauserLogin: LiveData<User> = _userLogin
     fun authLogin() {
@@ -76,8 +57,7 @@ class LoginViewModel @Inject constructor(var Client: ApiService) : ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     _userLogin.value = response.body()
-                    }
-                else{
+                } else {
                     Log.e("Error: ", "onFailure : Login Error")
                 }
             }

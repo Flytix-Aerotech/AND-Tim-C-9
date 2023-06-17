@@ -10,10 +10,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class Home : Fragment(),
-    Penumpang.totalPenumpangListener, Keberangkatan.DatePickerListener, Kembali.DatePickerListener {
+    Penumpang.totalPenumpangListener, Keberangkatan.DatePickerListener, Kembali.DatePickerListener,
+    KelasKursi.kelasKursiListener, Darimana.DariManaListener, Tujuan.TujuanListener {
 
     private lateinit var binding: FragmentHomeBinding
-    private var editTextChoosed = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +26,19 @@ class Home : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.etAsallokasi.setOnClickListener {
+            val pilihLokasiAsal = Darimana()
+            pilihLokasiAsal.listener = this
+            pilihLokasiAsal.show(parentFragmentManager, pilihLokasiAsal.tag)
+        }
+
+        binding.etTujuanlokasi.setOnClickListener {
+            val pilihLokasiTujuan = Tujuan()
+            pilihLokasiTujuan.listener = this
+            pilihLokasiTujuan.show(parentFragmentManager, pilihLokasiTujuan.tag)
+        }
+
         binding.etPenumpang.setOnClickListener {
             val fragmentBottomPenumpang = Penumpang()
             fragmentBottomPenumpang.listener = this
@@ -35,16 +48,22 @@ class Home : Fragment(),
         binding.etKeberangkatan.setOnClickListener {
             val datePickerKeberangkatanFragment = Keberangkatan()
             datePickerKeberangkatanFragment.listener = this
-            datePickerKeberangkatanFragment.show(parentFragmentManager, "datePicker")
+            datePickerKeberangkatanFragment.show(
+                parentFragmentManager,
+                datePickerKeberangkatanFragment.tag
+            )
         }
 
         binding.etKepulangan.setOnClickListener {
             val datePickerKepulanganFragment = Kembali()
             datePickerKepulanganFragment.listener = this
-            datePickerKepulanganFragment.show(parentFragmentManager, "datePicker")
+            datePickerKepulanganFragment.show(
+                parentFragmentManager,
+                datePickerKepulanganFragment.tag
+            )
         }
 
-        binding.switchPp.setOnCheckedChangeListener { switchView, ischecked ->
+        binding.switchPp.setOnCheckedChangeListener { _, ischecked ->
             if (ischecked) {
                 binding.tvKepulangan.visibility = View.VISIBLE
                 binding.ivKepulangan.visibility = View.VISIBLE
@@ -56,23 +75,14 @@ class Home : Fragment(),
                 binding.etKepulangan.visibility = View.GONE
             }
         }
+
+        binding.etKelaskursi.setOnClickListener {
+            val pilihKelasKursi = KelasKursi()
+            pilihKelasKursi.listener = this
+            pilihKelasKursi.show(parentFragmentManager, pilihKelasKursi.tag)
+        }
+
     }
-
-//    private fun showDatePickerDialog(fieldNumber: Int) {
-//        val datePickerFragment = Keberangkatan()
-//        datePickerFragment.setOnDateSelectedListener { date->
-//            when (fieldNumber) {
-//                1 -> binding.etKeberangkatan.setText(date)
-//                2 -> binding.etKepulangan.setText(date)
-//            }
-//        }
-//        datePickerFragment.show(parentFragmentManager, "datePicker")
-//    }
-
-//
-//    override fun onDateSelectedKepulangan(date: String) {
-//        binding.etKepulangan.setText(date)
-//    }
 
     override fun onDateSelectedKepulangan(date: String) {
         // Set the selected date in the EditText
@@ -85,6 +95,18 @@ class Home : Fragment(),
 
     override fun onDateSelected(date: String) {
         binding.etKeberangkatan.setText(date)
+    }
+
+    override fun pilihKelasKursi(kelas: String) {
+        binding.etKelaskursi.setText(kelas)
+    }
+
+    override fun onSelectedDarimana(dari: String) {
+        binding.etAsallokasi.setText(dari)
+    }
+
+    override fun onSelectedTujuan(tujuan: String) {
+        binding.etTujuanlokasi.setText(tujuan)
     }
 }
 
