@@ -15,7 +15,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/emas">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ic_closebottomsheet"
@@ -56,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/iv_dewasa"
-                android:text="Dewasa"/>
+                android:text="Dewasa" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_usiadewasa"
@@ -65,34 +66,34 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_dewasa"
                 android:layout_toEndOf="@id/iv_dewasa"
-                android:text="(12 Tahun Keatas)"/>
+                android:text="(12 Tahun Keatas)" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_addboxdewasa"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
-                app:srcCompat="@drawable/ic_addbox"/>
+                app:srcCompat="@drawable/ic_addbox" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_jumlahdewasa"
                 style="@style/textheading24bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toLeftOf="@id/iv_addboxdewasa"
                 android:text="0"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_minboxdewasa"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_toStartOf="@id/iv_addboxdewasa"
                 android:layout_marginRight="35dp"
-                app:srcCompat="@drawable/ic_minbox"/>
+                android:layout_toStartOf="@id/iv_addboxdewasa"
+                app:srcCompat="@drawable/ic_minbox" />
 
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -125,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/iv_anak"
-                android:text="Anak"/>
+                android:text="Anak" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_usiaanak"
@@ -134,24 +135,24 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_anak"
                 android:layout_toEndOf="@id/iv_anak"
-                android:text="(2-11 Tahun)"/>
+                android:text="(2-11 Tahun)" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_addboxanak"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
-                app:srcCompat="@drawable/ic_addbox"/>
+                app:srcCompat="@drawable/ic_addbox" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_jumlahanak"
                 style="@style/textheading24bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="8dp"
-                android:text="0"
+                android:layout_marginTop="10dp"
                 android:layout_toStartOf="@id/iv_addboxanak"
+                android:text="0"
                 android:textColor="@color/black" />
 
 
@@ -159,8 +160,8 @@
                 android:id="@+id/iv_minboxanak"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_toStartOf="@id/iv_addboxanak"
                 android:layout_marginRight="35dp"
+                android:layout_toStartOf="@id/iv_addboxanak"
                 app:srcCompat="@drawable/ic_minbox" />
 
         </RelativeLayout>
@@ -217,8 +218,8 @@
                 style="@style/textheading24bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_toLeftOf="@id/iv_addboxbayi"
                 android:text="0"
                 android:textColor="@color/black" />
@@ -228,8 +229,8 @@
                 android:id="@+id/iv_minboxbayi"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_toStartOf="@id/iv_addboxbayi"
                 android:layout_marginRight="35dp"
+                android:layout_toStartOf="@id/iv_addboxbayi"
                 app:srcCompat="@drawable/ic_minbox" />
 
         </RelativeLayout>
@@ -244,6 +245,6 @@
         android:layout_margin="10dp"
         android:text="SIMPAN"
         app:strokeColor="@color/black"
-        app:strokeWidth="2dp"/>
+        app:strokeWidth="2dp" />
 
 </RelativeLayout>

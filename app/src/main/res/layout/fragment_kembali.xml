@@ -6,22 +6,68 @@
     android:layout_height="wrap_content"
     tools:context=".view.home.Kembali">
 
-    <TextView
-        android:id="@+id/tv_btmkepulangan"
-        style="@style/texttitle18bold"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Atur Jadwal Kepulangan"
-        android:textAllCaps="true" />
+        android:layout_height="wrap_content">
 
-    <DatePicker
-        android:id="@+id/dp_kepulangan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_btmkepulangan"
-        android:layout_centerHorizontal="true"
-        android:calendarViewShown="false"
-        android:datePickerMode="calendar" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="481dp"
+            android:background="@drawable/bguniversal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_tbjudulkembali"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="@color/emas"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_btmkembali"
+                        style="@style/texttitle18bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="Atur Jadwal Kembali"
+                        android:textAllCaps="true" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_calenderkeberangkatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cv_tbjudulkembali"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="@color/putih"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <DatePicker
+                        android:id="@+id/dp_kembali"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:calendarTextColor="@color/black"
+                        android:calendarViewShown="false"
+                        android:datePickerMode="calendar"
+                        android:headerBackground="@color/emas" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

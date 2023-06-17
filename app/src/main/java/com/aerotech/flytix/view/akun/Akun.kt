@@ -1,4 +1,4 @@
-package com.aerotech.flytix.view
+package com.aerotech.flytix.view.akun
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import com.aerotech.flytix.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class Notifikasi : Fragment() {
+class Akun : Fragment() {
 
 
     override fun onCreateView(
@@ -17,7 +17,7 @@ class Notifikasi : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notifikasi, container, false)
+        return inflater.inflate(R.layout.fragment_akun, container, false)
     }
 
 

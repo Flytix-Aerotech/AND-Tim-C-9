@@ -1,21 +1,16 @@
-package com.aerotech.flytix.view
+package com.aerotech.flytix.view.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.aerotech.flytix.R
+import androidx.fragment.app.Fragment
 import com.aerotech.flytix.databinding.FragmentResultSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ResultSearch : Fragment() {
-    lateinit var binding : FragmentResultSearchBinding
+    lateinit var binding: FragmentResultSearchBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

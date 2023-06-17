@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bgregister"
     android:padding="20dp"
-    tools:context=".view.Register">
+    tools:context=".view.user.Register">
 
 
     <com.google.android.material.card.MaterialCardView
@@ -67,6 +67,7 @@
                     tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/frame_username"
                 android:layout_width="match_parent"
@@ -98,6 +99,7 @@
                     android:id="@+id/nmrTlp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -119,6 +121,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/frame_etpoto"
                     android:layout_width="match_parent"
@@ -135,6 +138,7 @@
                         android:layout_height="wrap_content"
                         tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/frame_etaddress"
                     android:layout_width="match_parent"

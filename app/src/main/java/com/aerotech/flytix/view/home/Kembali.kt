@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+
 @AndroidEntryPoint
 class Kembali : BottomSheetDialogFragment() {
 
@@ -30,8 +31,8 @@ class Kembali : BottomSheetDialogFragment() {
 
         // Set initial date to current date
         val calendar = Calendar.getInstance()
-        binding.dpKepulangan.minDate = calendar.timeInMillis
-        binding.dpKepulangan.init(
+        binding.dpKembali.minDate = calendar.timeInMillis
+        binding.dpKembali.init(
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
