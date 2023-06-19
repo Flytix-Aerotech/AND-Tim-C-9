@@ -1,11 +1,11 @@
-package com.aerotech.flytix.view
+package com.aerotech.flytix.view.user
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class Register : Fragment() {
     lateinit var binding: FragmentRegisterBinding
     lateinit var userVM: RegisterViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +34,10 @@ class Register : Fragment() {
         binding.btnRegister.setOnClickListener {
             register()
         }
+
+        binding.masukdisini.setOnClickListener {
+            findNavController().navigate(R.id.action_register_to_login2)
+        }
     }
     private fun register() {
         val username = binding.username.text.toString()
@@ -43,17 +48,12 @@ class Register : Fragment() {
         val alamat = binding.address.text.toString()
         val poto = binding.foto.text.toString()
         //val currentDateTime: LocalDateTime = LocalDateTime.now()
-
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || fullName.isEmpty() ||noHp.isEmpty() ||alamat.isEmpty()||poto.isEmpty()) {
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || fullName.isEmpty() ||noHp.isEmpty() ||alamat.isEmpty()) {
             Toast.makeText(requireContext(), "Please fill all the field", Toast.LENGTH_SHORT).show()
         } else {
-            userVM.postUserRegister(dataUsers = NewUser(email,fullName,0,password,noHp,poto, "", username))
+            userVM.postUserRegister(dataUsers = NewUser(email,fullName,0,password,noHp,poto, "user", username))
             Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_register_to_login2)
-
-
         }
     }
-
-
 }

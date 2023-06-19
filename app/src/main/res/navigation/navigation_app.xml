@@ -6,62 +6,74 @@
     app:startDestination="@id/login2">
 
     <fragment
-        android:id="@+id/home2"
-        android:name="com.aerotech.flytix.view.Home"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_home2_to_login2"
-            app:destination="@id/login2" />
-    </fragment>
-    <fragment
         android:id="@+id/notifikasi"
-        android:name="com.aerotech.flytix.view.Notifikasi"
+        android:name="com.aerotech.flytix.view.notifikasi.Notifikasi"
         android:label="fragment_notifikasi"
         tools:layout="@layout/fragment_notifikasi" />
     <fragment
         android:id="@+id/akun"
-        android:name="com.aerotech.flytix.view.Akun"
+        android:name="com.aerotech.flytix.view.akun.Akun"
         android:label="fragment_akun"
         tools:layout="@layout/fragment_akun" />
     <fragment
         android:id="@+id/detail"
-        android:name="com.aerotech.flytix.view.Detail"
+        android:name="com.aerotech.flytix.view.home.Detail"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
-    <fragment
-        android:id="@+id/login2"
-        android:name="com.aerotech.flytix.view.Login"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_login2_to_home2"
-            app:destination="@id/home2" />
-    </fragment>
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.aerotech.flytix.view.SplashScreen"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
-        <action
-            android:id="@+id/action_splashScreen_to_home2"
-            app:destination="@id/home2" />
+        tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/action_splashScreen_to_register"
             app:destination="@id/register" />
+        <action
+            android:id="@+id/action_splashScreen_to_home3"
+            app:destination="@id/home3" />
     </fragment>
     <fragment
         android:id="@+id/resultSearch"
-        android:name="com.aerotech.flytix.view.ResultSearch"
+        android:name="com.aerotech.flytix.view.home.ResultSearch"
         android:label="fragment_result_search"
         tools:layout="@layout/fragment_result_search" />
     <fragment
         android:id="@+id/register"
-        android:name="com.aerotech.flytix.view.Register"
+        android:name="com.aerotech.flytix.view.user.Register"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_register_to_login2"
             app:destination="@id/login2" />
     </fragment>
+    <fragment
+        android:id="@+id/login2"
+        android:name="com.aerotech.flytix.view.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login2_to_register"
+            app:destination="@id/register" />
+        <action
+            android:id="@+id/action_login2_to_home3"
+            app:destination="@id/home3" />
+        <action
+            android:id="@+id/action_login2_to_updateProfile2"
+            app:destination="@id/updateProfile2" />
+    </fragment>
+    <fragment
+        android:id="@+id/home3"
+        android:name="com.aerotech.flytix.view.home.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/history2"
+        android:name="com.aerotech.flytix.view.riwayat.History"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/updateProfile2"
+        android:name="com.aerotech.flytix.view.UpdateProfile"
+        android:label="fragment_update_profile"
+        tools:layout="@layout/fragment_update_profile" />
 </navigation>

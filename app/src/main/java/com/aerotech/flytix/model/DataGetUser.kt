@@ -3,11 +3,9 @@ package com.aerotech.flytix.model
 
 import com.google.gson.annotations.SerializedName
 
-data class UsersData(
+data class DataGetUser(
     @SerializedName("message")
     val message: String,
-    @SerializedName("token")
-    val token: String,
     @SerializedName("user")
-    val user: NewUser
+    val user: List<User>
 )

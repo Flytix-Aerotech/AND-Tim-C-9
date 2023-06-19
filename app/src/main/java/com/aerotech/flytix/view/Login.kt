@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentLoginBinding
-import com.aerotech.flytix.model.RequestLogin
+import com.aerotech.flytix.model.DataUserLoginItem
 import com.aerotech.flytix.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,20 +33,20 @@ class Login : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         userVM = ViewModelProvider(this).get(UserViewModel::class.java)
         binding.btnLogin.setOnClickListener {
-           prosesLogin()
+            prosesLogin()
         }
     }
 
     private fun prosesLogin() {
         val email = binding.etEmaillogin.text.toString()
         val password = binding.etPasslogin.text.toString()
-        val requestLogin = RequestLogin(email, password)
+        val requestLogin = DataUserLoginItem(email, password)
 
         if (email.isNotEmpty() || password.isNotEmpty()) {
             userVM.userLogin(requestLogin) { loginResult ->
                 if (loginResult.token.isNotEmpty()) {
                     Toast.makeText(requireContext(), loginResult.message, Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_login2_to_home2)
+                    findNavController().navigate(R.id.action_login2_to_updateProfile2)
                 } else {
                     Toast.makeText(requireContext(), loginResult.message, Toast.LENGTH_SHORT).show()
                 }

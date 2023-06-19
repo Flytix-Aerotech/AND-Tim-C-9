@@ -1,8 +1,10 @@
 package com.aerotech.flytix.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.aerotech.flytix.model.DataUserResponse
 import com.aerotech.flytix.model.NewUser
 import com.aerotech.flytix.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,26 +14,27 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val Client: ApiService): ViewModel(){
-    private var livedataUser : MutableLiveData<List<NewUser>> = MutableLiveData()
-    val dataPostUser: LiveData<List<NewUser>> get() = livedataUser
-    fun postUserRegister(dataUsers:NewUser){
+class RegisterViewModel @Inject constructor(private val Client: ApiService) : ViewModel() {
+    private var livedataUser: MutableLiveData<DataUserResponse> = MutableLiveData()
+    val dataPostUser: LiveData<DataUserResponse> get() = livedataUser
+    fun postUserRegister(dataUsers: NewUser) {
         //memakai callback yang retrofit
-        Client.postRegister(dataUsers).enqueue(object : Callback<List<NewUser>> {
+        Client.postRegister(dataUsers).enqueue(object : Callback<DataUserResponse> {
             override fun onResponse(
-                call: Call<List<NewUser>>,
-                response: Response<List<NewUser>>
+                call: Call<DataUserResponse>,
+                response: Response<DataUserResponse>
 
             ) {
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     livedataUser.postValue(response.body())
-                }else{
-                    livedataUser.postValue(emptyList())
+                    Log.i("ResponseSuccess: ", "onSuccess : ${response.body()}")
+                } else {
+                    Log.e("Error: ", "onFailure : ${response.body()}")
                 }
             }
 
-            override fun onFailure(call: Call<List<NewUser>>, t: Throwable) {
-                livedataUser.postValue(emptyList())
+            override fun onFailure(call: Call<DataUserResponse>, t: Throwable) {
+                Log.e("Error: ", "onFailure : ${t.message}")
             }
         })
     }
