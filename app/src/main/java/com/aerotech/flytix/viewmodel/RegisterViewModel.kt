@@ -4,9 +4,11 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.aerotech.flytix.data.network.ApiService
+import com.aerotech.flytix.model.DataUserResponse
 import com.aerotech.flytix.model.NewUser
+import com.aerotech.flytix.model.User
 import com.aerotech.flytix.model.UsersData
+import com.aerotech.flytix.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback

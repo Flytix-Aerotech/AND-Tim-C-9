@@ -10,6 +10,7 @@
 
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/hari"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabMode="fixed">
@@ -35,5 +36,13 @@
             android:icon="@drawable/ic_minbox"
             />
     </com.google.android.material.tabs.TabLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragCon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/hari"
+        android:layout_marginTop="12dp" />
+
 
 </RelativeLayout>

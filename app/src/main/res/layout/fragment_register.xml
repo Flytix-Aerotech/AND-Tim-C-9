@@ -137,22 +137,7 @@
                         tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/frame_etaddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/frame_etpassdaftar"
-                    android:hint="Alamat"
-                    app:boxBackgroundColor="@color/white"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/black">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
-                </com.google.android.material.textfield.TextInputLayout>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -178,7 +163,8 @@
         android:layout_centerHorizontal="true"
         android:text="Sudah punya akun?"
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/masukdisini"
@@ -186,9 +172,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:clickable="true"
         android:text="Masuk di sini"
         android:textColor="@color/gold"
         android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </RelativeLayout>

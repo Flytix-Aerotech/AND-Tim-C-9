@@ -1,13 +1,11 @@
 package com.aerotech.flytix.view
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
@@ -21,7 +19,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class Register : Fragment() {
     lateinit var binding: FragmentRegisterBinding
     lateinit var userVM: RegisterViewModel
-    lateinit var sharedPreferences: SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,7 +34,9 @@ class Register : Fragment() {
         binding.btnRegister.setOnClickListener {
             register()
         }
-        sharedPreferences = requireActivity().getSharedPreferences("Register", Context.MODE_PRIVATE)
+        binding.masukdisini.setOnClickListener {
+            findNavController().navigate(R.id.action_register_to_login2)
+        }
     }
 
     private fun register() {
@@ -66,12 +65,6 @@ class Register : Fragment() {
             )
             Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT)
                 .show()
-                    sharedPreferences = requireActivity().getSharedPreferences("Register", Context.MODE_PRIVATE)
-                    val sharedPref =sharedPreferences.edit()
-                    sharedPref.putString("email", email)
-                    sharedPref.putString("password", password)
-                    sharedPref.apply()
-
             findNavController().navigate(R.id.action_register_to_login2)
 
         }
