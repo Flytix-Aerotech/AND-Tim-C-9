@@ -39,7 +39,7 @@ class SplashScreen : Fragment() {
                 progress += 10
                 handler.postDelayed({ }, 1000)
             }
-            findNavController().navigate(R.id.action_splashScreen_to_register)
+            findNavController().navigate(R.id.action_splashScreen_to_home2)
         }
         handler.postDelayed(progressRunnable, 3000)
     }

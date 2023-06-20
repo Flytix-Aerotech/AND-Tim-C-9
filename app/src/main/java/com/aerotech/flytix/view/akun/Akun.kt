@@ -1,24 +1,65 @@
 package com.aerotech.flytix.view.akun
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
+import com.aerotech.flytix.databinding.FragmentAkunBinding
+import com.aerotech.flytix.viewmodel.ProfileViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class Akun : Fragment() {
 
+    private lateinit var binding: FragmentAkunBinding
+    private lateinit var userVm : ProfileViewModel
+    private lateinit var pref : SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_akun, container, false)
+        binding = FragmentAkunBinding.inflate(layoutInflater,container,false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.etUbahprofile.setOnClickListener {
+            findNavController().navigate(R.id.action_akun2_to_profile)
+        }
+        binding.etKeluar.setOnClickListener {
+            logout()
+        }
+    }
+
+    private fun logout() {
+        pref =
+            requireActivity().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+        //shared pref to save log in history
+        val sharedPref = pref.edit()
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Logout")
+            .setMessage("Anda Yakin?")
+            .setCancelable(false)
+            .setNegativeButton("Cancel") { dialog, which ->
+                // Respond to negative button press
+                dialog.cancel()
+            }
+            .setPositiveButton("Logout") { dialog, which ->
+                // Respond to positive button press
+                sharedPref.clear()
+                sharedPref.apply()
+                activity?.onBackPressed()
+            }
+            .show()
+    }
 
 }

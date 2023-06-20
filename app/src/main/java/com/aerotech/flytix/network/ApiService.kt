@@ -1,6 +1,7 @@
 package com.aerotech.flytix.network
 
 import com.aerotech.flytix.model.DataUserLoginItem
+import com.aerotech.flytix.model.DataUserProfilePutItem
 import com.aerotech.flytix.model.DataUserResponse
 import com.aerotech.flytix.model.NewUser
 import com.aerotech.flytix.model.User
@@ -21,6 +22,27 @@ interface ApiService {
 
     @POST("auth/login")
     fun postLoginUser(@Body request: DataUserLoginItem): Call<DataUserResponse>
-    @GET("auth/getusers")
+
+    @FormUrlEncoded
+    @POST("auth/login")
+    fun userPostLogin(
+        @Field("email") email:String,
+        @Field("password") password:String
+    ): Call<DataUserResponse>
+    @GET("auth/users")
     fun postUserLogin(): Call<User>
+
+    @GET("auth/users")
+    fun loginUser(): Call<DataUserResponse>
+
+    @PUT("auth/profile")
+    fun putupdateprofile(
+        @Header("Authorization") token:String,
+        @Body request : DataUserProfilePutItem
+    ) : Call<DataUserResponse>
+
+    @GET("auth/profile")
+    fun getprofile(
+        @Header("Authorization") token:String,
+    ) : Call<DataUserResponse>
 }
