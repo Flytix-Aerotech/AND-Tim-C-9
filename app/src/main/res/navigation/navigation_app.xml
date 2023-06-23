@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/home2">
+    app:startDestination="@id/splashScreen">
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.aerotech.flytix.view.home.SplashScreen"
@@ -13,17 +13,8 @@
             android:id="@+id/action_splashScreen_to_login2"
             app:destination="@id/login2" />
         <action
-            android:id="@+id/action_splashScreen_to_home2"
-            app:destination="@id/home2" />
-    </fragment>
-    <fragment
-        android:id="@+id/home2"
-        android:name="com.aerotech.flytix.view.home.Home"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_home2_to_resultSearch"
-            app:destination="@id/resultSearch" />
+            android:id="@+id/action_splashScreen_to_home3"
+            app:destination="@id/home3" />
     </fragment>
     <fragment
         android:id="@+id/register"
@@ -33,21 +24,6 @@
         <action
             android:id="@+id/action_register_to_login2"
             app:destination="@id/login2" />
-        <action
-            android:id="@+id/action_register_to_login22"
-            app:destination="@id/login2" />
-    </fragment>
-    <fragment
-        android:id="@+id/login2"
-        android:name="com.aerotech.flytix.view.user.Login"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_login2_to_home2"
-            app:destination="@id/home2" />
-        <action
-            android:id="@+id/action_login2_to_register"
-            app:destination="@id/register" />
     </fragment>
     <fragment
         android:id="@+id/notifikasi2"
@@ -86,4 +62,25 @@
         android:name="com.aerotech.flytix.view.home.ResultSearch"
         android:label="fragment_result_search"
         tools:layout="@layout/fragment_result_search" />
+    <fragment
+        android:id="@+id/login2"
+        android:name="com.aerotech.flytix.view.user.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login2_to_home3"
+            app:destination="@id/home3" />
+        <action
+            android:id="@+id/action_login2_to_register"
+            app:destination="@id/register" />
+    </fragment>
+    <fragment
+        android:id="@+id/home3"
+        android:name="com.aerotech.flytix.view.home.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home3_to_resultSearch"
+            app:destination="@id/resultSearch" />
+    </fragment>
 </navigation>

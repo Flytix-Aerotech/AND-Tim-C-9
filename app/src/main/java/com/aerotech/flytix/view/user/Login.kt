@@ -23,8 +23,6 @@ class Login : Fragment() {
     private lateinit var userLoginVM: LoginViewModel
     lateinit var sharedPref: SharedPreferences
     var token: String? = null
-    var emailUser: String? = null
-    var passUser: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,21 +60,14 @@ class Login : Fragment() {
         val emailInputUser = binding.etEmaillogin.text.toString()
         val passInputUser = binding.etPasslogin.text.toString()
 
-        if (emailInputUser.isNotEmpty() || passInputUser.isNotEmpty()) {
-            userLoginVM.authLogin()
-            userLoginVM.livedatauserLogin.observe(viewLifecycleOwner) {
-                emailUser = it.email
-                passUser = it.password
-                emailUser = emailInputUser
-                passUser = passInputUser
-            }
-
-            if (emailUser != emailInputUser && passUser != passInputUser) {
-                Toast.makeText(requireContext(), "Gagal Login", Toast.LENGTH_SHORT).show()
-            } else {
-                userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser, passInputUser))
-                userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner) {
-                    if (it != null) {
+        if (emailInputUser.isNotEmpty() && passInputUser.isNotEmpty()) {
+            userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser, passInputUser))
+//            userLoginVM.authLogin()
+            userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    val emailUser = it.user.email
+                    val passUser = it.user.password
+                    if (emailUser.isNotEmpty() && passUser.isNotEmpty()) {
                         Log.i("tokenn", "token: ${it.token}")
                         token = it.token
                         // input to sharedpreferences
@@ -85,68 +76,76 @@ class Login : Fragment() {
                         val userData = sharedPref.edit()
                         userData.putString("token", it.token)
                         userData.apply()
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_login2_to_home2)
+                        Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_login2_to_home3)
+                    } else {
+                        Toast.makeText(requireContext(), "Gagal Login", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
+//            if (emailUser != emailInputUser && passUser != passInputUser) {
+//
+//            } else {
+//
+//            }
         }
+        Toast.makeText(requireContext(), "Email dan Password Tidak Terdaftar", Toast.LENGTH_SHORT).show()
     }
 
-    fun doLogin() {
-        var emailInputUser = binding.etEmaillogin.text.toString()
-        var passInputUser = binding.etPasslogin.text.toString()
-        userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner){datauser->
-            binding.apply {
-                emailUser = datauser.user.email
-                passUser = datauser.user.password
-                emailUser = emailInputUser
-                passUser = passInputUser
-            }
-                if (emailUser != emailInputUser || passUser != passInputUser){
-                    Toast.makeText(requireContext(), datauser.message, Toast.LENGTH_SHORT).show()
-                }else{
-                    userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser,passInputUser))
-                    userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner){
-                        if (it!= null){
-                            Log.i("tokenn", "token: ${datauser.token}")
-                            token = datauser.token
-                            // input to sharedpreferences
-                            sharedPref =
-                                requireActivity().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
-                            val userData = sharedPref.edit()
-                            userData.putString("token", datauser.token)
-                            userData.apply()
-                            Toast.makeText(requireContext(), datauser.message, Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.action_login2_to_home2)
-                        }
-                    }
-                }
-            }
-        }
-
-    fun gasLogin(){
-        var emailInputUser = binding.etEmaillogin.text.toString()
-        var passInputUser = binding.etPasslogin.text.toString()
-        userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser,passInputUser))
-        userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner){datauser->
-            if (datauser != null){
-                Log.i("tokenn", "token: ${datauser.token}")
-                token = datauser.token
-                // input to sharedpreferences
-                sharedPref =
-                    requireActivity().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
-                val userData = sharedPref.edit()
-                userData.putString("token", datauser.token)
-                userData.apply()
-                Toast.makeText(requireContext(), datauser.message, Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_login2_to_home2)
-            }
-            else {
-                Toast.makeText(requireContext(), datauser?.message, Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
+//    fun doLogin() {
+//        var emailInputUser = binding.etEmaillogin.text.toString()
+//        var passInputUser = binding.etPasslogin.text.toString()
+//        userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner){datauser->
+//            binding.apply {
+//                emailUser = datauser.user.email
+//                passUser = datauser.user.password
+//                emailUser = emailInputUser
+//                passUser = passInputUser
+//            }
+//                if (emailUser != emailInputUser || passUser != passInputUser){
+//                    Toast.makeText(requireContext(), datauser.message, Toast.LENGTH_SHORT).show()
+//                }else{
+//                    userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser,passInputUser))
+//                    userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner){
+//                        if (it!= null){
+//                            Log.i("tokenn", "token: ${datauser.token}")
+//                            token = datauser.token
+//                            // input to sharedpreferences
+//                            sharedPref =
+//                                requireActivity().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+//                            val userData = sharedPref.edit()
+//                            userData.putString("token", datauser.token)
+//                            userData.apply()
+//                            Toast.makeText(requireContext(), datauser.message, Toast.LENGTH_SHORT).show()
+//                            findNavController().navigate(R.id.action_login2_to_home2)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//    fun gasLogin(){
+//        var emailInputUser = binding.etEmaillogin.text.toString()
+//        var passInputUser = binding.etPasslogin.text.toString()
+//        userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser,passInputUser))
+//        userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner){datauser->
+//            if (datauser != null){
+//                Log.i("tokenn", "token: ${datauser.token}")
+//                token = datauser.token
+//                // input to sharedpreferences
+//                sharedPref =
+//                    requireActivity().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+//                val userData = sharedPref.edit()
+//                userData.putString("token", datauser.token)
+//                userData.apply()
+//                Toast.makeText(requireContext(), datauser.message, Toast.LENGTH_SHORT).show()
+//                findNavController().navigate(R.id.action_login2_to_home2)
+//            }
+//            else {
+//                Toast.makeText(requireContext(), datauser?.message, Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//    }
 
     fun initListener() {
         binding.btnLogin.setOnClickListener {
@@ -183,8 +182,7 @@ class Login : Fragment() {
 //                }
 //            }
 //        }
-    }
-
+}
 
 
 //    override fun onStart() {

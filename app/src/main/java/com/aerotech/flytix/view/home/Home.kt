@@ -85,7 +85,7 @@ class Home : Fragment(),
         }
 
         binding.btnCaripenerbangan.setOnClickListener {
-            findNavController().navigate(R.id.action_home2_to_resultSearch)
+            findNavController().navigate(R.id.action_home3_to_resultSearch)
         }
     }
 

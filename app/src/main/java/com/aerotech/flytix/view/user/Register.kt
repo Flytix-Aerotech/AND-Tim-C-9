@@ -45,13 +45,13 @@ class Register : Fragment() {
         val password = binding.passwordDaftar.text.toString()
         val fullName = binding.namaLengkap.text.toString()
         val noHp = binding.nmrTlp.text.toString()
-        val alamat = binding.address.text.toString()
-        val poto = binding.foto.text.toString()
+//        val alamat = binding.address.text.toString()
+//        val poto = binding.foto.text.toString()
         //val currentDateTime: LocalDateTime = LocalDateTime.now()
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || fullName.isEmpty() ||noHp.isEmpty() ||alamat.isEmpty()) {
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || fullName.isEmpty() ||noHp.isEmpty()) {
             Toast.makeText(requireContext(), "Please fill all the field", Toast.LENGTH_SHORT).show()
         } else {
-            userVM.postUserRegister(dataUsers = NewUser(email,fullName,0,password,noHp,poto, "user", username))
+            userVM.postUserRegister(dataUsers = NewUser(email,fullName,0,password,noHp, "user", username))
             Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_register_to_login2)
         }
