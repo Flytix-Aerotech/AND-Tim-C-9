@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentLoginBinding
-import com.aerotech.flytix.model.DataUserLoginItem
+import com.aerotech.flytix.model.user.DataUserLoginItem
 import com.aerotech.flytix.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -55,6 +55,42 @@ class Login : Fragment() {
             findNavController().navigate(R.id.action_login2_to_register)
         }
         initListener()
+    }
+
+
+    fun fiksLogin() {
+        val emailInputUser = binding.etEmaillogin.text.toString()
+        val passInputUser = binding.etPasslogin.text.toString()
+
+        if (emailInputUser.isNotEmpty() || passInputUser.isNotEmpty()) {
+            userLoginVM.authLogin()
+            userLoginVM.livedatauserLogin.observe(viewLifecycleOwner) {
+                emailUser = it.email
+                passUser = it.password
+                emailUser = emailInputUser
+                passUser = passInputUser
+            }
+
+            if (emailUser != emailInputUser && passUser != passInputUser) {
+                Toast.makeText(requireContext(), "Gagal Login", Toast.LENGTH_SHORT).show()
+            } else {
+                userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser, passInputUser))
+                userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        Log.i("tokenn", "token: ${it.token}")
+                        token = it.token
+                        // input to sharedpreferences
+                        sharedPref =
+                            requireActivity().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+                        val userData = sharedPref.edit()
+                        userData.putString("token", it.token)
+                        userData.apply()
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_login2_to_home2)
+                    }
+                }
+            }
+        }
     }
 
     fun doLogin() {
@@ -111,6 +147,7 @@ class Login : Fragment() {
             }
         }
     }
+
     fun initListener() {
         binding.btnLogin.setOnClickListener {
             when {
@@ -121,7 +158,7 @@ class Login : Fragment() {
                     "Password is required"
 
                 else -> {
-                    gasLogin()
+                    fiksLogin()
                 }
             }
         }

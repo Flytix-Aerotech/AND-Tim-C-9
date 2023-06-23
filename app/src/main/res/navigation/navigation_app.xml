@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/splashScreen">
+    app:startDestination="@id/home2">
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.aerotech.flytix.view.home.SplashScreen"
@@ -20,7 +20,11 @@
         android:id="@+id/home2"
         android:name="com.aerotech.flytix.view.home.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_resultSearch"
+            app:destination="@id/resultSearch" />
+    </fragment>
     <fragment
         android:id="@+id/register"
         android:name="com.aerotech.flytix.view.user.Register"
@@ -77,4 +81,9 @@
             android:id="@+id/action_profile_to_akun2"
             app:destination="@id/akun2" />
     </fragment>
+    <fragment
+        android:id="@+id/resultSearch"
+        android:name="com.aerotech.flytix.view.home.ResultSearch"
+        android:label="fragment_result_search"
+        tools:layout="@layout/fragment_result_search" />
 </navigation>

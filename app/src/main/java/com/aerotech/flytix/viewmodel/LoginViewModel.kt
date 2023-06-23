@@ -5,9 +5,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.aerotech.flytix.model.DataUserLoginItem
-import com.aerotech.flytix.model.DataUserResponse
-import com.aerotech.flytix.model.User
+import com.aerotech.flytix.model.user.DataUserLoginItem
+import com.aerotech.flytix.model.user.DataUserResponse
+import com.aerotech.flytix.model.user.User
 import com.aerotech.flytix.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
@@ -18,8 +18,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(var Client: ApiService) : ViewModel() {
-
-
     private val authUserLogin = MutableLiveData<DataUserResponse>()
     val authLiveDataUserLogin: LiveData<DataUserResponse> = authUserLogin
 
@@ -44,7 +42,6 @@ class LoginViewModel @Inject constructor(var Client: ApiService) : ViewModel() {
             override fun onFailure(call: Call<DataUserResponse>, t: Throwable) {
                 Log.d(ContentValues.TAG, "onFailure: ${t.message}")
             }
-
         })
     }
 

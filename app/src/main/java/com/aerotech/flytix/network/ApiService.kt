@@ -1,10 +1,11 @@
 package com.aerotech.flytix.network
 
-import com.aerotech.flytix.model.DataUserLoginItem
-import com.aerotech.flytix.model.DataUserProfilePutItem
-import com.aerotech.flytix.model.DataUserResponse
-import com.aerotech.flytix.model.NewUser
-import com.aerotech.flytix.model.User
+import com.aerotech.flytix.model.ticket.DataGetTicketResponse
+import com.aerotech.flytix.model.user.DataUserLoginItem
+import com.aerotech.flytix.model.user.DataUserProfilePutItem
+import com.aerotech.flytix.model.user.DataUserResponse
+import com.aerotech.flytix.model.user.NewUser
+import com.aerotech.flytix.model.user.User
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -23,12 +24,12 @@ interface ApiService {
     @POST("auth/login")
     fun postLoginUser(@Body request: DataUserLoginItem): Call<DataUserResponse>
 
-    @FormUrlEncoded
-    @POST("auth/login")
-    fun userPostLogin(
-        @Field("email") email:String,
-        @Field("password") password:String
-    ): Call<DataUserResponse>
+//    @FormUrlEncoded
+//    @POST("auth/login")
+//    fun userPostLogin(
+//        @Field("email") email:String,
+//        @Field("password") password:String
+//    ): Call<DataUserResponse>
     @GET("auth/users")
     fun postUserLogin(): Call<User>
 
@@ -45,4 +46,15 @@ interface ApiService {
     fun getprofile(
         @Header("Authorization") token:String,
     ) : Call<DataUserResponse>
+
+    @GET("tickets")
+    fun getairportLocation(
+        @Query("departure_location") location:String,
+    ) : Call<DataGetTicketResponse>
+    @GET("tickets")
+    fun getairport(
+    ) : Call<DataGetTicketResponse>
+
+    @GET("tickets")
+    fun getTicket(): Call<DataGetTicketResponse>
 }

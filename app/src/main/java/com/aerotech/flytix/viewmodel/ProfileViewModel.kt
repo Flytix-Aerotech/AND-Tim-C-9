@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.aerotech.flytix.model.DataUserProfilePutItem
-import com.aerotech.flytix.model.DataUserResponse
+import com.aerotech.flytix.model.user.DataUserProfilePutItem
+import com.aerotech.flytix.model.user.DataUserResponse
 import com.aerotech.flytix.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
@@ -17,7 +17,7 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(private val Client: ApiService) : ViewModel() {
     private var mlivedataupdateprofile: MutableLiveData<DataUserResponse> = MutableLiveData()
     val livedataupdateprofile: LiveData<DataUserResponse> get() = mlivedataupdateprofile
-    fun updateprofile(token : String, updateprofile:DataUserProfilePutItem){
+    fun updateprofile(token : String, updateprofile: DataUserProfilePutItem){
         Client.putupdateprofile("Bearer $token",updateprofile).enqueue(object : Callback<DataUserResponse>{
             override fun onResponse(call: Call<DataUserResponse>, response: Response<DataUserResponse>) {
                 if (response.isSuccessful) {

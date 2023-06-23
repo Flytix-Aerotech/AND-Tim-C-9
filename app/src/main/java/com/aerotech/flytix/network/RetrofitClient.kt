@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RetrofitClient {
 
-    private const val  BASE_URL ="https://flytix-aerotech.up.railway.app/api/v1/"
+    private const val  BASE_URL ="https://flytix-c9.up.railway.app/api/v1/"
     private  val logging : HttpLoggingInterceptor
         get(){
             val httpLoggingInterceptor = HttpLoggingInterceptor()

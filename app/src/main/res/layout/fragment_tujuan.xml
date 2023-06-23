@@ -60,6 +60,7 @@
                     android:textColor="@color/black" />
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_pencarianterkini"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_judultujuan"
@@ -72,59 +73,38 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp">
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/frame_searchtujuan"
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/materialCardView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toStartOf="@id/ic_clearsearchviewtujuan"
-                            app:boxBackgroundColor="@color/white"
-                            app:boxBackgroundMode="outline"
-                            app:boxStrokeColor="@color/black"
-                            app:boxStrokeWidth="2dp"
-                            app:startIconDrawable="@drawable/ic_search">
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="12dp"
+                            app:cardUseCompatPadding="true">
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_searchtujuan"
-                                style="@style/texttitle16bold"
+                            <androidx.appcompat.widget.SearchView
+                                android:id="@+id/etSearchtujuan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Masukan Kota atau Negara"
-                                tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                                app:iconifiedByDefault="false"
+                                app:queryBackground="@android:color/transparent"
+                                app:queryHint="Search here ..." />
 
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/ic_clearsearchviewtujuan"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="10dp"
-                            app:srcCompat="@drawable/ic_close"></com.google.android.material.imageview.ShapeableImageView>
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tv_pencarianterkinitujuan"
-                            style="@style/textheading24bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/frame_searchtujuan"
-                            android:layout_marginTop="10dp"
-                            android:text="Pencarian Terkini"
-                            android:textColor="@color/black" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tv_hapuspencarianterkinitujuan"
-                            style="@style/textbody14bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/frame_searchtujuan"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="15dp"
-                            android:text="Hapus"
-                            android:textColor="@color/merah" />
-
+                        </com.google.android.material.card.MaterialCardView>
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_tujuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cv_pencarianterkini"
+                    android:layout_marginTop="12dp" />
+
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
+
+
     </RelativeLayout>
+
+
 </RelativeLayout>

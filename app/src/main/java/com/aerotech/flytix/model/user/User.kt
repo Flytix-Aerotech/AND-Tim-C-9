@@ -1,9 +1,11 @@
-package com.aerotech.flytix.model
+package com.aerotech.flytix.model.user
 
 
 import com.google.gson.annotations.SerializedName
 
-data class NewUser(
+data class User(
+    @SerializedName("createdAt")
+    val createdAt: String,
     @SerializedName("email")
     val email: String,
     @SerializedName("full_name")
@@ -18,6 +20,8 @@ data class NewUser(
     val photo: String,
     @SerializedName("role")
     val role: String,
+    @SerializedName("updatedAt")
+    val updatedAt: String,
     @SerializedName("username")
     val username: String
 )
