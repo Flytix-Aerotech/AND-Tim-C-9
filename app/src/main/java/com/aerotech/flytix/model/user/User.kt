@@ -1,4 +1,4 @@
-package com.aerotech.flytix.model
+package com.aerotech.flytix.model.user
 
 
 import com.google.gson.annotations.SerializedName

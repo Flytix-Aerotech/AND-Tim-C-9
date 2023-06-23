@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class Home : Fragment(),
     Penumpang.totalPenumpangListener, Keberangkatan.DatePickerListener, Kembali.DatePickerListener,
-    KelasKursi.kelasKursiListener, Darimana.DariManaListener, Tujuan.TujuanListener {
+    KelasKursi.kelasKursiListener,Darimana.getItemkotaListener, Tujuan.getItemkotaTujuanListener {
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -82,6 +84,9 @@ class Home : Fragment(),
             pilihKelasKursi.show(parentFragmentManager, pilihKelasKursi.tag)
         }
 
+        binding.btnCaripenerbangan.setOnClickListener {
+            findNavController().navigate(R.id.action_home2_to_resultSearch)
+        }
     }
 
     override fun onDateSelectedKepulangan(date: String) {
@@ -100,16 +105,18 @@ class Home : Fragment(),
     override fun pilihKelasKursi(kelas: String) {
         binding.etKelaskursi.setText(kelas)
     }
+//    override fun onItemSelected(selectedItem: DataGetTicketItem) {
+//        val selectedAirport = "${selectedItem.airport.location} - ${selectedItem.airport.code}"
+//        binding.etAsallokasi.setText(selectedAirport)
+//    }
 
-    override fun onSelectedDarimana(dari: String) {
-        binding.etAsallokasi.setText(dari)
+    override fun getItemKota(kota: String) {
+        binding.etAsallokasi.setText(kota)
     }
 
-    override fun onSelectedTujuan(tujuan: String) {
-        binding.etTujuanlokasi.setText(tujuan)
+    override fun getItemKotaTujuan(kota: String) {
+        binding.etTujuanlokasi.setText(kota)
     }
 }
 
-//    override fun onDateSelectedKepulangan(date: String) {
-//    }
 

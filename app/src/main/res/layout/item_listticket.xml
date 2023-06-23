@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ticket"
+            type="com.aerotech.flytix.model.ticket.DataGetTicketItem" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_destinasi"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/tv_waktu_berangkat"
+                style="@style/textbody14bold"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="@{ticket.flight.departureTime}"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_tempat_berangkat"
+                style="@style/textbody14bold"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_waktu_berangkat"
+                android:text="@{ticket.flight.fromId}"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_waktu_sampai"
+                style="@style/textbody14bold"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_panahdirect"
+                android:text="@{ticket.flight.arrivalTime}"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_tempat_tujuan"
+                style="@style/textbody14bold"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_waktu_sampai"
+                android:layout_toRightOf="@id/iv_panahdirect"
+                android:text="@{ticket.flight.toId}"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/iv_panahdirect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@id/tv_waktu_berangkat"
+                app:srcCompat="@drawable/ic_panahdirect" />
+
+            <TextView
+                android:id="@+id/tv_lamaperjalanan"
+                style="@style/textbody12bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/iv_Logo"
+                android:layout_marginBottom="25dp"
+                android:text="4h 0m"
+                android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_harga"
+                            style="@style/textheading20bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@{String.valueOf(`IDR ` + ticket.price)}"
+                            android:textColor="@color/gold"
+                            android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/ic_garistengah"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                app:strokeColor="@color/black"
+                app:strokeWidth="3dp" />
+
+            <ImageView
+                android:id="@+id/iv_Logo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="0dp"
+                app:srcCompat="@drawable/img" />
+
+            <TextView
+                android:id="@+id/tv_jenis_pesawat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/iv_logo_koper"
+                android:layout_toRightOf="@id/iv_Logo"
+                android:text="@{ticket.flight.airline}"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_jenis_kelas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/iv_logo_koper"
+                android:layout_toEndOf="@id/tv_jenis_pesawat"
+                android:text="@{` - ` + ticket.typeOfClass}"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/iv_logo_koper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@id/iv_Logo"
+                app:srcCompat="@drawable/img_1" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

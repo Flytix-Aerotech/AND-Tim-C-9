@@ -1,18 +1,14 @@
-package com.aerotech.flytix.model
+package com.aerotech.flytix.model.user
 
 import com.google.gson.annotations.SerializedName
 
-data class DataUserPostItem(
+data class DataUserProfilePutItem(
     @SerializedName("email")
     val email: String,
     @SerializedName("full_name")
     val fullName: String,
-    @SerializedName("password")
-    val password: String,
     @SerializedName("phone_number")
     val phoneNumber: String,
-    @SerializedName("photo")
-    val photo: String,
     @SerializedName("username")
     val username: String
 )

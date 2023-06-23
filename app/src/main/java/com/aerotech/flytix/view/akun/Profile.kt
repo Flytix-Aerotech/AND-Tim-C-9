@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentProfileBinding
-import com.aerotech.flytix.model.DataUserProfilePutItem
+import com.aerotech.flytix.model.user.DataUserProfilePutItem
 import com.aerotech.flytix.viewmodel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

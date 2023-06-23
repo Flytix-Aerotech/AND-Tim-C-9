@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentRegisterBinding
-import com.aerotech.flytix.model.NewUser
+import com.aerotech.flytix.model.user.NewUser
 import com.aerotech.flytix.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
