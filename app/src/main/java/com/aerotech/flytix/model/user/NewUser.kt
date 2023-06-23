@@ -14,8 +14,8 @@ data class NewUser(
     val password: String,
     @SerializedName("phone_number")
     val phoneNumber: String,
-    @SerializedName("photo")
-    val photo: String,
+//    @SerializedName("photo")
+//    val photo: String,
     @SerializedName("role")
     val role: String,
     @SerializedName("username")

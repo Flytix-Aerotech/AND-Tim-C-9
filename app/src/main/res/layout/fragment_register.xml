@@ -122,39 +122,7 @@
                     android:inputType="textPassword"
                     tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/frame_etpoto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/frame_etpassdaftar"
-                    android:hint="Link Foto"
-                    app:boxBackgroundColor="@color/white"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/black">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/foto"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/frame_etaddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/frame_etpoto"
-                    android:hint="Alamat"
-                    app:boxBackgroundColor="@color/white"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/black">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
-                </com.google.android.material.textfield.TextInputLayout>
 
             </com.google.android.material.textfield.TextInputLayout>
 
