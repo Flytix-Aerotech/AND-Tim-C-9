@@ -1,10 +1,11 @@
-package com.aerotech.flytix.model.ticket
+package com.aerotech.flytix.model.airport
 
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
+
 @Keep
-data class DataGetAirportItem(
+data class DataAirportItem(
     @SerializedName("arrival_name")
     val arrivalName: String,
     @SerializedName("arrival_terminal")

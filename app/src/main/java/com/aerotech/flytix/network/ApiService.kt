@@ -1,6 +1,10 @@
 package com.aerotech.flytix.network
 
+import com.aerotech.flytix.model.airport.DataGetAirportResponse
+import com.aerotech.flytix.model.ticket.DataGetTicketIDResponse
 import com.aerotech.flytix.model.ticket.DataGetTicketResponse
+import com.aerotech.flytix.model.ticket.DataPostticketSearch
+import com.aerotech.flytix.model.ticket.search.DataSearchTicketResponse
 import com.aerotech.flytix.model.user.DataUserLoginItem
 import com.aerotech.flytix.model.user.DataUserProfilePutItem
 import com.aerotech.flytix.model.user.DataUserResponse
@@ -58,4 +62,68 @@ interface ApiService {
 
     @GET("tickets")
     fun getTicket(): Call<DataGetTicketResponse>
+
+    //    ticket
+    @GET("tickets")
+    fun getFlight() : Call<DataGetTicketResponse>
+
+    @GET("tickets/{id}")
+    fun getFlightDetail(@Path("id") id: Int) : Call<DataGetTicketIDResponse>
+
+    @GET("airports")
+    fun getAirport() : Call<DataGetAirportResponse>
+
+
+    @Headers(
+        "Content-Type:application/json",
+        "Accept:*/*"
+    )
+    @FormUrlEncoded
+    @POST("tickets/filter")
+    fun postFilterTicket(@Field("departure_date")departureDate: String, @Field("arrival_date")arrivalDate: String,
+                         @Field("departure_location")departureLocation: String, @Field("arrival_location")arrivalLocation: String, @Field("type_of_class")typeofClass: String): Call<DataSearchTicketResponse>
+
+    // search
+    @GET("tickets/search")
+    fun search(@Query("dl")departureLocation : String, @Query("al")arrivalLocation: String,
+               @Query("dd")departureDate: String, @Query("toc")typeofClass: String): Call<DataGetTicketResponse>
+    @GET("tickets/search")
+    fun searchwithoutad(@Query("dl")departureLocation : String, @Query("al")arrivalLocation: String,
+               @Query("dd")departureDate: String, @Query("toc")typeofClass: String): Call<DataGetTicketResponse>
+
+
+    @Headers(
+        "Content-Type:application/json",
+        "Accept:*/*"
+    )
+    @POST("tickets/filter")
+    fun postSearchTicket(@Body request: DataPostticketSearch): Call<DataGetTicketResponse>
+
+
+//    @GET("histories/filter")
+//    fun getTransactionFilter(@Header("Authorization")token: String, @Query("status")status: String) : Call<TransactionHistory>
+//    @POST("booking")
+//    fun addTransaction(@Header("Authorization")token: String, @Body request : AddTransaction) : Call<TransactionResponse>
+//
+//    @GET("booking/{id}")
+//    fun getTransactionId(@Header("Authorization") token: String, @Path("id") id: Int?) : Call<TransactionResponse>
+//
+//    @DELETE("booking/{id}")
+//    fun cancelTransaction(@Header("Authorization") token: String, @Path("id") id: Int?) : Call<CancelResponse>
+//    @GET("payment")
+//    fun updatePayment(@Header("Authorization") token: String, @Body request: PaymentRequest) : Call<PaymentResponse>
+//
+//
+
+//    @POST("/api/notification/")
+//    fun createNotification(@Header("Authorization") token: String, @Body request: NotificationRequest): Call<NotificationCreateResponse>
+//
+//    @GET("/api/notification")
+//    fun getNotification(@Header("Authorization") token: String): Call<NotificationResponse>
+//
+//    @GET("/api/notification/{id}")
+//    fun getNotificationDetail(@Header("Authorization") token: String, @Path("id") id: Int?): Call<NotificationIdResponse>
+//
+//    @DELETE("/api/notification/delete/{id}")
+//    fun deleteNotification(@Header("Authorization") token: String, @Path("id") id: Int?): Call<DeleteResponse>
 }
