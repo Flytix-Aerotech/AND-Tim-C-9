@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aerotech.flytix.databinding.FragmentDarimanaBinding
 import com.aerotech.flytix.model.ticket.DataKota
 import com.aerotech.flytix.view.adapter.KotaAdapter
 import com.aerotech.flytix.viewmodel.KotaViewModel
+import com.aerotech.flytix.viewmodel.SearchViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
@@ -21,6 +23,7 @@ class Darimana : BottomSheetDialogFragment(), KotaAdapter.ItemSelectionListener 
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
+    private lateinit var searchViewModel: SearchViewModel
     private var mList = ArrayList<DataKota>()
     private lateinit var adapterList: KotaAdapter
     private lateinit var binding: FragmentDarimanaBinding
@@ -33,6 +36,7 @@ class Darimana : BottomSheetDialogFragment(), KotaAdapter.ItemSelectionListener 
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         binding = FragmentDarimanaBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -81,20 +85,39 @@ class Darimana : BottomSheetDialogFragment(), KotaAdapter.ItemSelectionListener 
     }
 
     private fun addDataToList() {
-        mList.add(DataKota("Ambon"))
+        mList.add(DataKota("Aceh"))
+        mList.add(DataKota("Balikpapan"))
         mList.add(DataKota("Bandung"))
-        mList.add(DataKota("Bali"))
+        mList.add(DataKota("Banjarmasin"))
+        mList.add(DataKota("Batam"))
+        mList.add(DataKota("Bekasi"))
+        mList.add(DataKota("Bogor"))
         mList.add(DataKota("Denpasar"))
+        mList.add(DataKota("Depok"))
         mList.add(DataKota("Jakarta"))
+        mList.add(DataKota("Jambi"))
+        mList.add(DataKota("Makassar"))
         mList.add(DataKota("Malang"))
-        mList.add(DataKota("Palembang"))
+        mList.add(DataKota("Manado"))
+        mList.add(DataKota("Mataram"))
+        mList.add(DataKota("Medan"))
         mList.add(DataKota("Padang"))
-        mList.add(DataKota("Papua"))
+        mList.add(DataKota("Palembang"))
+        mList.add(DataKota("Pekanbaru"))
+        mList.add(DataKota("Pontianak"))
+        mList.add(DataKota("Semarang"))
+        mList.add(DataKota("Surabaya"))
+        mList.add(DataKota("Surakarta"))
+        mList.add(DataKota("Tangerang"))
+        mList.add(DataKota("Yogyakarta"))
     }
 
     override fun onItemSelected(selectedItem: DataKota) {
         selectedKota = selectedItem.namaKota
         listener?.getItemKota(selectedKota)
+        searchViewModel.getKotaKeberangkatan().observe(viewLifecycleOwner) {
+            searchViewModel.simpanKotaKeberangkatan(selectedKota)
+        }
         dismiss()
     }
 

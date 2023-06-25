@@ -4,13 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.aerotech.flytix.databinding.FragmentKelasKursiBinding
+import com.aerotech.flytix.model.ticket.DataKelasKursi
+import com.aerotech.flytix.view.adapter.KelasKursiAdapter
+import com.aerotech.flytix.viewmodel.SearchViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class KelasKursi : BottomSheetDialogFragment() {
+class KelasKursi : BottomSheetDialogFragment(), KelasKursiAdapter.ItemSelectionListener {
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var searchViewModel: SearchViewModel
+    private var mList = ArrayList<DataKelasKursi>()
+    private lateinit var adapterList: KelasKursiAdapter
+    lateinit var selectedKelas: String
     private lateinit var binding: FragmentKelasKursiBinding
     internal var listener: kelasKursiListener? = null
 
@@ -19,6 +30,7 @@ class KelasKursi : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         binding = FragmentKelasKursiBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -28,26 +40,32 @@ class KelasKursi : BottomSheetDialogFragment() {
         binding.icClosebottomsheetKelasKursi.setOnClickListener {
             dismiss()
         }
-        binding.cvKelasEconomy.setOnClickListener {
-            listener?.pilihKelasKursi(binding.tvEconomy.text.toString())
-            dismiss()
-        }
-        binding.cvKelasBusiness.setOnClickListener {
-            listener?.pilihKelasKursi(binding.tvBusiness.text.toString())
-            dismiss()
-        }
-        binding.cvKelasFirst.setOnClickListener {
-            listener?.pilihKelasKursi(binding.tvFirst.text.toString())
-            dismiss()
-        }
-        binding.cvKelasQuiet.setOnClickListener {
-            listener?.pilihKelasKursi(binding.tvQuiet.text.toString())
-            dismiss()
-        }
+        recyclerView = binding.rvKelaskursi
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        addDataToList()
+        adapterList = KelasKursiAdapter(mList, this)
+        recyclerView.adapter = adapterList
     }
 
 
+    private fun addDataToList() {
+        mList.add(DataKelasKursi("Business"))
+        mList.add(DataKelasKursi("Economy"))
+        mList.add(DataKelasKursi("First"))
+        mList.add(DataKelasKursi("Premium"))
+    }
+
     interface kelasKursiListener {
-        fun pilihKelasKursi(kelas:String)
+        fun pilihKelasKursi(kelas: String)
+    }
+
+    override fun onItemSelected(selectedItem: DataKelasKursi) {
+        selectedKelas = selectedItem.kelasKursi
+        listener?.pilihKelasKursi(selectedKelas)
+        searchViewModel.getKelasKursi().observe(viewLifecycleOwner) {
+            searchViewModel.simpanKelasKursi(selectedKelas)
+        }
+        dismiss()
     }
 }

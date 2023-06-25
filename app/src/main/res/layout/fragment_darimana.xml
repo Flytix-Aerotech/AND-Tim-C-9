@@ -23,6 +23,17 @@
                 android:layout_height="wrap_content"
                 android:background="@color/emas">
 
+                <TextView
+                    android:id="@+id/tv_juduldarimanax"
+                    style="@style/textheading20bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Atur Tempat Keberangkatan"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black" />
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ic_closebottomsheetdarimana"
                     android:layout_width="50dp"
@@ -43,64 +54,44 @@
             app:cardCornerRadius="10dp"
             app:strokeColor="@color/black"
             app:strokeWidth="2dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+    <RelativeLayout
+        android:id="@+id/layoutsearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-            <RelativeLayout
+        android:layout_marginHorizontal="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="12dp"
+            app:cardUseCompatPadding="true">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/etSearch"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent"
+                app:queryHint="Search here ..." />
 
-                <TextView
-                    android:id="@+id/tv_juduldarimana"
-                    style="@style/textheading20bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Atur Tempat Keberangkatan"
-                    android:textColor="@color/black" />
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cv_pencarianterkini"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_juduldarimana"
-                    app:cardCornerRadius="10dp"
-                    app:strokeColor="@color/black"
-                    app:strokeWidth="2dp">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_darimana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutsearch"
+        android:layout_marginTop="12dp" />
+</RelativeLayout>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp">
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/materialCardView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:cardCornerRadius="8dp"
-                            app:cardElevation="12dp"
-                            app:cardUseCompatPadding="true">
-
-                            <androidx.appcompat.widget.SearchView
-                                android:id="@+id/etSearch"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:iconifiedByDefault="false"
-                                app:queryBackground="@android:color/transparent"
-                                app:queryHint="Search here ..." />
-
-                        </com.google.android.material.card.MaterialCardView>
-                    </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_darimana"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/cv_pencarianterkini"
-                    android:layout_marginTop="12dp" />
-
-            </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
 
 
