@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultSearch"
-        android:name="com.aerotech.flytix.view.home.ResultSearch"
+        android:name="com.aerotech.flytix.view.home.search.ResultSearch"
         android:label="fragment_result_search"
         tools:layout="@layout/fragment_result_search" >
         <action
@@ -89,7 +89,16 @@
     </fragment>
     <fragment
         android:id="@+id/detail"
-        android:name="com.aerotech.flytix.view.home.Detail"
+        android:name="com.aerotech.flytix.view.home.search.Detail"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detail_to_dataPenumpang"
+            app:destination="@id/dataPenumpang" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataPenumpang"
+        android:name="com.aerotech.flytix.view.home.search.DataPenumpang"
+        android:label="fragment_data_penumpang"
+        tools:layout="@layout/fragment_data_penumpang" />
 </navigation>
