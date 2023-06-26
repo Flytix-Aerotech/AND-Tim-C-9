@@ -1,4 +1,4 @@
-package com.aerotech.flytix.view.home
+package com.aerotech.flytix.view.home.search
 
 import android.os.Bundle
 import android.util.Log

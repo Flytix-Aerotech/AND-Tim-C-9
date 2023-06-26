@@ -21,8 +21,8 @@ import java.util.Locale
 
 @AndroidEntryPoint
 class Home : Fragment(),
-    Penumpang.totalPenumpangListener, Keberangkatan.DatePickerListener, Kembali.DatePickerListener,
-    KelasKursi.kelasKursiListener, Darimana.getItemkotaListener, Tujuan.getItemkotaTujuanListener {
+    Penumpang.totalPenumpangListener, KelasKursi.kelasKursiListener, Darimana.getItemkotaListener,
+    Tujuan.getItemkotaTujuanListener {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var searchViewModel: SearchViewModel
@@ -104,17 +104,9 @@ class Home : Fragment(),
         getListView()
     }
 
-    override fun onDateSelectedKepulangan(date: String) {
-        // Set the selected date in the EditText
-        binding.etKepulangan.setText(date)
-    }
 
     override fun totalPenumpang(total: String) {
         binding.etPenumpang.setText("$total Penumpang")
-    }
-
-    override fun onDateSelected(date: String) {
-        binding.etKeberangkatan.setText(date)
     }
 
     override fun pilihKelasKursi(kelas: String) {
@@ -206,8 +198,8 @@ class Home : Fragment(),
 
     private fun getListView() {
 
-        searchViewModel.getKotaKeberangkatan().observe(viewLifecycleOwner){
-            if (it != null){
+        searchViewModel.getKotaKeberangkatan().observe(viewLifecycleOwner) {
+            if (it != null) {
                 val editableText = Editable.Factory.getInstance().newEditable(it)
                 binding.etAsallokasi.text = editableText
                 bund.putString("KotaKeberangkatan", it)
@@ -218,8 +210,8 @@ class Home : Fragment(),
 //                binding.txtCitycodeDeparture.text = it
 //            }
 //        }
-        searchViewModel.getKotaDestinasi().observe(viewLifecycleOwner){
-            if (it != null){
+        searchViewModel.getKotaDestinasi().observe(viewLifecycleOwner) {
+            if (it != null) {
                 val editableText = Editable.Factory.getInstance().newEditable(it)
                 binding.etTujuanlokasi.text = editableText
                 bund.putString("KotaDestinasi", it)
@@ -230,35 +222,35 @@ class Home : Fragment(),
 //                binding.txtCitycodeDestination.text = it
 //            }
 //        }
-        searchViewModel.getTanggalKeberangkatan().observe(viewLifecycleOwner){
-            if (it != null){
+        searchViewModel.getTanggalKeberangkatan().observe(viewLifecycleOwner) {
+            if (it != null) {
 //                val simpleFormat = "yyyy-MM-dd"
 //                val itDepartureDate = SimpleDateFormat(simpleFormat, Locale.US)
                 bund.putString("TanggalKeberangkatan", it.toString())
             }
         }
 
-        searchViewModel.getKelasKursi().observe(viewLifecycleOwner){
-            if (it != null){
+        searchViewModel.getKelasKursi().observe(viewLifecycleOwner) {
+            if (it != null) {
                 val editableText = Editable.Factory.getInstance().newEditable(it)
                 binding.etKelaskursi.text = editableText
                 bund.putString("KelasKursi", it)
             }
         }
-        searchViewModel.getValueTripOneway().observe(viewLifecycleOwner){
-            if (it == true){
+        searchViewModel.getValueTripOneway().observe(viewLifecycleOwner) {
+            if (it == true) {
                 searchViewModel.hapusTanggalKembali()
                 bund.putString("TanggalKembali", "")
-            } else{
-                searchViewModel.getTanggalKembali().observe(viewLifecycleOwner){
-                    if (it != null){
+            } else {
+                searchViewModel.getTanggalKembali().observe(viewLifecycleOwner) {
+                    if (it != null) {
                         bund.putString("TanggalKembali", it.toString())
                     }
                 }
             }
         }
 
-        binding.btnCaripenerbangan.setOnClickListener{
+        binding.btnCaripenerbangan.setOnClickListener {
             findNavController().navigate(R.id.action_home3_to_resultSearch, bund)
         }
 
