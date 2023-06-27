@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/login2">
+    app:startDestination="@id/otp">
 
     <fragment
         android:id="@+id/home2"
@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_register_to_login2"
             app:destination="@id/login2" />
+        <action
+            android:id="@+id/action_register_to_otp"
+            app:destination="@id/otp" />
     </fragment>
     <fragment
         android:id="@+id/login2"
@@ -62,5 +65,17 @@
         <action
             android:id="@+id/action_login2_to_register"
             app:destination="@id/register" />
+    </fragment>
+    <fragment
+        android:id="@+id/otp"
+        android:name="com.aerotech.flytix.view.Otp"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otp_to_login2"
+            app:destination="@id/login2" />
+        <action
+            android:id="@+id/action_otp_self"
+            app:destination="@id/otp" />
     </fragment>
 </navigation>

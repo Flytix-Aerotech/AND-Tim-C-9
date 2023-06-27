@@ -55,7 +55,6 @@ class Login : Fragment() {
     fun doLogin() {
         val emailInputUser = binding.etEmaillogin.text.toString()
         val passInputUser = binding.etPasslogin.text.toString()
-
         if (emailInputUser.isNotEmpty() || passInputUser.isNotEmpty()) {
             userLoginVM.authLogin()
             userLoginVM.livedatauserLogin.observe(viewLifecycleOwner) {
@@ -64,14 +63,13 @@ class Login : Fragment() {
                 emailUser = emailInputUser
                 passUser = passInputUser
             }
-
-            if (emailUser != emailInputUser && passUser != passInputUser) {
+            if (emailUser == null || passUser == null) {
                 Toast.makeText(requireContext(), "Gagal Login", Toast.LENGTH_SHORT).show()
             } else {
                 userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser, passInputUser))
                 userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner) {
                     if (it != null) {
-                        Log.i("tokenn", "token: ${it.token}")
+                        Log.i("token", "token: ${it.token}")
                         token = it.token
                         // input to sharedpreferences
                         sharedPref = requireActivity().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)

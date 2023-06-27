@@ -9,5 +9,5 @@ data class DataUserResponse(
     @SerializedName("token")
     val token: String,
     @SerializedName("user")
-    val user: NewUser
+    val user: UserX
 )
