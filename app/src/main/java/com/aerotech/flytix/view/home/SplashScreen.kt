@@ -9,9 +9,8 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+
 @Suppress("DEPRECATION")
 class SplashScreen : Fragment() {
     private lateinit var progressBar: ProgressBar
@@ -37,12 +36,12 @@ class SplashScreen : Fragment() {
             var progress = 0
             while (progress <= 1000) {
                 progressBar.progress = progress
-                progress += 5
-                handler.postDelayed({ }, 300)
+                progress += 10
+                handler.postDelayed({ }, 1000)
             }
             findNavController().navigate(R.id.action_splashScreen_to_login2)
         }
-        handler.postDelayed(progressRunnable, 5000)
+        handler.postDelayed(progressRunnable, 3000)
     }
 
 }

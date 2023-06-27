@@ -1,7 +1,6 @@
 package com.aerotech.flytix.model.user
 
 
-
 import com.google.gson.annotations.SerializedName
 
 data class NewUser(

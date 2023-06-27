@@ -22,14 +22,14 @@ interface ApiService {
 //    @POST("auth/login")
 //    fun postLogin(@Body request: DataUserLoginItem): Call<DataUserResponse>
 
-    @Headers(
+        @Headers(
         "Content-Type:application/json",
         "Accept:*/*"
     )
     @POST("auth/login")
     fun postLoginUser(@Body request: DataUserLoginItem): Call<DataUserResponse>
 
-    //    @FormUrlEncoded
+//    @FormUrlEncoded
 //    @POST("auth/login")
 //    fun userPostLogin(
 //        @Field("email") email:String,
@@ -89,7 +89,7 @@ interface ApiService {
                @Query("dd")departureDate: String, @Query("toc")typeofClass: String): Call<DataGetTicketResponse>
     @GET("tickets/search")
     fun searchwithoutad(@Query("dl")departureLocation : String, @Query("al")arrivalLocation: String,
-                        @Query("dd")departureDate: String, @Query("toc")typeofClass: String): Call<DataGetTicketResponse>
+               @Query("dd")departureDate: String, @Query("toc")typeofClass: String): Call<DataGetTicketResponse>
 
 
     @Headers(
