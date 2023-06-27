@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.home.RincianPenerbangan"
+    android:background="@drawable/bg_duawarna"
+    android:padding="20dp">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_biodatapemesan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_asal"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gothambold"
+                android:text="Jakarta"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_ke"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gothambold"
+                android:text=" -> "
+                android:layout_toRightOf="@id/tv_asal"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/tv_tujuan"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gothambold"
+                android:text=" Melbourn "
+                android:layout_toRightOf="@id/tv_ke"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/tv_jangkawaktu"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gothambold"
+                android:text="(4h 0m)"
+                android:layout_toRightOf="@id/tv_tujuan"
+                android:textColor="@color/gold"
+                android:layout_marginTop="10dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/tv_jamKeberangkatan"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gothambold"
+                android:layout_below="@id/tv_asal"
+                android:text="07:00"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_keberangkatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gothambold"
+                android:text="Keberangkatan"
+                android:layout_below="@id/tv_jangkawaktu"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/gold"
+                android:layout_marginTop="10dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/tv_tanggalKeberangkatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_jamKeberangkatan"
+                android:text="3 Maret 2023"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_bandaraAsal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tanggalKeberangkatan"
+                android:text="Soekarno Hatta - Terminal 1A Domestik"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_kapasitasPesawat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_bandaraAsal"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    tools:ignore="RtlHardcoded">
+
+                    <TextView
+                        android:id="@+id/tv_jenisPesawat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:fontFamily="@font/gothambold"
+                        android:text="Jet Air - Economy"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/tv_kodePesawat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_jenisPesawat"
+                        android:layout_marginLeft="30dp"
+                        android:fontFamily="@font/gothambold"
+                        android:text="JT - 203"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_below="@id/tv_kodePesawat"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/img"/>
+
+                    <TextView
+                        android:id="@+id/tv_informasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_kodePesawat"
+                        android:layout_marginTop="20sp"
+                        android:layout_marginLeft="30dp"
+                        android:fontFamily="@font/gothambold"
+                        android:text="Informasi: "
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/tv_baggage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_informasi"
+                        android:layout_marginLeft="30dp"
+                        android:text="Baggage 20 kg"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/tv_cabin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_baggage"
+                        android:layout_marginLeft="30dp"
+                        android:text="Cabin baggage 7 Kg"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/tv_inFlight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_cabin"
+                        android:layout_marginLeft="30dp"
+                        android:text="In Flight Entertainment"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_jamKedatangan"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cv_kapasitasPesawat"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/gothambold"
+                android:text="11:00"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText"/>
+
+
+            <TextView
+                android:id="@+id/tv_tanggalKedatangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_jamKedatangan"
+                android:text="3 Maret 2023"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_bandaraKedatangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tanggalKedatangan"
+                android:text="Melbourne International Airport"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_kedatangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gothambold"
+                android:layout_below="@id/cv_kapasitasPesawat"
+                android:text="Kedatangan"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/gold"
+                android:layout_marginTop="10dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_rincianPembayaran"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/cv_biodatapemesan"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+            android:id="@+id/tv_rincianHarga"
+            style="@style/textheading20bold"
+            android:fontFamily="@font/gothambold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+            <TextView
+            android:id="@+id/tv_dewasa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_rincianHarga"
+            android:text="2 Adults"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+            <TextView
+            android:id="@+id/tv_hargaDewasa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_rincianHarga"
+            android:layout_alignParentRight="true"
+            android:text="IDR 9.550.000"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+            <TextView
+            android:id="@+id/tv_bayi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_dewasa"
+            android:text="1 Baby"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+            <TextView
+            android:id="@+id/tv_hargaBayi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_dewasa"
+            android:layout_alignParentRight="true"
+            android:text="IDR 0"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+            <TextView
+            android:id="@+id/tv_tax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_bayi"
+            android:text="Tax"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+            <TextView
+            android:id="@+id/tv_hargaTax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_bayi"
+            android:layout_alignParentRight="true"
+            android:text="IDR 300.000"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+            <TextView
+            android:id="@+id/tv_promo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_tax"
+            android:text="Promo"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+            <TextView
+            android:id="@+id/tv_hargaPrama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_tax"
+            android:layout_alignParentRight="true"
+            android:text="IDR 0"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+            <TextView
+            android:id="@+id/tv_total"
+            style="@style/textheading20bold"
+            android:fontFamily="@font/gothambold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:layout_above="@id/btn_rincianPenerbangan"
+            android:text="Total"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_totalPembayaran"
+                style="@style/textheading20bold"
+                android:fontFamily="@font/gothambold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/btn_rincianPenerbangan"
+                android:layout_alignParentRight="true"
+                android:text="IDR 9.850.000"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/gold"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/btn_rincianPenerbangan"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentBottom="true"
+                android:backgroundTint="@color/gold"
+                android:text="Lanjut Pembayaran"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp"/>
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</RelativeLayout>

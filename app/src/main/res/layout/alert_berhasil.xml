@@ -9,26 +9,36 @@
         android:id="@+id/img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/harus_login"
-        android:layout_centerInParent="true"/>
+        android:src="@drawable/berhasil" />
     <TextView
-        android:text="Maaf, anda harus login terlebih dahulu"
+        android:id="@+id/tv_selamat"
+        android:text="Selamat !"
         android:layout_below="@id/img"
         android:gravity="center"
-       android:textSize="15dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="@color/gold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_berhasil"
+        android:text="Transaksi Pembayaran Tiket Sukses !"
+        android:layout_below="@id/tv_selamat"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/btn_alertHarusLogin"
+        android:id="@+id/btn_alertBerhasil"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/gold"
-        android:text="Masuk" />
+        android:text="Terbitkan tiket" />
 
 
 

@@ -3,77 +3,107 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/login2">
-
-    <fragment
-        android:id="@+id/notifikasi"
-        android:name="com.aerotech.flytix.view.notifikasi.Notifikasi"
-        android:label="fragment_notifikasi"
-        tools:layout="@layout/fragment_notifikasi" />
-    <fragment
-        android:id="@+id/akun"
-        android:name="com.aerotech.flytix.view.akun.Akun"
-        android:label="fragment_akun"
-        tools:layout="@layout/fragment_akun" />
-    <fragment
-        android:id="@+id/detail"
-        android:name="com.aerotech.flytix.view.home.Detail"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+    app:startDestination="@id/rincianTiketPenerbangan">
     <fragment
         android:id="@+id/splashScreen"
-        android:name="com.aerotech.flytix.view.SplashScreen"
+        android:name="com.aerotech.flytix.view.home.SplashScreen"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen">
+        tools:layout="@layout/fragment_splash_screen" >
         <action
-            android:id="@+id/action_splashScreen_to_register"
-            app:destination="@id/register" />
+            android:id="@+id/action_splashScreen_to_login2"
+            app:destination="@id/login2" />
         <action
             android:id="@+id/action_splashScreen_to_home3"
             app:destination="@id/home3" />
     </fragment>
     <fragment
-        android:id="@+id/resultSearch"
-        android:name="com.aerotech.flytix.view.home.ResultSearch"
-        android:label="fragment_result_search"
-        tools:layout="@layout/fragment_result_search" />
-    <fragment
         android:id="@+id/register"
         android:name="com.aerotech.flytix.view.user.Register"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register">
+        tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/action_register_to_login2"
             app:destination="@id/login2" />
     </fragment>
     <fragment
-        android:id="@+id/login2"
-        android:name="com.aerotech.flytix.view.Login"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login">
+        android:id="@+id/notifikasi2"
+        android:name="com.aerotech.flytix.view.notifikasi.Notifikasi"
+        android:label="fragment_notifikasi"
+        tools:layout="@layout/fragment_notifikasi" />
+    <fragment
+        android:id="@+id/history"
+        android:name="com.aerotech.flytix.view.riwayat.History"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
         <action
-            android:id="@+id/action_login2_to_register"
-            app:destination="@id/register" />
+            android:id="@+id/action_history_to_login2"
+            app:destination="@id/login2" />
+    </fragment>
+    <fragment
+        android:id="@+id/akun2"
+        android:name="com.aerotech.flytix.view.akun.Akun"
+        android:label="fragment_akun"
+        tools:layout="@layout/fragment_akun" >
+        <action
+            android:id="@+id/action_akun2_to_profile"
+            app:destination="@id/profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.aerotech.flytix.view.akun.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_to_akun2"
+            app:destination="@id/akun2" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultSearch"
+        android:name="com.aerotech.flytix.view.home.search.ResultSearch"
+        android:label="fragment_result_search"
+        tools:layout="@layout/fragment_result_search" >
+        <action
+            android:id="@+id/action_resultSearch_to_detail"
+            app:destination="@id/detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/login2"
+        android:name="com.aerotech.flytix.view.user.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login2_to_home3"
             app:destination="@id/home3" />
         <action
-            android:id="@+id/action_login2_to_updateProfile2"
-            app:destination="@id/updateProfile2" />
+            android:id="@+id/action_login2_to_register"
+            app:destination="@id/register" />
     </fragment>
     <fragment
         android:id="@+id/home3"
         android:name="com.aerotech.flytix.view.home.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home3_to_resultSearch"
+            app:destination="@id/resultSearch" />
+    </fragment>
     <fragment
-        android:id="@+id/history2"
-        android:name="com.aerotech.flytix.view.riwayat.History"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        android:id="@+id/detail"
+        android:name="com.aerotech.flytix.view.home.search.Detail"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detail_to_dataPenumpang"
+            app:destination="@id/dataPenumpang" />
+    </fragment>
     <fragment
-        android:id="@+id/updateProfile2"
-        android:name="com.aerotech.flytix.view.UpdateProfile"
-        android:label="fragment_update_profile"
-        tools:layout="@layout/fragment_update_profile" />
+        android:id="@+id/dataPenumpang"
+        android:name="com.aerotech.flytix.view.home.search.DataPenumpang"
+        android:label="fragment_data_penumpang"
+        tools:layout="@layout/fragment_data_penumpang" />
+    <fragment
+        android:id="@+id/rincianTiketPenerbangan"
+        android:name="com.aerotech.flytix.view.home.RincianTiketPenerbangan"
+        android:label="fragment_rincian_tiket_penerbangan"
+        tools:layout="@layout/fragment_rincian_tiket_penerbangan" />
 </navigation>

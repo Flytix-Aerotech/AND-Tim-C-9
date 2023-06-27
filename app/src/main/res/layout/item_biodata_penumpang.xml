@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.home.BiodataPemesan"
-    android:background="@drawable/bg_polos"
     android:padding="20dp">
 
     <com.google.android.material.card.MaterialCardView
@@ -21,8 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            tools:ignore="RtlHardcoded">
+            >
 
             <TextView
                 android:id="@+id/tv_datadiripemesan"
@@ -33,7 +29,7 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                tools:ignore="HardcodedText" />
+               />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_dalamBiodataPemesan"
@@ -50,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    tools:ignore="RtlHardcoded">
+                    >
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/namaLengkap"
@@ -66,10 +62,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
-
 
                     <Switch
                         android:id="@+id/switch_namaKeluarga"
@@ -80,6 +75,7 @@
                         android:layout_centerHorizontal="true"
                         android:minHeight="48dp"
                         android:text="Punya Nama Keluarga? " />
+
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/namaKeluarga"
@@ -96,45 +92,84 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/nmrTlp"
+                        android:id="@+id/tglLahir"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nomor Telepon"
+                        android:hint="Tanggal Lahir"
                         android:layout_below="@id/namaKeluarga"
                         app:boxBackgroundColor="@color/white"
                         app:boxBackgroundMode="outline"
                         app:boxStrokeColor="@color/black">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_nmrTlp"
+                            android:id="@+id/et_tglLahir"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            tools:ignore="TextContrastCheck,VisualLintTextFieldSize,DuplicateClickableBoundsCheck" />
+                            />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/email"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/kewarganegaraan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Email"
-                        android:layout_below="@id/nmrTlp"
+                        android:hint="Kewarganegaraan"
+                        android:layout_below="@id/tglLahir"
                         app:boxBackgroundColor="@color/white"
                         app:boxBackgroundMode="outline"
                         app:boxStrokeColor="@color/black">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_email"
+                            android:id="@+id/et_kewarganegaraan"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="KTP/Paspor"
+                        android:layout_below="@id/kewarganegaraan"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_ktp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                             />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/negaraPenerbit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Negara Penerbit"
+                        android:layout_below="@id/ktp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_negaraPenerbit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                           />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -143,15 +178,5 @@
             </com.google.android.material.card.MaterialCardView>
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
-
-    <Button
-        android:id="@+id/btn_biodataPemesan"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/gold"
-        android:text="simpan" />
-
 
 </RelativeLayout>
