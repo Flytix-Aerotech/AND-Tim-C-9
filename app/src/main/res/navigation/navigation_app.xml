@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/rincianTiketPenerbangan">
+    app:startDestination="@id/biodataPenumpang">
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.aerotech.flytix.view.home.SplashScreen"
@@ -106,4 +106,9 @@
         android:name="com.aerotech.flytix.view.home.RincianTiketPenerbangan"
         android:label="fragment_rincian_tiket_penerbangan"
         tools:layout="@layout/fragment_rincian_tiket_penerbangan" />
+    <fragment
+        android:id="@+id/biodataPenumpang"
+        android:name="com.aerotech.flytix.view.home.BiodataPenumpang"
+        android:label="fragment_biodata_penumpang"
+        tools:layout="@layout/fragment_biodata_penumpang" />
 </navigation>

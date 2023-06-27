@@ -49,10 +49,27 @@
                     >
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/menu"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Mr/Ms/Mrs">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/autocompletetextview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/namaLengkap"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nama Lengkap"
+                        android:layout_below="@id/menu"
                         app:boxBackgroundColor="@color/white"
                         app:boxBackgroundMode="outline"
                         app:boxStrokeColor="@color/black">
