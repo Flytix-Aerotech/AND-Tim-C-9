@@ -4,12 +4,9 @@ import com.aerotech.flytix.model.airport.DataGetAirportResponse
 import com.aerotech.flytix.model.ticket.DataGetTicketIDResponse
 import com.aerotech.flytix.model.ticket.DataGetTicketResponse
 import com.aerotech.flytix.model.ticket.DataPostticketSearch
+import com.aerotech.flytix.model.ticket.destinasifavorite.DataGetListTicketsItem
 import com.aerotech.flytix.model.ticket.search.DataSearchTicketResponse
-import com.aerotech.flytix.model.user.DataUserLoginItem
-import com.aerotech.flytix.model.user.DataUserProfilePutItem
-import com.aerotech.flytix.model.user.DataUserResponse
-import com.aerotech.flytix.model.user.NewUser
-import com.aerotech.flytix.model.user.User
+import com.aerotech.flytix.model.user.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -98,6 +95,9 @@ interface ApiService {
     )
     @POST("tickets/filter")
     fun postSearchTicket(@Body request: DataPostticketSearch): Call<DataGetTicketResponse>
+
+    @GET("tickets")
+    fun getDestinasiFavorite(): Call<DataGetListTicketsItem>
 
 
 //    @GET("histories/filter")

@@ -8,16 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentHomeBinding
+import com.aerotech.flytix.view.adapter.DestinasiFavoriteAdapter
+import com.aerotech.flytix.viewmodel.DestinasiFavoriteViewModel
 import com.aerotech.flytix.viewmodel.SearchViewModel
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
 @AndroidEntryPoint
 class Home : Fragment(),
@@ -42,6 +44,8 @@ class Home : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        getDestinasiFavorite()
 
         binding.etAsallokasi.setOnClickListener {
             val pilihLokasiAsal = Darimana()
@@ -254,6 +258,20 @@ class Home : Fragment(),
             findNavController().navigate(R.id.action_home3_to_resultSearch, bund)
         }
 
+    }
+
+    fun getDestinasiFavorite(){
+        val destinasiViewModel = ViewModelProvider(this)[DestinasiFavoriteViewModel::class.java]
+        destinasiViewModel.callApiDestinasi()
+            destinasiViewModel.destinasi.observe(viewLifecycleOwner, androidx.lifecycle.Observer { destinasi ->
+                destinasi?.let {
+                    if (it != null) {
+                        binding.rvHome.layoutManager =
+                            GridLayoutManager(context, 2)
+                        binding.rvHome.adapter = DestinasiFavoriteAdapter(it)
+                    }
+                }
+            })
     }
 }
 
