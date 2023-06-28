@@ -27,7 +27,8 @@
                 android:minWidth="48dp"
                 android:minHeight="48dp"
                 android:padding="10dp"
-                android:src="@drawable/ic_dewasa" />
+                android:src="@drawable/ic_dewasa"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="280dp"
@@ -58,14 +59,6 @@
                             android:textColor="@color/black"
                             android:textSize="12sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppin"
-                            android:text="(BDG)"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
-
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="15dp"
                             android:layout_height="match_parent"
@@ -79,14 +72,6 @@
                             android:layout_marginStart="5dp"
                             android:fontFamily="@font/poppin"
                             android:text="Jakarta"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppin"
-                            android:text="(JKT)"
                             android:textColor="@color/black"
                             android:textSize="12sp" />
 
