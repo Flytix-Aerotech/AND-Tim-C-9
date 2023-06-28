@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.home.Payment"
+    android:background="@drawable/bg_polos"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvJudul"
+        style="@style/textheading24bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gothambold"
+        android:text="Proses Pembayaran"
+        android:textColor="@color/emas" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tvJudul"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlHardcoded"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_passenger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Passengers: "
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_penumpang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 Adult, 1 Baby"
+                android:fontFamily="@font/gothambold"
+                android:layout_toRightOf="@id/tv_passenger"
+                android:textColor="@color/gold"
+                android:textSize="15dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <ImageView
+                android:id="@+id/imgLoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_penumpang"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/baseline_location_on_24"/>
+
+            <ImageView
+                android:id="@+id/imgLocdua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_penumpang"
+                android:layout_toRightOf="@id/tv_selangWaktu"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/baseline_location_on_24"/>
+
+            <TextView
+                android:id="@+id/tv_asal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jakarta"
+                android:fontFamily="@font/gothambold"
+                android:layout_below="@id/tv_penumpang"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_tanggalBerangkat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 Maret 2023"
+                android:layout_below="@id/tv_asal"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_marginLeft="30dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_jamBerangkat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19.10.00"
+                android:layout_below="@id/tv_tanggalBerangkat"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_marginLeft="30dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_selangWaktu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4h 0m"
+                android:textColor="@color/black"
+                android:layout_marginTop="38dp"
+                android:textSize="15dp"
+                android:layout_centerHorizontal="true"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <ImageView
+                android:id="@+id/panah"
+                android:src="@drawable/panah_kanan"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/tv_tujuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Melbourn"
+                android:layout_toRightOf="@id/tv_selangWaktu"
+                android:fontFamily="@font/gothambold"
+                android:layout_below="@id/tv_penumpang"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_tanggalSampai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 Maret 2023"
+                android:layout_below="@id/tv_asal"
+                android:textColor="@color/black"
+                android:layout_toRightOf="@id/tv_selangWaktu"
+                android:textSize="15dp"
+                android:layout_marginLeft="50dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_jamSampai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21.00.00"
+                android:layout_below="@id/tv_tanggalBerangkat"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_toRightOf="@id/tv_selangWaktu"
+                android:layout_marginLeft="50dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_booking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booking Code: "
+                android:fontFamily="@font/gothambold"
+                android:layout_below="@id/tv_jamBerangkat"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_marginTop="20dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class: "
+                android:fontFamily="@font/gothambold"
+                android:layout_toRightOf="@id/tv_booking"
+                android:layout_below="@id/tv_jamBerangkat"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOTAL`"
+                android:fontFamily="@font/gothambold"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_jamBerangkat"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_codebooking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23343541"
+                android:layout_below="@id/tv_booking"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_codeclass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Economy"
+                android:layout_below="@id/tv_booking"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/tv_booking"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_idr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IDR"
+                android:layout_toLeftOf="@id/tv_jumlahTOtal"
+                android:layout_below="@id/tv_booking"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_marginLeft="10dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+
+            <TextView
+                android:id="@+id/tv_jumlahTOtal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9.850.000"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_booking"
+                android:textColor="@color/gold"
+                android:textSize="15dp"
+                android:layout_marginLeft="10dp"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/menu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_codebooking"
+                android:layout_marginTop="30dp"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/black"
+                android:hint="Metode Pembayaran">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/paymentCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukkan Kode"
+                app:boxBackgroundColor="@color/white"
+                android:layout_below="@id/menu"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_paymentCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/btn_bayar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/gold"
+        android:text="BAYAR" />
+
+</RelativeLayout>

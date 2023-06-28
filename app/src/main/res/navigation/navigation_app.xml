@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/home3">
+    app:startDestination="@id/payment">
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.aerotech.flytix.view.home.SplashScreen"
@@ -86,6 +86,9 @@
         <action
             android:id="@+id/action_home3_to_resultSearch"
             app:destination="@id/resultSearch" />
+        <action
+            android:id="@+id/action_home3_to_biodataPemesan"
+            app:destination="@id/biodataPemesan" />
     </fragment>
     <fragment
         android:id="@+id/detail"
@@ -101,4 +104,41 @@
         android:name="com.aerotech.flytix.view.home.search.DataPenumpang"
         android:label="fragment_data_penumpang"
         tools:layout="@layout/fragment_data_penumpang" />
+    <fragment
+        android:id="@+id/biodataPemesan"
+        android:name="com.aerotech.flytix.view.home.BiodataPemesan"
+        android:label="fragment_biodata_pemesan"
+        tools:layout="@layout/fragment_biodata_pemesan" >
+        <action
+            android:id="@+id/action_biodataPemesan_to_biodataPenumpang"
+            app:destination="@id/biodataPenumpang" />
+    </fragment>
+    <fragment
+        android:id="@+id/biodataPenumpang"
+        android:name="com.aerotech.flytix.view.home.BiodataPenumpang"
+        android:label="fragment_biodata_penumpang"
+        tools:layout="@layout/fragment_biodata_penumpang" >
+        <action
+            android:id="@+id/action_biodataPenumpang_to_rincianPenerbangan"
+            app:destination="@id/rincianPenerbangan" />
+    </fragment>
+    <fragment
+        android:id="@+id/rincianPenerbangan"
+        android:name="com.aerotech.flytix.view.home.RincianPenerbangan"
+        android:label="fragment_rincian_penerbangan"
+        tools:layout="@layout/fragment_rincian_penerbangan" />
+    <fragment
+        android:id="@+id/rincianTiketPenerbangan"
+        android:name="com.aerotech.flytix.view.home.RincianTiketPenerbangan"
+        android:label="fragment_rincian_tiket_penerbangan"
+        tools:layout="@layout/fragment_rincian_tiket_penerbangan" >
+        <action
+            android:id="@+id/action_rincianTiketPenerbangan_to_payment"
+            app:destination="@id/payment" />
+    </fragment>
+    <fragment
+        android:id="@+id/payment"
+        android:name="com.aerotech.flytix.view.home.Payment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
 </navigation>
