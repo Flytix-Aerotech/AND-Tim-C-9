@@ -8,6 +8,6 @@ data class verify_otp(
     val email: String,
     @SerializedName("otp")
     val otp: String,
-    @SerializedName("msg")
-    val msg : String
+    @SerializedName("message")
+    val message : String
 )

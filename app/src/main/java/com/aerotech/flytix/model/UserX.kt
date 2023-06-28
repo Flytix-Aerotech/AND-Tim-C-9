@@ -15,5 +15,7 @@ data class UserX(
     @SerializedName("photo")
     val photo: String,
     @SerializedName("username")
-    val username: String
+    val username: String,
+    @SerializedName("verify")
+    val verify : Boolean
 )

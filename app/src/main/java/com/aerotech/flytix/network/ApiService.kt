@@ -26,10 +26,15 @@ interface ApiService {
     fun postSendOtp(@Field("email") email: String): Call<otp>
 
     @FormUrlEncoded
-    @POST("auth/verify-otp/{email}?")
+    @POST("auth/verify-account/{email}?")
     fun postVerifyOtp(
         @Path("email") email:String,
         @Field("otp") otp:String
     ): Call<verify_otp>
+
+    @PUT("auth/reset-password/{email}?")
+    fun putResetPassword(
+        @Path("email") email: String
+    )
 
 }

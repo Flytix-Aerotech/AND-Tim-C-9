@@ -61,8 +61,8 @@ class Register : Fragment() {
                     password,
                     noHp,
                     "",
-                    username
-
+                    username,
+                    false
                 )
             )
             userVM.dataPostUser.observe(viewLifecycleOwner) {

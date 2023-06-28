@@ -59,7 +59,7 @@ class Otp : Fragment() {
         } else {
             otpViewModel.sendOVerifOtp(email!!, otp)
             otpViewModel.verifOtp.observe(viewLifecycleOwner) {
-                if (it.msg == "OTP verified successfully") {
+                if (it.message == "Account verified successfully") {
                     findNavController().navigate(R.id.action_otp_to_login2)
                     Toast.makeText(requireContext(), "Verifikasi Berhasil", Toast.LENGTH_SHORT)
                         .show()
