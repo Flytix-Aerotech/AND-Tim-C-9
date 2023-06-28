@@ -177,8 +177,7 @@
                                 android:layout_centerInParent="true"
                                 android:layout_marginTop="11dp"
                                 android:layout_toEndOf="@id/iv_keberangkatan"
-                                android:hint="DD/MM/YYYY"
-                                />
+                                android:hint="DD/MM/YYYY" />
 <!--                            android:clickable="true"-->
 <!--                            android:cursorVisible="false"-->
 <!--                            android:focusable="false"-->

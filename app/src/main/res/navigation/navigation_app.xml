@@ -93,12 +93,45 @@
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <action
-            android:id="@+id/action_detail_to_dataPenumpang"
+            android:id="@+id/action_detail_to_dataPemesan"
+            app:destination="@id/dataPemesan" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataPemesan"
+        android:name="com.aerotech.flytix.view.home.search.DataPemesan"
+        android:label="fragment_data_pemesan"
+        tools:layout="@layout/fragment_data_pemesan" >
+        <action
+            android:id="@+id/action_dataPemesan_to_resultSearch"
+            app:destination="@id/resultSearch" />
+        <action
+            android:id="@+id/action_dataPemesan_to_history"
+            app:destination="@id/history" />
+        <action
+            android:id="@+id/action_dataPemesan_to_dataPenumpang"
             app:destination="@id/dataPenumpang" />
     </fragment>
     <fragment
         android:id="@+id/dataPenumpang"
         android:name="com.aerotech.flytix.view.home.search.DataPenumpang"
         android:label="fragment_data_penumpang"
-        tools:layout="@layout/fragment_data_penumpang" />
+        tools:layout="@layout/fragment_data_penumpang" >
+        <action
+            android:id="@+id/action_dataPenumpang_to_beforeCheckout"
+            app:destination="@id/beforeCheckout" />
+    </fragment>
+    <fragment
+        android:id="@+id/beforeCheckout"
+        android:name="com.aerotech.flytix.view.home.search.BeforeCheckout"
+        android:label="fragment_before_checkout"
+        tools:layout="@layout/fragment_before_checkout" />
+    <fragment
+        android:id="@+id/otp"
+        android:name="com.aerotech.flytix.view.user.Otp"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otp_to_login2"
+            app:destination="@id/login2" />
+    </fragment>
 </navigation>

@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { navcontroler, destination, bundle ->
 
             when (destination.id) {
-                 R.id.profile,R.id.splashScreen, R.id.login2, R.id.register -> {
-                    bottomNavView.visibility = View.GONE
+                 R.id.home3,R.id.history, R.id.notifikasi2, R.id.akun2 -> {
+                    bottomNavView.visibility = View.VISIBLE
                 }
                 else -> {
-                    bottomNavView.visibility = View.VISIBLE
+                    bottomNavView.visibility = View.GONE
                 }
             }
         }

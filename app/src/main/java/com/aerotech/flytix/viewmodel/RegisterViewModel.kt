@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.aerotech.flytix.model.user.DataSendOtpItem
 import com.aerotech.flytix.model.user.DataUserResponse
 import com.aerotech.flytix.model.user.NewUser
 import com.aerotech.flytix.network.ApiService
@@ -36,6 +37,26 @@ class RegisterViewModel @Inject constructor(private val Client: ApiService) : Vi
             override fun onFailure(call: Call<DataUserResponse>, t: Throwable) {
                 Log.e("Error: ", "onFailure : ${t.message}")
             }
+        })
+    }
+
+    private val _postOtp: MutableLiveData<DataSendOtpItem> = MutableLiveData()
+    val postOtp : LiveData<DataSendOtpItem> = _postOtp
+    fun sendOtpRequest(email: String){
+        Client.postSendOtp(email).enqueue(object :Callback<DataSendOtpItem>{
+            override fun onResponse(call: Call<DataSendOtpItem>, response: Response<DataSendOtpItem>) {
+                if (response.isSuccessful){
+                    _postOtp.value = response.body()
+                    Log.i("data", response.body().toString())
+                }
+                else{
+                    Log.e("onFailure", "Cannot send data")
+                }
+            }
+            override fun onFailure(call: Call<DataSendOtpItem>, t: Throwable) {
+                Log.e("onFailure", "a")
+            }
+
         })
     }
 }

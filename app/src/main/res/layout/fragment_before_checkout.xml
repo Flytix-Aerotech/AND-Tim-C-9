@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bguniversal"
     android:padding="20dp"
-    tools:context=".view.home.search.Detail">
+    tools:context=".view.home.search.BeforeCheckout">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_judulpenerbangan"
@@ -310,7 +310,7 @@
                 android:layout_below="@id/tv_totalPembayaran"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/gold"
-                android:text="Pilih"
+                android:text="Lanjut Pembayaran"
                 android:textAllCaps="true"
                 app:strokeColor="@color/black"
                 app:strokeWidth="2dp" />

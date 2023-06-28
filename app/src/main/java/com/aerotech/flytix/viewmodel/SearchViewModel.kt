@@ -94,6 +94,23 @@ class SearchViewModel @Inject constructor(
             })
     }
 
+    //menyimpan data jumlah penumpang sesuai usianya
+    private val _dataPassenger = MutableLiveData<MutableList<Int>>()
+    val dataPassenger : LiveData<MutableList<Int>> get()= _dataPassenger
+
+    init {
+        _dataPassenger.value = mutableListOf(1,0,0)
+    }
+
+    fun setDataPassenger(index: Int,num : Int){
+        _dataPassenger.value?.apply {
+            if (index in indices) {
+                set(index, num)
+//                _dataPassenger.value = this
+            }
+        }
+    }
+
     fun simpanKeberangkatan(
         cityDeparture: String,
         cityCodeDeparture: String,
@@ -150,9 +167,28 @@ class SearchViewModel @Inject constructor(
             pref.simpanKelasKursi(kelasKursi)
         }
     }
+    fun simpanJumlahPenumpang(jumlahPenumpang: String) {
+        viewModelScope.launch {
+            pref.simpanJumlahPenumpang(jumlahPenumpang)
+        }
+    }
+
+    fun simpanArrayJumlahPenumpang(arrayJumlahPenumpang: MutableList<Int>) {
+        viewModelScope.launch {
+            pref.simpanArrayPenumpang(arrayJumlahPenumpang)
+        }
+    }
 
     fun getKelasKursi(): LiveData<String> {
         return pref.getKelasKursi.asLiveData()
+    }
+
+    fun getJumlahPenumpang(): LiveData<String> {
+        return pref.getJumlahPenumpang.asLiveData()
+    }
+
+    fun getArrayJumlahpenumpang(): LiveData<MutableList<Int>> {
+        return pref.getArrayJumlahpenumpang.asLiveData()
     }
 
     fun getKotaKeberangkatan(): LiveData<String> {

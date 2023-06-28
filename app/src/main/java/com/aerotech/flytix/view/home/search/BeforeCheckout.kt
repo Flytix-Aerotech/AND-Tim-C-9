@@ -8,14 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
-import com.aerotech.flytix.databinding.FragmentDetailBinding
+import com.aerotech.flytix.databinding.FragmentBeforeCheckoutBinding
 import com.aerotech.flytix.viewmodel.FlightViewModel
 import com.aerotech.flytix.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class Detail : Fragment() {
-    lateinit var binding: FragmentDetailBinding
+class BeforeCheckout : Fragment() {
+    lateinit var binding: FragmentBeforeCheckoutBinding
     private var isClicked = false
     private lateinit var searchViewModel: SearchViewModel
     private lateinit var flightViewModel: FlightViewModel
@@ -27,7 +27,7 @@ class Detail : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
-        binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
+        binding = FragmentBeforeCheckoutBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

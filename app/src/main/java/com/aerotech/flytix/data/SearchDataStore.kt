@@ -25,6 +25,8 @@ class SearchDataStore(@ApplicationContext val context: Context) {
         private val TANGGAL_KEMBALI = stringPreferencesKey("TANGGAL_KEMBALI")
         private val CHECK_TANGGAL_KEBERANGKATAN = booleanPreferencesKey("CHECK_TANGGAL_KEBERANGKATAN")
         private val CHECK_TANGGAL_KEMBALI = booleanPreferencesKey("CHECK_TANGGAL_KEMBALI")
+        private val JUMLAH_PENUMPANG = stringPreferencesKey("JUMLAH_PENUMPANG")
+        private val ARRAY_JUMLAH_PENUMPANG = stringPreferencesKey("ARRAY_JUMLAH_PENUMPANG")
         private val KELAS_KURSI = stringPreferencesKey("KELAS_KURSI")
         private val SATU_PERJALANAN = booleanPreferencesKey("SATU_PERJALANAN")
         private val Context.dataStore by preferencesDataStore(
@@ -64,6 +66,42 @@ class SearchDataStore(@ApplicationContext val context: Context) {
     val getKelasKursi: Flow<String> =
         context.dataStore.data.map {
             it[KELAS_KURSI] ?: ""
+        }
+
+
+    val getArrayJumlahpenumpang: Flow<MutableList<Int>> =
+        context.dataStore.data.map { preferences ->
+            val serializedList = preferences[ARRAY_JUMLAH_PENUMPANG] ?: ""
+            val list = deserializeList(serializedList)
+            list ?: mutableListOf()
+        }
+    suspend fun simpanArrayPenumpang(arrayJumlahpenumpang: MutableList<Int>) {
+        val serializedList = serializeList(arrayJumlahpenumpang)
+        context.dataStore.edit { preferences ->
+            preferences[ARRAY_JUMLAH_PENUMPANG] = serializedList
+        }
+    }
+
+    private fun serializeList(intArray: MutableList<Int>): String {
+        return intArray.joinToString(separator = ",")
+    }
+
+    private fun deserializeList(serializedList: String): MutableList<Int>? {
+        return if (serializedList.isNotEmpty()) {
+            try {
+                serializedList.split(",").map { it.toInt() }.toMutableList()
+            } catch (e: NumberFormatException) {
+                null
+            }
+        } else {
+            null
+        }
+    }
+
+
+    val getJumlahPenumpang: Flow<String> =
+        context.dataStore.data.map {
+            it[JUMLAH_PENUMPANG] ?: ""
         }
 
     val getKeyKeberangkatan: Flow<Boolean> =
@@ -146,6 +184,14 @@ class SearchDataStore(@ApplicationContext val context: Context) {
             it[KELAS_KURSI] = kelasKursi
         }
     }
+
+    suspend fun simpanJumlahPenumpang(jumlahPenumpang: String){
+        context.dataStore.edit {
+            it[JUMLAH_PENUMPANG] = jumlahPenumpang
+        }
+    }
+
+
 
     suspend fun hapusKeberangkatan(){
         context.dataStore.edit {

@@ -2,6 +2,7 @@ package com.aerotech.flytix.network
 
 import android.content.Context
 import com.aerotech.flytix.data.SearchDataStore
+import com.aerotech.flytix.data.UserDataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,4 +47,10 @@ object RetrofitClient {
     @Provides
     fun getSearchManager(@ApplicationContext context: Context): SearchDataStore =
         SearchDataStore(context)
+
+    @Provides
+    fun getUserManager(@ApplicationContext context: Context): UserDataStore =
+        UserDataStore(context)
 }
+
+

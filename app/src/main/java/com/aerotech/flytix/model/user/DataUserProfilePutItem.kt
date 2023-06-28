@@ -1,6 +1,7 @@
 package com.aerotech.flytix.model.user
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class DataUserProfilePutItem(
     @SerializedName("email")
@@ -11,4 +12,4 @@ data class DataUserProfilePutItem(
     val phoneNumber: String,
     @SerializedName("username")
     val username: String
-)
+):Serializable

@@ -1,5 +1,6 @@
 package com.aerotech.flytix.data
 
+import com.aerotech.flytix.model.books.Passenger
 import com.aerotech.flytix.model.ticket.DataPostticketSearch
 import com.aerotech.flytix.network.ApiService
 import javax.inject.Inject
@@ -20,10 +21,10 @@ class MainRepository @Inject constructor(private val Client: ApiService) {
 
     fun searchTicketUser(request: DataPostticketSearch) = Client.postSearchTicket(request)
 
-//    fun addTransaction(token: String, request: AddTransaction) = Client.addTransaction(token, request)
-//
-//    fun getTransactionId(token: String, id: Int?) = Client.getTransactionId(token, id)
-//
+    fun addTransaction(token: String, request: Passenger) = Client.addTransaction(token, request)
+
+    fun getTransactionId(token: String, id: Int?) = Client.getTransactionId(token, id)
+
 //    fun updatePayment(token: String, request: PaymentRequest) = Client.updatePayment(token, request)
 //
 //    fun cancelTransaction(token: String, id: Int?) = Client.cancelTransaction(token, id)
