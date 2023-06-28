@@ -89,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btn_login"
                 android:layout_alignParentRight="true"
+                android:contextClickable="true"
                 android:text="lupa Kata Sandi" />
 
         </RelativeLayout>

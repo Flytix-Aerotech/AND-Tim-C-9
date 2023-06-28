@@ -16,6 +16,8 @@ data class UserX(
     val photo: String,
     @SerializedName("username")
     val username: String,
+    @SerializedName("role")
+    val role: String,
     @SerializedName("verify")
     val verify : Boolean
 )

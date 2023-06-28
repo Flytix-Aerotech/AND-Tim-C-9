@@ -46,6 +46,9 @@ class Login : Fragment() {
         binding.tvDftardisini.setOnClickListener {
             findNavController().navigate(R.id.action_login2_to_register)
         }
+        binding.tvLupaPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_login2_to_forgetPassword)
+        }
 
     }
 
@@ -56,18 +59,8 @@ class Login : Fragment() {
         val emailInputUser = binding.etEmaillogin.text.toString()
         val passInputUser = binding.etPasslogin.text.toString()
         if (emailInputUser.isNotEmpty() || passInputUser.isNotEmpty()) {
-            userLoginVM.authLogin()
-            userLoginVM.livedatauserLogin.observe(viewLifecycleOwner) {
-                emailUser = it.email
-                passUser = it.password
-                emailUser = emailInputUser
-                passUser = passInputUser
-            }
-            if (emailUser == null || passUser == null) {
-                Toast.makeText(requireContext(), "Gagal Login", Toast.LENGTH_SHORT).show()
-            } else {
-                userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser, passInputUser))
-                userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner) {
+            userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser, passInputUser))
+            userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner) {
                     if (it != null) {
                         Log.i("token", "token: ${it.token}")
                         token = it.token
@@ -79,8 +72,8 @@ class Login : Fragment() {
                         Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_login2_to_home2)
                     }
-                }
             }
+
         }
     }
 }

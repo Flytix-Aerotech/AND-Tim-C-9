@@ -62,6 +62,7 @@ class Register : Fragment() {
                     noHp,
                     "",
                     username,
+                    "user",
                     false
                 )
             )

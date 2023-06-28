@@ -31,10 +31,12 @@ interface ApiService {
         @Path("email") email:String,
         @Field("otp") otp:String
     ): Call<verify_otp>
-
+    @FormUrlEncoded
     @PUT("auth/reset-password/{email}?")
     fun putResetPassword(
-        @Path("email") email: String
-    )
+        @Path("email") email: String,
+        @Field("password") password:String,
+        @Field("confirmPassword") confirmPassword:String
+    ): Call<ResetPassword>
 
 }
