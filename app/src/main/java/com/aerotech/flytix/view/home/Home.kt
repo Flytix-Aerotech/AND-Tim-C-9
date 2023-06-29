@@ -272,15 +272,14 @@ class Home : Fragment(),
                     }
                 }
             })
-//        binding.rvHome.setOnClickListener {
-//            findNavController().navigate(R.id.action_home3_to_resultSearch, bund)
-//        }
     }
 
-    override fun onStart() {
-        super.onStart()
-        getDestinasiFavorite()
-    }
+
+
+//    override fun onStart() {
+//        super.onStart()
+//        getDestinasiFavorite()
+//    }
 }
 
 

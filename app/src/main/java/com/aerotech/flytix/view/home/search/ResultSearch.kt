@@ -30,6 +30,12 @@ class ResultSearch : Fragment(), ResultSearchAdapter.ListSearchGoInterface {
     private lateinit var KelasKursi: String
 
 
+    //inisialisasi data from bundle (home fragment)
+    private var numPassenger : String = ""
+    private var seatClass : String = ""
+    private var listNumSeatPassenger : IntArray = IntArray(3)
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -77,10 +83,13 @@ class ResultSearch : Fragment(), ResultSearchAdapter.ListSearchGoInterface {
 
         searchViewModel.getKotaKeberangkatan().observe(viewLifecycleOwner) {
             binding.tvKotakeberangkatan.text = it
+            //dari  destinasi fav
+            binding.tvKotakeberangkatan.text = KotaKeberangkatan
         }
 
         searchViewModel.getKotaDestinasi().observe(viewLifecycleOwner) {
             binding.tvKotadestinasi.text = it
+            binding.tvKotadestinasi.text = KotaDestinasi
         }
 
         val adapter = ResultSearchAdapter(this)
@@ -126,13 +135,15 @@ class ResultSearch : Fragment(), ResultSearchAdapter.ListSearchGoInterface {
 //    }
 
     override fun onItemClickGo(id: Int) {
-        var bund = Bundle()
+        val bund = Bundle()
         bund.putInt("id_ticket_go", id)
         bund.putString("TanggalKeberangkatan", TanggalKeberangkatan)
         bund.putString("KotaKeberangkatan", KotaKeberangkatan)
         bund.putString("KotaDestinasi", KotaDestinasi)
         bund.putString("TanggalKembali", TanggalKembali)
-
+        val numSeatPassenger = searchViewModel.dataPassenger.value
+        bund.putIntArray("DATA_LIST_NUM_SEAT", numSeatPassenger!!.toIntArray())
         findNavController().navigate(R.id.action_resultSearch_to_detail, bund)
+        Log.d("DATA_PASSENGER", searchViewModel.dataPassenger.value.toString())
     }
 }
