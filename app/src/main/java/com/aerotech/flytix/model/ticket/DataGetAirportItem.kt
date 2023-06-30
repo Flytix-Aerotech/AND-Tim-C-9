@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 @Keep
 data class DataGetAirportItem(
     @SerializedName("arrival_name")
-    val arrivalName: String,
+    val arrivalName: String?,
     @SerializedName("arrival_terminal")
     val arrivalTerminal: String,
     @SerializedName("createdAt")

@@ -23,16 +23,27 @@ class SearchDataStore(@ApplicationContext val context: Context) {
         private val CHECK_DESTINASI = booleanPreferencesKey("CHECK_DESTINASI")
         private val TANGGAL_KEBERANGKATAN = stringPreferencesKey("TANGGAL_KEBERANGKATAN")
         private val TANGGAL_KEMBALI = stringPreferencesKey("TANGGAL_KEMBALI")
-        private val CHECK_TANGGAL_KEBERANGKATAN = booleanPreferencesKey("CHECK_TANGGAL_KEBERANGKATAN")
+        private val CHECK_TANGGAL_KEBERANGKATAN =
+            booleanPreferencesKey("CHECK_TANGGAL_KEBERANGKATAN")
         private val CHECK_TANGGAL_KEMBALI = booleanPreferencesKey("CHECK_TANGGAL_KEMBALI")
         private val JUMLAH_PENUMPANG = stringPreferencesKey("JUMLAH_PENUMPANG")
+        private val JUMLAH_DEWASA = stringPreferencesKey("JUMLAH_DEWASA")
+        private val JUMLAH_ANAK = stringPreferencesKey("JUMLAH_ANAK")
+        private val JUMLAH_BAYI = stringPreferencesKey("JUMLAH_BAYI")
         private val ARRAY_JUMLAH_PENUMPANG = stringPreferencesKey("ARRAY_JUMLAH_PENUMPANG")
         private val KELAS_KURSI = stringPreferencesKey("KELAS_KURSI")
         private val SATU_PERJALANAN = booleanPreferencesKey("SATU_PERJALANAN")
+        private val TIKET_KEBERANGKATAN = stringPreferencesKey("TIKET_KEBERANGKATAN")
+        private val TIKET_KEPULANGAN = stringPreferencesKey("TIKET_KEPULANGAN")
         private val Context.dataStore by preferencesDataStore(
             name = NAMA_DATASTORE
         )
     }
+
+    val getjumlahTotalPenumpang: Flow<String> =
+        context.dataStore.data.map {
+            it[JUMLAH_PENUMPANG] ?: ""
+        }
 
     val getKotaKeberangkatan: Flow<String> =
         context.dataStore.data.map {
@@ -68,6 +79,16 @@ class SearchDataStore(@ApplicationContext val context: Context) {
             it[KELAS_KURSI] ?: ""
         }
 
+    val getIdTiketkeberangkatan: Flow<String> =
+        context.dataStore.data.map {
+            it[TIKET_KEBERANGKATAN] ?: ""
+        }
+
+    val getIdTiketKepulangan: Flow<String> =
+        context.dataStore.data.map {
+            it[TIKET_KEPULANGAN] ?: ""
+        }
+
 
     val getArrayJumlahpenumpang: Flow<MutableList<Int>> =
         context.dataStore.data.map { preferences ->
@@ -75,6 +96,7 @@ class SearchDataStore(@ApplicationContext val context: Context) {
             val list = deserializeList(serializedList)
             list ?: mutableListOf()
         }
+
     suspend fun simpanArrayPenumpang(arrayJumlahpenumpang: MutableList<Int>) {
         val serializedList = serializeList(arrayJumlahpenumpang)
         context.dataStore.edit { preferences ->
@@ -99,9 +121,17 @@ class SearchDataStore(@ApplicationContext val context: Context) {
     }
 
 
-    val getJumlahPenumpang: Flow<String> =
+    val getJumlahPenumpangDewasa: Flow<String> =
         context.dataStore.data.map {
-            it[JUMLAH_PENUMPANG] ?: ""
+            it[JUMLAH_DEWASA] ?: "1"
+        }
+    val getJumlahPenumpangAnak: Flow<String> =
+        context.dataStore.data.map {
+            it[JUMLAH_ANAK] ?: "0"
+        }
+    val getJumlahPenumpangBayi: Flow<String> =
+        context.dataStore.data.map {
+            it[JUMLAH_BAYI] ?: "0"
         }
 
     val getKeyKeberangkatan: Flow<Boolean> =
@@ -129,29 +159,41 @@ class SearchDataStore(@ApplicationContext val context: Context) {
             it[SATU_PERJALANAN] ?: false
         }
 
-    suspend fun simpanTripOneway(isOneway: Boolean){
+    suspend fun simpanTripOneway(isOneway: Boolean) {
         context.dataStore.edit {
             it[SATU_PERJALANAN] = isOneway
         }
     }
 
-    suspend fun simpanValueTanggalKeberangkatan(departureDate: String){
+    suspend fun simpanIDTiketKeberangkatan(idTiketKeberangkatan: String) {
+        context.dataStore.edit {
+            it[TIKET_KEBERANGKATAN] = idTiketKeberangkatan
+        }
+    }
+    suspend fun simpanIDTiketKepulangan(idTiketKepulangan: String) {
+        context.dataStore.edit {
+            it[TIKET_KEPULANGAN] = idTiketKepulangan
+        }
+    }
+
+    suspend fun simpanValueTanggalKeberangkatan(departureDate: String) {
         context.dataStore.edit {
             it[TANGGAL_KEBERANGKATAN] = departureDate
         }
     }
 
-    suspend fun simpanValueTanggalKembali(returnDate: String){
+    suspend fun simpanValueTanggalKembali(returnDate: String) {
         context.dataStore.edit {
             it[TANGGAL_KEMBALI] = returnDate
         }
     }
 
 
-
-
-
-    suspend fun simpanKeberangkatan(kotaKeberangkatan: String, kodeKotaKeberangkatan: String, checkKeberangkatan: Boolean) {
+    suspend fun simpanKeberangkatan(
+        kotaKeberangkatan: String,
+        kodeKotaKeberangkatan: String,
+        checkKeberangkatan: Boolean
+    ) {
         context.dataStore.edit {
             it[KOTA_KEBERANGKATAN] = kotaKeberangkatan
             it[KODEKOTA_KEBERANGKATAN] = kodeKotaKeberangkatan
@@ -165,7 +207,11 @@ class SearchDataStore(@ApplicationContext val context: Context) {
         }
     }
 
-    suspend fun simpanDestinasi(kotaDestinasi: String, KodeKotaDestinasi: String, checkDestinasi: Boolean) {
+    suspend fun simpanDestinasi(
+        kotaDestinasi: String,
+        KodeKotaDestinasi: String,
+        checkDestinasi: Boolean
+    ) {
         context.dataStore.edit {
             it[KOTA_DESTINASI] = kotaDestinasi
             it[KODEKOTA_DESTINASI] = KodeKotaDestinasi
@@ -179,21 +225,50 @@ class SearchDataStore(@ApplicationContext val context: Context) {
         }
     }
 
-    suspend fun simpanKelasKursi(kelasKursi: String){
+    suspend fun simpanKelasKursi(kelasKursi: String) {
         context.dataStore.edit {
             it[KELAS_KURSI] = kelasKursi
         }
     }
 
-    suspend fun simpanJumlahPenumpang(jumlahPenumpang: String){
+    suspend fun simpanJumlahTotalPenumpang(jumlahTotal: String) {
         context.dataStore.edit {
-            it[JUMLAH_PENUMPANG] = jumlahPenumpang
+            it[JUMLAH_PENUMPANG] = jumlahTotal
+        }
+    }
+
+    suspend fun simpanJumlahPenumpang(
+        jumlahDewasa: String,
+        jumlahAnak: String,
+        jumlahBayi: String
+    ) {
+        context.dataStore.edit {
+            it[JUMLAH_DEWASA] = jumlahDewasa
+            it[JUMLAH_ANAK] = jumlahAnak
+            it[JUMLAH_BAYI] = jumlahBayi
+        }
+    }
+
+    suspend fun simpanJumlahDewasa(jumlahDewasa: String) {
+        context.dataStore.edit {
+            it[JUMLAH_DEWASA] = jumlahDewasa
+        }
+    }
+
+    suspend fun simpanJumlahAnak(jumlahAnak: String) {
+        context.dataStore.edit {
+            it[JUMLAH_ANAK] = jumlahAnak
+        }
+    }
+
+    suspend fun simpanJumlahBayi(jumlahBayi: String) {
+        context.dataStore.edit {
+            it[JUMLAH_BAYI] = jumlahBayi
         }
     }
 
 
-
-    suspend fun hapusKeberangkatan(){
+    suspend fun hapusKeberangkatan() {
         context.dataStore.edit {
             it.remove(KOTA_KEBERANGKATAN)
             it.remove(KODEKOTA_KEBERANGKATAN)
@@ -201,7 +276,7 @@ class SearchDataStore(@ApplicationContext val context: Context) {
         }
     }
 
-    suspend fun hapusDestinasi(){
+    suspend fun hapusDestinasi() {
         context.dataStore.edit {
             it.remove(KOTA_DESTINASI)
             it.remove(KODEKOTA_DESTINASI)
@@ -209,19 +284,19 @@ class SearchDataStore(@ApplicationContext val context: Context) {
         }
     }
 
-    suspend fun hapusTanggalKeberangkatan(){
+    suspend fun hapusTanggalKeberangkatan() {
         context.dataStore.edit {
             it.remove(TANGGAL_KEBERANGKATAN)
         }
     }
 
-    suspend fun hapusTanggalKembali(){
+    suspend fun hapusTanggalKembali() {
         context.dataStore.edit {
             it.remove(TANGGAL_KEMBALI)
         }
     }
 
-    suspend fun hapusOnewayTrip(){
+    suspend fun hapusOnewayTrip() {
         context.dataStore.edit {
             it.remove(SATU_PERJALANAN)
         }

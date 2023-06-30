@@ -1,12 +1,8 @@
 package com.aerotech.flytix.network
 
-import com.aerotech.flytix.model.airport.DataGetAirportResponse
-import com.aerotech.flytix.model.books.DataBooksResponse
-import com.aerotech.flytix.model.books.Passenger
 import com.aerotech.flytix.model.ticket.DataGetTicketIDResponse
 import com.aerotech.flytix.model.ticket.DataGetTicketResponse
 import com.aerotech.flytix.model.ticket.DataPostticketSearch
-import com.aerotech.flytix.model.ticket.search.DataSearchTicketResponse
 import com.aerotech.flytix.model.user.DataSendOtpItem
 import com.aerotech.flytix.model.user.DataUserLoginItem
 import com.aerotech.flytix.model.user.DataUserProfilePutItem
@@ -14,6 +10,8 @@ import com.aerotech.flytix.model.user.DataUserResponse
 import com.aerotech.flytix.model.user.DataVerifyOtpItem
 import com.aerotech.flytix.model.user.NewUser
 import com.aerotech.flytix.model.user.User
+import com.dwiki.tiketku.model.penumpang.PenumpangRequest
+import com.dwiki.tiketku.model.penumpang.ResponsePenumpang
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -23,10 +21,6 @@ interface ApiService {
     @POST("auth/register")
     fun postRegister(@Body request: NewUser) : Call<DataUserResponse>
 
-
-//    @POST("auth/login")
-//    fun postLogin(@Body request: DataUserLoginItem): Call<DataUserResponse>
-
         @Headers(
         "Content-Type:application/json",
         "Accept:*/*"
@@ -34,12 +28,6 @@ interface ApiService {
     @POST("auth/login")
     fun postLoginUser(@Body request: DataUserLoginItem): Call<DataUserResponse>
 
-//    @FormUrlEncoded
-//    @POST("auth/login")
-//    fun userPostLogin(
-//        @Field("email") email:String,
-//        @Field("password") password:String
-//    ): Call<DataUserResponse>
     @GET("auth/users")
     fun postUserLogin(): Call<User>
 
@@ -88,26 +76,22 @@ interface ApiService {
     @GET("tickets/{id}")
     fun getFlightDetail(@Path("id") id: Int) : Call<DataGetTicketIDResponse>
 
-    @GET("airports")
-    fun getAirport() : Call<DataGetAirportResponse>
-
-
-    @Headers(
-        "Content-Type:application/json",
-        "Accept:*/*"
-    )
-    @FormUrlEncoded
-    @POST("tickets/filter")
-    fun postFilterTicket(@Field("departure_date")departureDate: String, @Field("arrival_date")arrivalDate: String,
-                         @Field("departure_location")departureLocation: String, @Field("arrival_location")arrivalLocation: String, @Field("type_of_class")typeofClass: String): Call<DataSearchTicketResponse>
-
     // search
     @GET("tickets/search")
     fun search(@Query("dl")departureLocation : String, @Query("al")arrivalLocation: String,
                @Query("dd")departureDate: String, @Query("toc")typeofClass: String): Call<DataGetTicketResponse>
+
     @GET("tickets/search")
-    fun searchwithoutad(@Query("dl")departureLocation : String, @Query("al")arrivalLocation: String,
+    fun searchTicketOw(@Query("dl")departureLocation : String, @Query("al")arrivalLocation: String,
                @Query("dd")departureDate: String, @Query("toc")typeofClass: String): Call<DataGetTicketResponse>
+
+    @GET("tickets/search")
+    fun searchTicketRt(@Query("dl")departureLocation : String, @Query("al")arrivalLocation: String,
+                       @Query("dd")arrivalDate: String, @Query("toc")typeofClass: String): Call<DataGetTicketResponse>
+
+    @GET("tickets/search")
+    fun searchwithad(@Query("dl")departureLocation : String, @Query("al")arrivalLocation: String,
+               @Query("dd")arrivalDate: String, @Query("toc")typeofClass: String): Call<DataGetTicketResponse>
 
 
     @Headers(
@@ -118,12 +102,22 @@ interface ApiService {
     fun postSearchTicket(@Body request: DataPostticketSearch): Call<DataGetTicketResponse>
 
 
-    @POST("booking")
-    fun addTransaction(@Header("Authorization")token: String, @Body request : Passenger) : Call<DataBooksResponse>
+    //Transaction Service
+//    @POST("booking")
+//    fun addTransaction(@Header("Authorization")token: String, @Body request : Passenger) : Call<DataBooksResponse>
+//
+//    @GET("booking/{id}")
+//    fun getTransactionId(@Header("Authorization") token: String, @Path("id") id: Int?) : Call<DataBooksResponse>
 
-    @GET("booking/{id}")
-    fun getTransactionId(@Header("Authorization") token: String, @Path("id") id: Int?) : Call<DataBooksResponse>
-
+    @Headers(
+        "Content-Type:application/json",
+        "Accept:*/*"
+    )
+    @POST("checkout")
+    fun postCheckoutPenumpang(
+        @Header("Authorization") token:String,
+        @Body requestPenumpang: PenumpangRequest
+    ):Call<ResponsePenumpang>
 
 //    @GET("histories/filter")
 //    fun getTransactionFilter(@Header("Authorization")token: String, @Query("status")status: String) : Call<TransactionHistory>

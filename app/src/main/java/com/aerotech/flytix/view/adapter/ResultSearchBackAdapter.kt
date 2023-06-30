@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aerotech.flytix.databinding.ItemListticketBinding
 import com.aerotech.flytix.model.ticket.DataGetTicketItem
 
-class ResultSearchAdapter (private var itemClick: ListSearchGoInterface) : RecyclerView.Adapter<ResultSearchAdapter.ViewHolder>(){
+class ResultSearchBackAdapter (private var itemClick: ListSearchBackInterface) : RecyclerView.Adapter<ResultSearchBackAdapter.ViewHolder>(){
 
     private val differCallback = object : DiffUtil.ItemCallback<DataGetTicketItem>(){
         override fun areItemsTheSame(
@@ -34,7 +34,7 @@ class ResultSearchAdapter (private var itemClick: ListSearchGoInterface) : Recyc
         fun bind(item: DataGetTicketItem) {
             binding.ticket =item
             binding.cvDestinasi.setOnClickListener{
-                item.id.let { it1 -> itemClick.onItemClickGo(it1!!) }
+                item.id.let { it1 -> itemClick.onItemClickBack(it1!!) }
             }
 
         }
@@ -58,7 +58,7 @@ class ResultSearchAdapter (private var itemClick: ListSearchGoInterface) : Recyc
         differ.submitList(data)
     }
 
-    interface ListSearchGoInterface {
-        fun onItemClickGo(id: Int)
+    interface ListSearchBackInterface {
+        fun onItemClickBack(id: Int)
     }
 }

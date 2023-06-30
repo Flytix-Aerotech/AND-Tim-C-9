@@ -55,7 +55,41 @@ class Login : Fragment() {
         initListener()
     }
 
-
+//    fun cobaLogin() {
+//        val emailInputUser = binding.etEmaillogin.text.toString()
+//        val passInputUser = binding.etPasslogin.text.toString()
+//
+//        if (emailInputUser.isNotEmpty() && passInputUser.isNotEmpty()) {
+//            userLoginVM.authLoginUser(DataUserLoginItem(emailInputUser, passInputUser))
+////            userLoginVM.authLogin()
+//            userLoginVM.authLiveDataUserLogin.observe(viewLifecycleOwner) {
+//                if (it.message == "failed") {
+//                    val emailUser = it.user.email
+//                    val passUser = it.user.password
+//                    if (emailUser.isNotEmpty() && passUser.isNotEmpty()) {
+//                        Log.i("tokenn", "token: ${it.token}")
+//                        token = it.token
+//                        // input to sharedpreferences
+//                        sharedPref =
+//                            requireActivity().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+//                        val userData = sharedPref.edit()
+//                        userData.putString("token", it.token)
+//                        userData.apply()
+//                        Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_SHORT).show()
+//                        findNavController().navigate(R.id.action_login2_to_home3)
+//                    } else {
+//                        Toast.makeText(requireContext(), "Gagal Login", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            }
+////            if (emailUser != emailInputUser && passUser != passInputUser) {
+////
+////            } else {
+////
+////            }
+//        }
+//        Toast.makeText(requireContext(), "Email dan Password Tidak Terdaftar", Toast.LENGTH_SHORT).show()
+//    }
     fun fiksLogin() {
         val emailInputUser = binding.etEmaillogin.text.toString()
         val passInputUser = binding.etPasslogin.text.toString()

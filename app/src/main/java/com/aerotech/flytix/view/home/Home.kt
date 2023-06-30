@@ -1,28 +1,23 @@
 package com.aerotech.flytix.view.home
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
-import android.view.Gravity
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentHomeBinding
-import com.aerotech.flytix.databinding.LayoutDialogPenumpangBinding
 import com.aerotech.flytix.viewmodel.SearchViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
@@ -33,14 +28,16 @@ class Home : Fragment(),
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var searchViewModel: SearchViewModel
+    lateinit var bund: Bundle
+    private var tanggalPergi: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
+        bund = Bundle()
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -48,7 +45,6 @@ class Home : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.etAsallokasi.setOnClickListener {
             val pilihLokasiAsal = Darimana()
             pilihLokasiAsal.listener = this
@@ -62,30 +58,45 @@ class Home : Fragment(),
         }
 
         binding.etPenumpang.setOnClickListener {
-            setPassengers()
+            val setpenumpang = Penumpang()
+            setpenumpang.show(parentFragmentManager, setpenumpang.tag)
         }
-
 
         binding.etKeberangkatan.setOnClickListener {
-            tripOneway()
+            pilihTanggalkeberangkatan()
         }
-
+        searchViewModel.getTanggalKeberangkatan().observe(viewLifecycleOwner) {
+            if (it != null) {
+                binding.etKeberangkatan.text = it
+            }
+        }
 
         binding.etKepulangan.setOnClickListener {
-            roundTrip()
+            pilihTanggalKepulangan()
         }
+        searchViewModel.getTanggalKembali().observe(viewLifecycleOwner) {
+            if (it != null) {
+                binding.etKepulangan.text = it
+            }
+        }
+
 
         binding.switchPp.setOnCheckedChangeListener { _, ischecked ->
             if (ischecked) {
+                searchViewModel.simpanTripOneway(true)
                 binding.tvKepulangan.visibility = View.VISIBLE
                 binding.ivKepulangan.visibility = View.VISIBLE
                 binding.etKepulangan.visibility = View.VISIBLE
+                Log.d("Beranda Fragment", "switch true")
             } else {
+                searchViewModel.simpanTripOneway(false)
                 binding.tvKepulangan.visibility = View.GONE
                 binding.ivKepulangan.visibility = View.GONE
                 binding.etKepulangan.visibility = View.GONE
+                Log.d("Beranda Fragment", "switch false")
             }
         }
+
 
         binding.etKelaskursi.setOnClickListener {
             val pilihKelasKursi = KelasKursi()
@@ -93,19 +104,151 @@ class Home : Fragment(),
             pilihKelasKursi.show(parentFragmentManager, pilihKelasKursi.tag)
         }
 
-        getListView()
-
-        binding.btnCaripenerbangan.setOnClickListener {
-//            navtoResultSearch()
-        }
-
+        getListViewDS()
     }
 
-//    fun navtoResultSearch(){
-//            findNavController().navigate(R.id.action_home3_to_resultSearch,)
-//            Log.d("DATA_PASSENGER", searchViewModel.dataPassenger.value.toString())
-//    }
+    private fun getListViewDS() {
+        val bund = Bundle()
+        searchViewModel.getKotaKeberangkatan().observe(viewLifecycleOwner) {
+            if (it != null) {
+                val editableText = Editable.Factory.getInstance().newEditable(it)
+                binding.etAsallokasi.text = editableText
+                bund.putString("KotaKeberangkatan", it)
+            }
+        }
+        searchViewModel.getKotaDestinasi().observe(viewLifecycleOwner) {
+            if (it != null) {
+                val editableText = Editable.Factory.getInstance().newEditable(it)
+                binding.etTujuanlokasi.text = editableText
+                bund.putString("KotaDestinasi", it)
+            }
+        }
+        searchViewModel.getTanggalKeberangkatan().observe(viewLifecycleOwner) {
+            if (it != null) {
+                bund.putString("TanggalKeberangkatan", it)
+            }
+        }
 
+        searchViewModel.getJumlahTotalPenumpang().observe(viewLifecycleOwner) {
+            if (it != null) {
+                var editableText = Editable.Factory.getInstance().newEditable(it + " Penumpang")
+                binding.etPenumpang.text = editableText
+            }
+        }
+
+        searchViewModel.getKelasKursi().observe(viewLifecycleOwner) {
+            if (it != null) {
+                val editableText = Editable.Factory.getInstance().newEditable(it)
+                binding.etKelaskursi.text = editableText
+                bund.putString("KelasKursi", it)
+            }
+        }
+        searchViewModel.getValueTripOneway().observe(viewLifecycleOwner) {
+            if (it == false) {
+                searchViewModel.hapusTanggalKembali()
+                bund.putString("TanggalKembali", "")
+            } else {
+                searchViewModel.getTanggalKembali().observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        bund.putString("TanggalKembali", it.toString())
+                    }
+                }
+            }
+        }
+        searchViewModel.getValueTripOneway().observe(viewLifecycleOwner) {
+            if (it != null) {
+                binding.switchPp.isChecked = it
+                var check = it
+                searchViewModel.simpanTripOneway(check)
+                Log.d("home fragment", "$check")
+                binding.btnCaripenerbangan.setOnClickListener {
+                    if (check == false) {
+                        searchViewModel.hapusTanggalKembali()
+                        findNavController().navigate(R.id.action_home3_to_pencarianTicketOw, bund)
+                    } else {
+                        findNavController().navigate(R.id.action_home3_to_pencarianTicketRtDep,bund)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun pilihTanggalkeberangkatan() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            requireContext(), R.style.DateDialogTheme,
+            { _, year, month, dayOfMonth ->
+//                val bulan =nameMonth[month]
+                var tanggalPerginya = "$year-0${month + 1}-$dayOfMonth"
+                binding.etKeberangkatan.setText(tanggalPerginya)
+                searchViewModel.simpanTanggalKeberangkatan(tanggalPerginya)
+            },
+            year, month, day,
+        )
+        datePickerDialog.show()
+        datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
+            .setTextColor(resources.getColor(R.color.black))
+        datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE)
+            .setTextColor(resources.getColor(R.color.black))
+    }
+
+    fun pilihTanggalKepulangan() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            requireContext(), R.style.DateDialogTheme,
+            { _, year, month, dayOfMonth ->
+//                val bulan =nameMonth[month]
+                var tanggalPerginya = "$year-0${month + 1}-$dayOfMonth"
+                binding.etKepulangan.setText(tanggalPerginya)
+                searchViewModel.simpanTanggalKembali(tanggalPerginya)
+            },
+            year, month, day,
+        )
+        datePickerDialog.show()
+        datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
+            .setTextColor(resources.getColor(R.color.black))
+        datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE)
+            .setTextColor(resources.getColor(R.color.black))
+//        val today = MaterialDatePicker.todayInUtcMilliseconds()
+//        val materialDateBuilder = MaterialDatePicker.Builder.datePicker()
+//            .setTitleText("Pilih Tanggal")
+//            .setSelection(today)
+//            .setCalendarConstraints(
+//                CalendarConstraints.Builder()
+////                    .setValidator(DateValidatorPointForward.now())
+//                    .build()
+//            )
+//        val materialDatePicker = materialDateBuilder.build()
+//
+//        if (materialDatePicker.dialog == null && !materialDatePicker.isVisible) {
+//            materialDatePicker.show(childFragmentManager, "MATERIAL_DATE_PICKER")
+//        }
+//
+//        materialDatePicker.addOnPositiveButtonClickListener {
+//
+//            val selecteddateInMillis = it as Long
+//            var selectedDate = Date(selecteddateInMillis)
+//
+////            if (selectedDate.before(selectedDate)) {
+////                // Jika tanggal yang dipilih sebelum hari ini, atur tanggal kembali ke hari ini
+////                selectedDate = selectedDate
+////            }
+//            val simpleFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+//            val formattedDate = simpleFormat.format(selectedDate)
+//            binding.etKepulangan.text = formattedDate
+//            searchViewModel.getValueTanggalKembali().observe(viewLifecycleOwner) {
+//                searchViewModel.simpanTanggalKembali(formattedDate)
+//            }
+//        }
+    }
 
     override fun pilihKelasKursi(kelas: String) {
         binding.etKelaskursi.setText(kelas)
@@ -117,6 +260,11 @@ class Home : Fragment(),
 
     override fun getItemKotaTujuan(kota: String) {
         binding.etTujuanlokasi.setText(kota)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getListViewDS()
     }
 
     private fun tripOneway() {
@@ -134,7 +282,7 @@ class Home : Fragment(),
             .setSelection(today)
             .setCalendarConstraints(
                 CalendarConstraints.Builder()
-                    .setValidator(DateValidatorPointForward.now())
+//                    .setValidator(DateValidatorPointForward.now())
                     .build()
             )
         val materialDatePicker = materialDateBuilder.build()
@@ -163,7 +311,7 @@ class Home : Fragment(),
             .setSelection(today)
             .setCalendarConstraints(
                 CalendarConstraints.Builder()
-                    .setValidator(DateValidatorPointForward.now())
+//                    .setValidator(DateValidatorPointForward.now())
                     .build()
             )
         val materialDatePicker = materialDateBuilder.build()
@@ -211,14 +359,28 @@ class Home : Fragment(),
                 bund.putString("TanggalKeberangkatan", it.toString())
             }
         }
-        searchViewModel.getJumlahPenumpang().observe(viewLifecycleOwner) {
-            if (it != null) {
-                val editableText = Editable.Factory.getInstance().newEditable(it.toString())
-                binding.etPenumpang.text = editableText
-                bund.putString("JumlahPenumpang", it)
 
+        searchViewModel.getJumlahTotalPenumpang().observe(viewLifecycleOwner) {
+            if (it != null) {
+                var editableText = Editable.Factory.getInstance().newEditable(it + " Penumpang")
+                binding.etPenumpang.text = editableText
             }
         }
+
+//        searchViewModel.getJumlahPenumpangDewasa().observe(viewLifecycleOwner){
+//            if (it!=null){
+//                val editableText = Editable.Factory.getInstance().newEditable(it)
+//                binding.etPenumpang.text = editableText
+//            }
+//        }
+//        searchViewModel.getJumlahPenumpang().observe(viewLifecycleOwner) {
+//            if (it != null) {
+//                val editableText = Editable.Factory.getInstance().newEditable(it.toString())
+//                binding.etPenumpang.text = editableText
+//                bund.putString("JumlahPenumpang", )
+//
+//            }
+//        }
 
         searchViewModel.getKelasKursi().observe(viewLifecycleOwner) {
             if (it != null) {
@@ -240,153 +402,13 @@ class Home : Fragment(),
             }
         }
 
-        binding.btnCaripenerbangan.setOnClickListener {
-            findNavController().navigate(R.id.action_home3_to_resultSearch,bund)
-        }
+//        binding.btnCaripenerbangan.setOnClickListener {
+//            findNavController().navigate(R.id.action_home3_to_resultSearch,bund)
+//        }
 //        val numSeatPassenger = searchViewModel.dataPassenger.value
 //        bund.putIntArray("DATA_LIST_NUM_SEAT", numSeatPassenger!!.toIntArray())
     }
 
-    //SET COUNT PASSENGERS
-    //mengatur jumlah penumpang berdasarkan kategori usia dari dewasa, anak-anak, hingga balita
-    private fun setPassengers() {
-        //bottom sheet
-        val dialog = BottomSheetDialog(requireContext())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.layout_dialog_penumpang)
-        val bindingDialog = LayoutDialogPenumpangBinding.inflate(layoutInflater)
-        dialog.setContentView(bindingDialog.root)
-
-        //deklarsi dari view model
-        //set konfigurasi jumlah penumpang yang di dapatkan dari viewmodel
-//        searchViewModel.getArrayJumlahpenumpang().observe(viewLifecycleOwner){
-//            if (it!= null){
-//                bindingDialog.tvJumlahpenumpangdewasa.text = it!![].toString()
-//                bindingDialog.tvJumlahpenumpanganak.text = it.toString()
-//                bindingDialog.tvJumlahpenumpangbayi.text = it.toString()
-//                searchViewModel.simpanArrayJumlahPenumpang(it)
-//                bund.putIntArray("ListJumlahPenumpang", it)
-//                Log.d("DATA_PASSENGER", it.toString())
-//            }
-//        }
-//        val numSeatPassenger = searchViewModel.dataPassenger.value
-//        searchViewModel.simpanArrayJumlahPenumpang(numSeatPassenger!!)
-//        searchViewModel.getArrayJumlahpenumpang().observe(viewLifecycleOwner){
-//            if (it != null){
-//                bindingDialog.tvJumlahpenumpangdewasa.text = it[0].toString()
-//                bindingDialog.tvJumlahpenumpanganak.text = it[1].toString()
-//                bindingDialog.tvJumlahpenumpangbayi.text = it[2].toString()
-//                searchViewModel.simpanArrayJumlahPenumpang(it)
-//            }
-//        }
-        if (searchViewModel.dataPassenger.value != null) {
-            bindingDialog.tvJumlahpenumpangdewasa.text =
-                searchViewModel.dataPassenger.value!![0].toString()
-            bindingDialog.tvJumlahpenumpanganak.text =
-                searchViewModel.dataPassenger.value!![1].toString()
-            bindingDialog.tvJumlahpenumpangbayi.text =
-                searchViewModel.dataPassenger.value!![2].toString()
-        }
-
-        bindingDialog.btnClose.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        setTotalPassengers(bindingDialog)
-
-
-        bindingDialog.btnsimpanpenumpang.setOnClickListener {
-            //apakah baby dihitung ???
-            //simpan hasil total dan komposisi jumlah penumpang dengan livedata<List> di viewmodel
-            val totalPassenger = countPassengers(
-                bindingDialog.tvJumlahpenumpangdewasa,
-                bindingDialog.tvJumlahpenumpanganak,
-                bindingDialog.tvJumlahpenumpangbayi
-            )
-
-            if (totalPassenger >= 1) {
-
-                //set data jumlah passenger ke dalam viewmodel
-                searchViewModel.setDataPassenger(
-                    0,
-                    bindingDialog.tvJumlahpenumpangdewasa.text.toString().toInt()
-                )
-                searchViewModel.setDataPassenger(
-                    1,
-                    bindingDialog.tvJumlahpenumpanganak.text.toString().toInt()
-                )
-                searchViewModel.setDataPassenger(
-                    2,
-                    bindingDialog.tvJumlahpenumpangbayi.text.toString().toInt()
-                )
-
-                val total = "$totalPassenger Penumpang"
-                searchViewModel.simpanJumlahPenumpang(total)
-//                binding.tvPassengers.text = total
-            }
-
-            dialog.dismiss()
-        }
-        dialog.show()
-        dialog.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        );
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
-//        dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation;
-        dialog.window?.setGravity(Gravity.BOTTOM);
-    }
-
-    private fun setTotalPassengers(bindingDialog: LayoutDialogPenumpangBinding) {
-        bindingDialog.imgTambahDewasa.setOnClickListener {
-            val totalAdult = bindingDialog.tvJumlahpenumpangdewasa.text.toString().toInt() + 1
-            bindingDialog.tvJumlahpenumpangdewasa.text = totalAdult.toString()
-        }
-
-        bindingDialog.imbTambahAnak.setOnClickListener {
-            val totalChild = bindingDialog.tvJumlahpenumpanganak.text.toString().toInt() + 1
-            bindingDialog.tvJumlahpenumpanganak.text = totalChild.toString()
-        }
-        bindingDialog.imbTambahBayi.setOnClickListener {
-            val totalBaby = bindingDialog.tvJumlahpenumpangbayi.text.toString().toInt() + 1
-            bindingDialog.tvJumlahpenumpangbayi.text = totalBaby.toString()
-        }
-
-        bindingDialog.imbKurangdewasa.setOnClickListener {
-            var totalAdult = bindingDialog.tvJumlahpenumpangdewasa.text.toString().toInt()
-            if (totalAdult >= 1) {
-                totalAdult -= 1
-            }
-            bindingDialog.tvJumlahpenumpangdewasa.text = totalAdult.toString()
-        }
-        bindingDialog.imbKurangAnak.setOnClickListener {
-            var totalChild = bindingDialog.tvJumlahpenumpanganak.text.toString().toInt()
-            if (totalChild >= 1) {
-                totalChild -= 1
-            }
-            bindingDialog.tvJumlahpenumpanganak.text = totalChild.toString()
-        }
-        bindingDialog.imbKurangBayi.setOnClickListener {
-            var totalBaby = bindingDialog.tvJumlahpenumpangbayi.text.toString().toInt()
-            if (totalBaby >= 1) {
-                totalBaby -= 1
-            }
-            bindingDialog.tvJumlahpenumpangbayi.text = totalBaby.toString()
-        }
-    }
-
-    private fun countPassengers(vararg passangers: TextView): Int {
-        var count = 0
-        for (item in passangers) {
-            count += item.text.toString().toInt()
-        }
-        return count
-    }
-
-    override fun onResume() {
-        super.onResume()
-        getListView()
-    }
 }
 
 

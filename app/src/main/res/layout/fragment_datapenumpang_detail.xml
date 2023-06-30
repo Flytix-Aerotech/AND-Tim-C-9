@@ -1,14 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="550dp"
-    android:background="@drawable/bguniversal">
+    android:layout_height="600dp"
+    android:background="@drawable/bguniversal"
+    tools:context=".view.home.search.DatapenumpangDetail">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_tbPenumpang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/emas">
+
+            <TextView
+                android:id="@+id/tv_judulPenumpang"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Biodata "
+                android:textAllCaps="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ic_closebottomsheetDataPenumpang"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/ic_close">
+
+            </com.google.android.material.imageview.ShapeableImageView>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_penumpang"
+        android:layout_below="@id/cv_tbPenumpang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
@@ -41,62 +77,62 @@
                     android:textColor="@color/black"
                     android:textSize="16sp" />
             </LinearLayout>
-<!--            &lt;!&ndash;    title&ndash;&gt;-->
-<!--            <LinearLayout-->
-<!--                android:id="@+id/layoutTitlePassenger"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/layoutTitle"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:orientation="vertical">-->
+            <!--            &lt;!&ndash;    title&ndash;&gt;-->
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/layoutTitlePassenger"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/layoutTitle"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:layout_marginEnd="16dp"-->
+            <!--                android:orientation="vertical">-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:fontFamily="@font/gothambold"-->
-<!--                    android:lineHeight="20dp"-->
-<!--                    android:text="Title"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="14sp" />-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:fontFamily="@font/gothambold"-->
+            <!--                    android:lineHeight="20dp"-->
+            <!--                    android:text="Title"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="14sp" />-->
 
-<!--                &lt;!&ndash;        <AutoCompleteTextView&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:id="@+id/titlePassenger"&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--                &lt;!&ndash;            &ndash;&gt;-->
-<!--                &lt;!&ndash;            android:drawableEnd="@drawable/ic_expend_more"&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:fontFamily="@font/gothambold"&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:hint="title"&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:inputType="none"&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:paddingStart="16dp"&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:paddingTop="8dp"&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:paddingEnd="16dp"&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:paddingBottom="8dp"&ndash;&gt;-->
-<!--                &lt;!&ndash;            android:textSize="16sp"&ndash;&gt;-->
-<!--                &lt;!&ndash;            tools:ignore="TouchTargetSizeCheck" />&ndash;&gt;-->
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:boxStrokeColor="@color/black">-->
+            <!--                &lt;!&ndash;        <AutoCompleteTextView&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:id="@+id/titlePassenger"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            &ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:drawableEnd="@drawable/ic_expend_more"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:fontFamily="@font/gothambold"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:hint="title"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:inputType="none"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:paddingStart="16dp"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:paddingTop="8dp"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:paddingEnd="16dp"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:paddingBottom="8dp"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            android:textSize="16sp"&ndash;&gt;-->
+            <!--                &lt;!&ndash;            tools:ignore="TouchTargetSizeCheck" />&ndash;&gt;-->
+            <!--                <com.google.android.material.textfield.TextInputLayout-->
+            <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    app:boxStrokeColor="@color/black">-->
 
-<!--                    <AutoCompleteTextView-->
-<!--                        android:id="@+id/titlePassenger"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:background="@color/putih"-->
-<!--                        android:fontFamily="@font/gothambold"-->
-<!--                        android:inputType="none"-->
-<!--                        android:padding="2dp"-->
-<!--                        android:text="Mr."-->
-<!--                        android:textSize="16sp"-->
-<!--                        app:boxStrokeColor="@color/black"-->
-<!--                        tools:ignore="SpeakableTextPresentCheck" />-->
+            <!--                    <AutoCompleteTextView-->
+            <!--                        android:id="@+id/titlePassenger"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:background="@color/putih"-->
+            <!--                        android:fontFamily="@font/gothambold"-->
+            <!--                        android:inputType="none"-->
+            <!--                        android:padding="2dp"-->
+            <!--                        android:text="Mr."-->
+            <!--                        android:textSize="16sp"-->
+            <!--                        app:boxStrokeColor="@color/black"-->
+            <!--                        tools:ignore="SpeakableTextPresentCheck" />-->
 
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
-<!--            </LinearLayout>-->
+            <!--                </com.google.android.material.textfield.TextInputLayout>-->
+            <!--            </LinearLayout>-->
             <!--    name penumpang-->
             <LinearLayout
                 android:id="@+id/layoutFullname"
@@ -232,6 +268,9 @@
                     android:fontFamily="@font/gothambold"
                     android:hint="yyyy-mm-hh"
                     android:inputType="date"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
                     android:paddingStart="16dp"
                     android:paddingTop="8dp"
                     android:paddingEnd="16dp"
@@ -317,88 +356,100 @@
                     android:textSize="16sp"
                     tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
-<!--            &lt;!&ndash;    negara penerbit&ndash;&gt;-->
-<!--            <LinearLayout-->
-<!--                android:id="@+id/layoutIssuingCountry"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/layoutIDPassenger"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:orientation="vertical">-->
+            <!--    Button-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:fontFamily="@font/gothambold"-->
-<!--                    android:lineHeight="20dp"-->
-<!--                    android:text="Negara Penerbit"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="14sp" />-->
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_simpan"
+                android:text="Simpan"
+                android:layout_below="@id/layoutIDPassenger"
+                style="@style/btngold"
+                android:layout_centerHorizontal="true">
 
-<!--                <EditText-->
-<!--                    android:id="@+id/etIssuingCountry"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
+            </com.google.android.material.button.MaterialButton>
+            <!--            &lt;!&ndash;    negara penerbit&ndash;&gt;-->
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/layoutIssuingCountry"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/layoutIDPassenger"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:layout_marginEnd="16dp"-->
+            <!--                android:orientation="vertical">-->
 
-<!--                    android:layout_marginTop="4dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:fontFamily="@font/gothambold"-->
-<!--                    android:hint="negara penerbit"-->
-<!--                    android:inputType="text"-->
-<!--                    android:paddingStart="16dp"-->
-<!--                    android:paddingTop="8dp"-->
-<!--                    android:paddingEnd="16dp"-->
-<!--                    android:textColor="@color/black"-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:fontFamily="@font/gothambold"-->
+            <!--                    android:lineHeight="20dp"-->
+            <!--                    android:text="Negara Penerbit"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="14sp" />-->
 
-<!--                    android:textColorHint="@color/black"-->
-<!--                    android:textSize="16sp"-->
-<!--                    tools:ignore="TouchTargetSizeCheck" />-->
-<!--            </LinearLayout>-->
+            <!--                <EditText-->
+            <!--                    android:id="@+id/etIssuingCountry"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
 
-<!--            &lt;!&ndash;    expire date&ndash;&gt;-->
-<!--            <LinearLayout-->
-<!--                android:id="@+id/layoutExpired"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/layoutIssuingCountry"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:layout_marginBottom="10dp"-->
-<!--                android:orientation="vertical">-->
+            <!--                    android:layout_marginTop="4dp"-->
+            <!--                    android:layout_marginBottom="10dp"-->
+            <!--                    android:fontFamily="@font/gothambold"-->
+            <!--                    android:hint="negara penerbit"-->
+            <!--                    android:inputType="text"-->
+            <!--                    android:paddingStart="16dp"-->
+            <!--                    android:paddingTop="8dp"-->
+            <!--                    android:paddingEnd="16dp"-->
+            <!--                    android:textColor="@color/black"-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:fontFamily="@font/gothambold"-->
-<!--                    android:lineHeight="20dp"-->
-<!--                    android:text="Berlaku sampai"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="14sp" />-->
+            <!--                    android:textColorHint="@color/black"-->
+            <!--                    android:textSize="16sp"-->
+            <!--                    tools:ignore="TouchTargetSizeCheck" />-->
+            <!--            </LinearLayout>-->
 
-<!--                <EditText-->
-<!--                    android:id="@+id/etExpired"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
+            <!--            &lt;!&ndash;    expire date&ndash;&gt;-->
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/layoutExpired"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/layoutIssuingCountry"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:layout_marginEnd="16dp"-->
+            <!--                android:layout_marginBottom="10dp"-->
+            <!--                android:orientation="vertical">-->
 
-<!--                    android:layout_marginTop="4dp"-->
-<!--                    android:layout_marginBottom="10dp"-->
-<!--                    android:drawableEnd="@drawable/ic_date"-->
-<!--                    android:drawableTint="@color/black"-->
-<!--                    android:fontFamily="@font/gothambold"-->
-<!--                    android:hint="yyyy-mm-hh"-->
-<!--                    android:inputType="date"-->
-<!--                    android:paddingStart="16dp"-->
-<!--                    android:paddingTop="8dp"-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:fontFamily="@font/gothambold"-->
+            <!--                    android:lineHeight="20dp"-->
+            <!--                    android:text="Berlaku sampai"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="14sp" />-->
 
-<!--                    android:paddingEnd="16dp"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textColorHint="@color/black"-->
-<!--                    android:textSize="16sp"-->
-<!--                    tools:ignore="TouchTargetSizeCheck" />-->
-<!--            </LinearLayout>-->
+            <!--                <EditText-->
+            <!--                    android:id="@+id/etExpired"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+
+            <!--                    android:layout_marginTop="4dp"-->
+            <!--                    android:layout_marginBottom="10dp"-->
+            <!--                    android:drawableEnd="@drawable/ic_date"-->
+            <!--                    android:drawableTint="@color/black"-->
+            <!--                    android:fontFamily="@font/gothambold"-->
+            <!--                    android:hint="yyyy-mm-hh"-->
+            <!--                    android:inputType="date"-->
+            <!--                    android:paddingStart="16dp"-->
+            <!--                    android:paddingTop="8dp"-->
+
+            <!--                    android:paddingEnd="16dp"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textColorHint="@color/black"-->
+            <!--                    android:textSize="16sp"-->
+            <!--                    tools:ignore="TouchTargetSizeCheck" />-->
+            <!--            </LinearLayout>-->
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 

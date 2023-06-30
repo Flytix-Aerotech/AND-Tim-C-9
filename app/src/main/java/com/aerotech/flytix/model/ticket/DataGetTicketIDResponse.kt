@@ -7,5 +7,5 @@ import com.google.gson.annotations.SerializedName
 @Keep
 data class DataGetTicketIDResponse(
     @SerializedName("data")
-    val `data`: DataGetTicketItem
+    val `data`: DataGetTicketItem?
 )

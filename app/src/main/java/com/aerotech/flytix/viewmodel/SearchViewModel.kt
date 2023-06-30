@@ -28,16 +28,91 @@ class SearchViewModel @Inject constructor(
     application: Application
 ) : AndroidViewModel(application) {
 
+    private val searchTicketOw: MutableLiveData<List<DataGetTicketItem>?> = MutableLiveData()
+    fun getLiveDataSearchTicketow(): MutableLiveData<List<DataGetTicketItem>?> = searchTicketOw
+
+    fun getDataSearchTicketsOw(
+        departureLocation: String,
+        arrivalLocation: String,
+        departureDate: String,
+        tOc: String
+    ) {
+        client.searchTicketOw(departureLocation, arrivalLocation, departureDate, tOc)
+            .enqueue(object : Callback<DataGetTicketResponse> {
+                override fun onResponse(
+                    call: Call<DataGetTicketResponse>,
+                    response: Response<DataGetTicketResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        repository.searchTicketow(
+                            departureLocation,
+                            arrivalLocation,
+                            departureDate,
+                            tOc
+                        )
+                        searchTicketOw.postValue(response.body()?.data)
+                    } else {
+                        searchTicketOw.postValue(null)
+                        Log.d("notSuccess", response.body().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<DataGetTicketResponse>, t: Throwable) {
+                    searchTicketOw.postValue(null)
+                    Log.d("Failed", t.message.toString())
+                }
+
+            })
+    }
+
+
+    private val searchTicketRt: MutableLiveData<List<DataGetTicketItem>?> = MutableLiveData()
+    fun getLiveDataSearchTicketRt(): MutableLiveData<List<DataGetTicketItem>?> = searchTicketRt
+
+    fun getDataSearchTicketsRt(
+        departureLocation: String,
+        arrivalLocation: String,
+        arrivalDate: String,
+        tOc: String
+    ) {
+        client.searchTicketRt(departureLocation, arrivalLocation, arrivalDate, tOc)
+            .enqueue(object : Callback<DataGetTicketResponse> {
+                override fun onResponse(
+                    call: Call<DataGetTicketResponse>,
+                    response: Response<DataGetTicketResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        repository.searchroundtrip(
+                            departureLocation,
+                            arrivalLocation,
+                            arrivalDate,
+                            tOc
+                        )
+                        searchTicketRt.postValue(response.body()?.data)
+                    } else {
+                        searchTicketRt.postValue(null)
+                        Log.d("notSuccess", response.body().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<DataGetTicketResponse>, t: Throwable) {
+                    searchTicketRt.postValue(null)
+                    Log.d("Failed", t.message.toString())
+                }
+
+            })
+    }
+
     private val _search: MutableLiveData<List<DataGetTicketItem>?> = MutableLiveData()
     fun getLiveDataSearch(): MutableLiveData<List<DataGetTicketItem>?> = _search
 
     fun getDataSearch(
         departureLocation: String,
         arrivalLocation: String,
-        departureDate: String,
+        arrivaldate: String,
         tOc: String
     ) {
-        client.search(departureLocation, arrivalLocation, departureDate, tOc)
+        client.search(departureLocation, arrivalLocation, arrivaldate, tOc)
             .enqueue(object : Callback<DataGetTicketResponse> {
                 override fun onResponse(
                     call: Call<DataGetTicketResponse>,
@@ -47,7 +122,41 @@ class SearchViewModel @Inject constructor(
                         repository.search(
                             departureLocation,
                             arrivalLocation,
-                            departureDate,
+                            arrivaldate,
+                            tOc
+                        )
+                        _search.postValue(response.body()?.data)
+                    } else {
+                        _search.postValue(null)
+                        Log.d("notSuccess", response.body().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<DataGetTicketResponse>, t: Throwable) {
+                    _search.postValue(null)
+                    Log.d("Failed", t.message.toString())
+                }
+
+            })
+    }
+
+    fun getDataSearchRoundtrip(
+        departureLocation: String,
+        arrivalLocation: String,
+        arrivalDate: String,
+        tOc: String
+    ) {
+        client.searchwithad(departureLocation, arrivalLocation, arrivalDate, tOc)
+            .enqueue(object : Callback<DataGetTicketResponse> {
+                override fun onResponse(
+                    call: Call<DataGetTicketResponse>,
+                    response: Response<DataGetTicketResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        repository.searchroundtrip(
+                            departureLocation,
+                            arrivalLocation,
+                            arrivalDate,
                             tOc
                         )
                         _search.postValue(response.body()?.data)
@@ -96,13 +205,13 @@ class SearchViewModel @Inject constructor(
 
     //menyimpan data jumlah penumpang sesuai usianya
     private val _dataPassenger = MutableLiveData<MutableList<Int>>()
-    val dataPassenger : LiveData<MutableList<Int>> get()= _dataPassenger
+    val dataPassenger: LiveData<MutableList<Int>> get() = _dataPassenger
 
     init {
-        _dataPassenger.value = mutableListOf(1,0,0)
+        _dataPassenger.value = mutableListOf(1, 0, 0)
     }
 
-    fun setDataPassenger(index: Int,num : Int){
+    fun setDataPassenger(index: Int, num: Int) {
         _dataPassenger.value?.apply {
             if (index in indices) {
                 set(index, num)
@@ -162,16 +271,51 @@ class SearchViewModel @Inject constructor(
         }
     }
 
+    fun simpanidTicketKeberangkatan(ticketKeberangkatan: String) {
+        viewModelScope.launch {
+            pref.simpanIDTiketKeberangkatan(ticketKeberangkatan)
+        }
+    }
+
+    fun simpanidTicketKepulangan(ticketKepulangan: String) {
+        viewModelScope.launch {
+            pref.simpanIDTiketKepulangan(ticketKepulangan)
+        }
+    }
+
     fun simpanKelasKursi(kelasKursi: String) {
         viewModelScope.launch {
             pref.simpanKelasKursi(kelasKursi)
         }
     }
-    fun simpanJumlahPenumpang(jumlahPenumpang: String) {
+
+    fun simpanJumlahTotalPenumpang(jumlahTotal: String) {
         viewModelScope.launch {
-            pref.simpanJumlahPenumpang(jumlahPenumpang)
+            pref.simpanJumlahTotalPenumpang(jumlahTotal)
         }
     }
+
+    fun simpanJumlahPenumpang(jumlahDewasa: String, jumlahAnak: String, jumlahBayi: String) {
+        viewModelScope.launch {
+            pref.simpanJumlahPenumpang(jumlahDewasa, jumlahAnak, jumlahBayi)
+        }
+    }
+//    fun simpanJumlahPenumpangDewasa(jumlahPenumpangDewasa: Int) {
+//        viewModelScope.launch {
+//            pref.(jumlahPenumpangDewasa)
+//        }
+//    }
+//    fun simpanJumlahPenumpangAnak(jumlahPenumpangAnak: Int) {
+//        viewModelScope.launch {
+//            pref.simpanJumlahAnak(jumlahPenumpangAnak)
+//        }
+//    }
+//    fun simpanJumlahPenumpangBayi(jumlahPenumpangBayi: Int) {
+//        viewModelScope.launch {
+//            pref.simpanJumlahBayi(jumlahPenumpangBayi)
+//        }
+//    }
+
 
     fun simpanArrayJumlahPenumpang(arrayJumlahPenumpang: MutableList<Int>) {
         viewModelScope.launch {
@@ -183,9 +327,22 @@ class SearchViewModel @Inject constructor(
         return pref.getKelasKursi.asLiveData()
     }
 
-    fun getJumlahPenumpang(): LiveData<String> {
-        return pref.getJumlahPenumpang.asLiveData()
+    fun getJumlahTotalPenumpang(): LiveData<String> {
+        return pref.getjumlahTotalPenumpang.asLiveData()
     }
+
+    fun getJumlahPenumpangDewasa(): LiveData<String> {
+        return pref.getJumlahPenumpangDewasa.asLiveData()
+    }
+
+    fun getJumlahPenumpangAnak(): LiveData<String> {
+        return pref.getJumlahPenumpangAnak.asLiveData()
+    }
+
+    fun getJumlahPenumpangBayi(): LiveData<String> {
+        return pref.getJumlahPenumpangBayi.asLiveData()
+    }
+
 
     fun getArrayJumlahpenumpang(): LiveData<MutableList<Int>> {
         return pref.getArrayJumlahpenumpang.asLiveData()

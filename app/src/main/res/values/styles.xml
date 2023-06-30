@@ -135,6 +135,9 @@
         <item name="android:headerBackground">@color/emas</item>
     </style>
 
+    <style name="DateDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/gold</item>
+    </style>
 
 
 </resources>

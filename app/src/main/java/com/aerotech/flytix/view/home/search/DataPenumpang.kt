@@ -1,229 +1,147 @@
 package com.aerotech.flytix.view.home.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import com.aerotech.flytix.R
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.aerotech.flytix.databinding.FragmentDataPenumpangBinding
-import com.aerotech.flytix.viewmodel.BooksViewModel
-import com.aerotech.flytix.viewmodel.FlightViewModel
+import com.aerotech.flytix.view.adapter.DataPenumpangAdapter
+import com.aerotech.flytix.viewmodel.PenumpangViewModel
 import com.aerotech.flytix.viewmodel.SearchViewModel
-import com.google.android.material.datepicker.MaterialDatePicker
+import com.dwiki.tiketku.model.penumpang.Penumpang
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class DataPenumpang : Fragment() {
-//    private lateinit var analytics: FirebaseAnalytics
-    private var _binding: FragmentDataPenumpangBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var flightViewModel: FlightViewModel
-    private lateinit var transactionViewModel : BooksViewModel
-    private lateinit var searchViewModel: SearchViewModel
-//    private lateinit var notifViewModel: NotifViewModel
 
-//    val CHANNEL_ID = "GFG"
-//    val CHANNEL_NAME = "GFG ContentWriting"
-//
-//    val CHANNEL_DESCRIPTION = "GFG NOTIFICATION"
-//
-//    val imgBitmap = BitmapFactory.decodeResource(resources, R.drawable.logo)
+    private lateinit var binding: FragmentDataPenumpangBinding
+    private val searchViewModel: SearchViewModel by viewModels()
+    private val penumpangViewModel: PenumpangViewModel by activityViewModels()
+    private lateinit var penumpangAdapter: DataPenumpangAdapter
+//    private val biodataViewModel:BiodataViewModel by viewModels()
+//    private val loginViewModel: LoginViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-//        analytics = Firebase.analytics
-        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
-        //notifViewModel = ViewModelProvider(this)[NotifViewModel::class.java]
-        flightViewModel = ViewModelProvider(this)[FlightViewModel::class.java]
-        transactionViewModel = ViewModelProvider(this)[BooksViewModel::class.java]
-
-        _binding = FragmentDataPenumpangBinding.inflate(inflater, container, false)
+        binding = FragmentDataPenumpangBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Booking()
-//        getTipeTraveller()
-//        getTipeId()
-        getBirthday()
-        getTipe()
-//        binding.btnBooking.setOnClickListener{
-//            findNavController().navigate(R.id.action_dataPenumpangFragment_to_rincianPembayaranFragment)
-//        }
         super.onViewCreated(view, savedInstanceState)
-    }
 
-    private fun getTipe() {
-        searchViewModel.getValueTripOneway().observe(viewLifecycleOwner){
-            if (it == true){
-                getTicketOneway()
-            }
-            else {
-                getTicketRoundTrip()
-            }
-        }
-    }
+        initDewasaAdapter()
+        val departureDate = arguments?.getString("TanggalKeberangkatan")
+        val departureCity = arguments?.getString("KotaKeberangkatan")
+        val destinationCity = arguments?.getString("KotaDestinasi")
+        val returnDate = arguments?.getString("TanggalKembali")
+        val id_ticket_back = arguments?.getInt("id_ticket_go")
 
-    private fun getBirthday() {
-        val materialDateBuilder: MaterialDatePicker.Builder<*> =
-            MaterialDatePicker.Builder.datePicker()
-
-        materialDateBuilder.setTitleText("SELECT A DATE")
-        val materialDatePicker = materialDateBuilder.build()
-
-        binding.birth.setOnClickListener(
-            View.OnClickListener {
-                materialDatePicker.show(parentFragmentManager, "MATERIAL_DATE_PICKER")
-            })
-        materialDatePicker.addOnPositiveButtonClickListener {
-            binding.birth.text = materialDatePicker.headerText
-        }
-    }
-
-//    private fun getTipeId() {
-//        val tipeId = resources.getStringArray(R.array.select_id)
-//        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, tipeId)
-//        binding.typeId.setAdapter(arrayAdapter)
-//    }
-
-    private fun getTicketRoundTrip(){
-        getTicketOneway()
-        val id_back = arguments?.getInt("id_ticket_back")
-        Log.d("idround", id_back.toString())
-
-    }
-
-    private fun getTicketOneway() {
-        val id = arguments?.getInt("id_oneway")
-        Log.d("idone", id.toString())
-        if (id != null){
-            flightViewModel.getFlightDetail(id)
-            flightViewModel.flightDetail.observe(viewLifecycleOwner) {
-                binding.apply {
-                    if (it != null) {
-//                        var simpleDateFormat = SimpleDateFormat("LLL dd")
-//                        var departure : Date? = it.data?.departureDate
-//                        var departure_date = simpleDateFormat.format(departure?.time).toString()
+//        binding.btnBooking.setOnClickListener {
+//            val idTicket = searchViewModel.getIdTicket()
+//            val dewasa = searchViewModel.getPenumpangDewasa()
+//            val anak = searchViewModel.getPenumpangAnak()
+//            val bayi = searchViewModel.getPenumpangBayi()
+//            val total = dewasa + anak + bayi
 //
-//                        var arrival : Date? = it.data?.arrivalDate
-//                        var arrivalDate = simpleDateFormat.format(arrival?.time).toString()
-//                        binding.departureDate.text = departure_date
-//                        binding.departureTime.text = it.data?.departureTime.toString()
-//                        binding.codeIataFrom.text = it.data?.origin?.cityCode.toString()
-//                        binding.city1.text = it.data?.origin?.city.toString()
-//                        binding.kelas.text = it.data?.classX.toString()
-//                        binding.arrivalDate.text = arrivalDate
-//                        binding.arrivalTime.text = it.data?.arrivalTime.toString()
-//                        binding.codeIataTo.text = it.data?.destination?.cityCode.toString()
-//                        binding.city2.text = it.data?.destination?.city.toString()
-//                        binding.company.text = it.data?.airplane?.company?.companyName
-//                        binding.btnKelas.text = it.data?.classX
-//                        binding.price.text = it.data?.price.toString()
-                    }
-                }
-            }
-        }
-    }
-
-//    private fun getTipeTraveller() {
-//        val tipeTraveller = resources.getStringArray(R.array.tipe_penumpang)
-//        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, tipeTraveller)
-//        binding.actvTipePenumpang.setAdapter(arrayAdapter)
-//    }
-
-    val CHANNEL_ID = "BOOKING"
-    val CHANNEL_NAME = "Booking Successfull"
-    val CHANNEL_DESCRIPTION = "BOOKING NOTIFICATION"
-
-//    fun makeStatusNotification(message: String, context: Context) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            val importance = NotificationManager.IMPORTANCE_HIGH
-//            val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, importance)
-//            channel.description = CHANNEL_DESCRIPTION
+//            val dataList = penumpangViewModel.getDataList()
+//            Log.d("Hasil Pencarian", "$dataList")
 //
-//            val notificationManager =
-//                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager?
+//            val penumpangData = PenumpangRequest(idTicket!!, dataList, total)
 //
-//            notificationManager?.createNotificationChannel(channel)
+//            val token = loginViewModel.getTokenPreferences()
+//            biodataViewModel.biodataPenumpang(penumpangData, token!!)
+//            biodataViewModel.getBiodataPenumpangResponse.observe(viewLifecycleOwner) {
+//                if (it.status == "Success") {
+//                    Toast.makeText(
+//                        requireContext(),
+//                        "Berhasil Menambahkan data penumpang",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
 //        }
+
+//        binding.optionClan.setOnCheckedChangeListener { p0, isChecked ->
 //
-//        // Create the notification
-//        val builder = NotificationCompat.Builder(context, CHANNEL_ID)
-//            .setSmallIcon(R.drawable.ic_launcher_foreground)
-//            .setContentTitle(CHANNEL_NAME)
-//            .setContentText(message)
-//            .setSmallIcon(R.drawable.logo)
-//            .setColor(resources.getColor(R.color.basic))
-//            .setPriority(NotificationCompat.PRIORITY_HIGH)
-//            .setVibrate(LongArray(0))
+//            if (isChecked) {
+//                binding.etNameClan.visibility = View.VISIBLE
+//                binding.layoutNameClan.visibility = View.VISIBLE
 //
-//        // Show the notification
-//        NotificationManagerCompat.from(context).notify(1, builder.build())
-//    }
-
-    private fun Booking(){
-        binding.btnBooking.setOnClickListener() {
-            //makeStatusNotification("Silahkan Lakukan Pembayaran agar Transaksi Anda Dapat Segera di Proses", requireContext())
-
-            Log.d("tes", "masukk")
-            val tGo = arguments?.getInt("id_oneway")
-            Log.d("tgo", tGo.toString())
-            val tBack = arguments?.getInt("id_ticket_back")
-            val fName = binding.etNamaLengkapPenumpang.text.toString()
-            val lName = binding.etNameClan.text.toString()
-            val nIK = binding.etIDorPassport.text.toString()
-            val birth = binding.birth.text.toString()
-            val nationality = binding.etCitizenship.text.toString()
-
-            if(nIK.length < 16){
-                binding.etIDorPassport.error = "NIK minimal 16 karakter"
-            }
-            if(fName.isEmpty()){
-                binding.etNamaLengkapPenumpang.error = "First Name harus terisi"
-            }
-            if(lName.isEmpty()){
-                binding.etNameClan.error = "Last Name harus terisi"
-            }
-            if(nIK.isEmpty()){
-                binding.etIDorPassport.error = "NIK harus terisi"
-            }
-            if(birth.isEmpty()){
-                binding.birth.error = "Birth harus terisi"
-            }
-
-            searchViewModel.getValueTripOneway().observe(viewLifecycleOwner){
-                val bookingId: Int
-                if (it == true){
-                    bookingId = 1
-                } else {
-                    bookingId = 2
-                }
-                transactionViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
-                    transactionViewModel.addTransaction("dewasa", birth, bookingId, lName, fName, nationality, nIK,"Bearer $it")
-
-                    //notifViewModel.saveNotif("booking")
-
-                    transactionViewModel.add.observe(viewLifecycleOwner) {
-                        Toast.makeText(requireContext(), "Add Success", Toast.LENGTH_SHORT).show()
-                        val bundle = Bundle()
-                        bundle.putInt("bookingId", bookingId)
-                        findNavController().navigate(
-                            R.id.action_dataPenumpang_to_beforeCheckout,
-                            bundle
-                        )
-                    }
+//            } else {
+//                binding.etNameClan.visibility = View.GONE
+//                binding.layoutNameClan.visibility = View.GONE
+//
+//            }
+//        }
+    }
+    
+    private fun initDewasaAdapter() {
+        val listPenumpang: ArrayList<Penumpang> = ArrayList()
+        searchViewModel.getJumlahPenumpangDewasa().observe(viewLifecycleOwner) {
+            if (it != null) {
+                for (i in 1..it.toInt()) {
+                    listPenumpang.add(Penumpang("Dewasa $i", "Dewasa"))
                 }
             }
         }
+
+        searchViewModel.getJumlahPenumpangAnak().observe(viewLifecycleOwner) {
+            if (it != null) {
+                //get Penumpang Anak
+                for (i in 1..it.toInt()) {
+                    listPenumpang.add(Penumpang("Anak $i", "Anak"))
+                }
+            }
+        }
+        searchViewModel.getJumlahPenumpangBayi().observe(viewLifecycleOwner) {
+            if (it != null) {
+                for (i in 1..it.toInt()) {
+                    listPenumpang.add(Penumpang("Bayi $i", "Bayi"))
+                }
+            }
+        }
+        binding.rvBiodataPenumpang.apply {
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            penumpangAdapter = DataPenumpangAdapter(listPenumpang)
+            adapter = penumpangAdapter
+            penumpangAdapter.setOnItemClickListener(object : DataPenumpangAdapter.OnItemClickListener {
+                override fun onItemClick(position: Int) {
+                    Toast.makeText(
+                        requireContext(),
+                        "posisi card ini $position",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    val bundle = Bundle()
+                    val name = listPenumpang[position].penumpang
+                    val role = listPenumpang[position].role
+                    bundle.putInt("index", position)
+                    bundle.putString("penumpang", name)
+                    bundle.putString("role", role)
+                    val penumpangDetail = DatapenumpangDetail()
+                    penumpangDetail.arguments = bundle
+                    penumpangDetail.show(parentFragmentManager, penumpangDetail.tag)
+                }
+            })
+            isNestedScrollingEnabled = false
+            setHasFixedSize(true)
+        }
+
     }
 }
 

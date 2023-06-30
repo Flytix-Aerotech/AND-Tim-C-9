@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentDataPemesanBinding
-import com.aerotech.flytix.model.books.Passenger
 import com.aerotech.flytix.model.user.DataUserProfilePutItem
 import com.aerotech.flytix.viewmodel.ProfileViewModel
 import com.aerotech.flytix.viewmodel.SearchViewModel
@@ -27,9 +26,8 @@ class DataPemesan : Fragment() {
 
     //    private var flightTicketOneTrip = FlightTicketOneTrip()
 //    private var flightTicketRoundTrip = FlightTicketRoundTrip()
-    private var arrSeatPassenger = IntArray(3)
     lateinit var searchViewModel: SearchViewModel
-    private val listPassenger = mutableListOf<Passenger>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +73,7 @@ class DataPemesan : Fragment() {
                 if (id_ticket_go != null) {
                     bund.putInt("id_oneway", id_ticket_go)
                 }
-                if (it == true) {
+                if (it == false) {
 //                    val getListSeatPassenger = arguments?.getIntArray("DATA_LIST_NUM_SEAT")
 //                    bund.putSerializable("DATA_PEMESAN", getdataPemesan())
 //                    bund.putIntArray("DATA_LIST_NUM_SEAT", getListSeatPassenger)

@@ -60,11 +60,11 @@ class BeforeCheckout : Fragment() {
 //                        var arrival : Date? = it.data?.arrivalDate
 //                        var arrivalDate = simpleDateFormat.format(arrival?.time).toString()
 
-                        binding.tvAsal.text = it.data.flight.departureLocation
-                        binding.tvTujuan.text = it.data.flight.arrivalLocation
+                        binding.tvAsal.text = it.data!!.flight!!.departureLocation
+                        binding.tvTujuan.text = it.data.flight!!.arrivalLocation
                         binding.tvJamkeberangkatan.text = it.data.flight.departureTime
                         binding.tvTanggalKeberangkatan.text = it.data.flight.departureDate
-                        binding.tvBandaraAsal.text = it.data.airport.departureName
+                        binding.tvBandaraAsal.text = it.data.airport!!.departureName
                         binding.tvTerminalbandara.text = " - " + it.data.airport.departureTerminal
                         binding.tvJenisPesawat.text = it.data.flight.airline
                         binding.tvKelaspesawat.text = " - " + it.data.typeOfClass
@@ -106,7 +106,7 @@ class BeforeCheckout : Fragment() {
                         bund.putString("departureCity", departureCity)
                         bund.putString("destinationCity", destinationCity)
                         bund.putString("returnDate", returnDate)
-                        findNavController().navigate(R.id.resultSearch, bund)
+//                        findNavController().navigate(R.id.resultSearch, bund)
                     }
                 }
             }
