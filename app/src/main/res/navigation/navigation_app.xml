@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/home3">
+    app:startDestination="@id/kursi">
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.aerotech.flytix.view.home.SplashScreen"
@@ -141,4 +141,9 @@
         android:name="com.aerotech.flytix.view.home.Payment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/kursi"
+        android:name="com.aerotech.flytix.view.home.Kursi"
+        android:label="fragment_kursi"
+        tools:layout="@layout/fragment_kursi" />
 </navigation>
