@@ -19,6 +19,7 @@ class Kursi : Fragment() {
     private lateinit var seatAdapter: SeatAdapter
 
     private val seats: Array<Array<Seat>> = arrayOf(
+        arrayOf(Seat(null, "A"), Seat(null, "B"), Seat(null, "C"), Seat(null, "") , Seat(null, "D"), Seat(null, "E"), Seat(null, "F")),
         arrayOf(Seat(1, "A"), Seat(1, "B"), Seat(1, "C"), Seat(1, "") , Seat(1, "D"), Seat(1, "E"), Seat(1, "F")),
         arrayOf(Seat(2, "A"), Seat(2, "B"), Seat(2, "C"), Seat(2, "") , Seat(2, "D"), Seat(2, "E"), Seat(2, "F")),
         arrayOf(Seat(3, "A"), Seat(3, "B"), Seat(3, "C"), Seat(3, "") , Seat(3, "D"), Seat(3, "E"), Seat(3, "F")),
@@ -65,6 +66,7 @@ class Kursi : Fragment() {
             return position.toLong()
         }
 
+
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val seatView: Button = if (convertView == null) {
                 Button(requireContext())
@@ -73,10 +75,9 @@ class Kursi : Fragment() {
             }
 
             val seat = getItem(position) as Seat
-            seatView.text = "${seat.row}${seat.number}"
             seatView.isEnabled = !seat.isOccupied
 
-            if (seat.row.isEmpty()) {
+            if (seat.number == null || seat.row.isEmpty()) {
                 seatView.setBackgroundColor(resources.getColor(R.color.transparent))
                 seatView.setTextColor(resources.getColor(R.color.white))
                 seatView.isEnabled = false
@@ -95,14 +96,20 @@ class Kursi : Fragment() {
                         }
 
                         // Debug: Cetak data kursi yang diklik
-                        println("Kursi ${seat.row}${seat.number} diklik. Status: ${seat.isOccupied}")
-
+                        val seatNumber = seat.number.toString()
+                        println("Kursi ${seat.row}${seatNumber} diklik. Status: ${seat.isOccupied}")
                     }
                 }
             }
 
+            val seatNumber = seat.number?.toString() ?: ""
+            seatView.text = "${seat.row}${seatNumber}"
+
             return seatView
         }
+
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -111,4 +118,4 @@ class Kursi : Fragment() {
 
     }
 }
-class Seat(val number: Int, val row: String, var isOccupied: Boolean = false)
+class Seat(val number: Int?, val row: String, var isOccupied: Boolean = false)
