@@ -19,16 +19,16 @@ class Kursi : Fragment() {
     private lateinit var seatAdapter: SeatAdapter
 
     private val seats: Array<Array<Seat>> = arrayOf(
-        arrayOf(Seat('A', 1), Seat('A', 2), Seat('A', 3), Seat('A', 4), Seat('A', 5), Seat('A', 6)),
-        arrayOf(Seat('B', 1), Seat('B', 2), Seat('B', 3), Seat('B', 4), Seat('B', 5), Seat('B', 6)),
-        arrayOf(Seat('C', 1), Seat('C', 2), Seat('C', 3), Seat('C', 4), Seat('C', 5), Seat('C', 6)),
-        arrayOf(Seat('D', 1), Seat('D', 2), Seat('D', 3), Seat('D', 4), Seat('D', 5), Seat('D', 6)),
-        arrayOf(Seat('E', 1), Seat('E', 2), Seat('E', 3), Seat('E', 4), Seat('E', 5), Seat('E', 6)),
-        arrayOf(Seat('F', 1), Seat('F', 2), Seat('F', 3), Seat('F', 4), Seat('F', 5), Seat('F', 6)),
-        arrayOf(Seat('G', 1), Seat('G', 2), Seat('G', 3), Seat('G', 4), Seat('G', 5), Seat('G', 6)),
-        arrayOf(Seat('H', 1), Seat('H', 2), Seat('H', 3), Seat('H', 4), Seat('H', 5), Seat('H', 6)),
-        arrayOf(Seat('I', 1), Seat('I', 2), Seat('I', 3), Seat('I', 4), Seat('I', 5), Seat('I', 6)),
-        arrayOf(Seat('J', 1), Seat('J', 2), Seat('J', 3), Seat('J', 4), Seat('J', 5), Seat('J', 6))
+        arrayOf(Seat(1, "A"), Seat(1, "B"), Seat(1, "C"), Seat(1, "") , Seat(1, "D"), Seat(1, "E"), Seat(1, "F")),
+        arrayOf(Seat(2, "A"), Seat(2, "B"), Seat(2, "C"), Seat(2, "") , Seat(2, "D"), Seat(2, "E"), Seat(2, "F")),
+        arrayOf(Seat(3, "A"), Seat(3, "B"), Seat(3, "C"), Seat(3, "") , Seat(3, "D"), Seat(3, "E"), Seat(3, "F")),
+        arrayOf(Seat(4, "A"), Seat(4, "B"), Seat(4, "C"), Seat(4, "") , Seat(4, "D"), Seat(4, "E"), Seat(4, "F")),
+        arrayOf(Seat(5, "A"), Seat(5, "B"), Seat(5, "C"), Seat(5, "") , Seat(5, "D"), Seat(5, "E"), Seat(5, "F")),
+        arrayOf(Seat(6, "A"), Seat(6, "B"), Seat(6, "C"), Seat(6, "") , Seat(6, "D"), Seat(6, "E"), Seat(6, "F")),
+        arrayOf(Seat(7, "A"), Seat(7, "B"), Seat(7, "C"), Seat(7, "") , Seat(7, "D"), Seat(7, "E"), Seat(7, "F")),
+        arrayOf(Seat(8, "A"), Seat(8, "B"), Seat(8, "C"), Seat(8, "") , Seat(8, "D"), Seat(8, "E"), Seat(8, "F")),
+        arrayOf(Seat(9, "A"), Seat(9, "B"), Seat(9, "C"), Seat(9, "") , Seat(9, "D"), Seat(9, "E"), Seat(9, "F")),
+        arrayOf(Seat(10, "A"), Seat(10, "B"), Seat(10, "C"), Seat(10, "") , Seat(10, "D"), Seat(10, "E"), Seat(10, "F"))
     )
 
     override fun onCreateView(
@@ -76,20 +76,31 @@ class Kursi : Fragment() {
             seatView.text = "${seat.row}${seat.number}"
             seatView.isEnabled = !seat.isOccupied
 
-            if (seat.isOccupied) {
-                seatView.setBackgroundColor(resources.getColor(R.color.hijau))
+            if (seat.row.isEmpty()) {
+                seatView.setBackgroundColor(resources.getColor(R.color.transparent))
+                seatView.setTextColor(resources.getColor(R.color.white))
+                seatView.isEnabled = false
             } else {
-                seatView.setBackgroundColor(resources.getColor(R.color.putih))
-                seatView.setOnClickListener {
-                    if (seat.isOccupied) {
-                        seat.isOccupied = false
-                        seatView.setBackgroundColor(resources.getColor(R.color.putih))
-                    } else {
-                        seat.isOccupied = true
-                        seatView.setBackgroundColor(resources.getColor(R.color.hijau))
+                if (seat.isOccupied) {
+                    seatView.setBackgroundColor(resources.getColor(R.color.hijau))
+                } else {
+                    seatView.setBackgroundColor(resources.getColor(R.color.putih))
+                    seatView.setOnClickListener {
+                        if (seat.isOccupied) {
+                            seat.isOccupied = false
+                            seatView.setBackgroundColor(resources.getColor(R.color.putih))
+                        } else {
+                            seat.isOccupied = true
+                            seatView.setBackgroundColor(resources.getColor(R.color.hijau))
+                        }
+
+                        // Debug: Cetak data kursi yang diklik
+                        println("Kursi ${seat.row}${seat.number} diklik. Status: ${seat.isOccupied}")
+
                     }
                 }
             }
+
             return seatView
         }
     }
@@ -100,4 +111,4 @@ class Kursi : Fragment() {
 
     }
 }
-class Seat(val row: Char, val number: Int, var isOccupied: Boolean = false)
+class Seat(val number: Int, val row: String, var isOccupied: Boolean = false)
