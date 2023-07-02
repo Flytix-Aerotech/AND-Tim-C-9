@@ -145,5 +145,14 @@
         android:id="@+id/kursi"
         android:name="com.aerotech.flytix.view.home.Kursi"
         android:label="fragment_kursi"
-        tools:layout="@layout/fragment_kursi" />
+        tools:layout="@layout/fragment_kursi" >
+        <action
+            android:id="@+id/action_kursi_to_detail"
+            app:destination="@id/detail" />
+    </fragment>
+    <dialog
+        android:id="@+id/penumpang2"
+        android:name="com.aerotech.flytix.view.home.Penumpang"
+        android:label="fragment_penumpang"
+        tools:layout="@layout/fragment_penumpang" />
 </navigation>

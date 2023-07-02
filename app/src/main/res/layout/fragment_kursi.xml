@@ -23,6 +23,14 @@
         android:verticalSpacing="8dp"
         android:padding="8dp" />
 
+    <Button
+        android:id="@+id/btnSelesai"
+        android:text="Simpan"
+        style="@style/btngold"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 
 </RelativeLayout>
 
