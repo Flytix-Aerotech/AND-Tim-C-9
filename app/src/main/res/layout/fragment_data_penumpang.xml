@@ -72,7 +72,7 @@
         android:background="@color/putih">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLanjutPilihKursi"
+            android:id="@+id/btnLanjut"
             style="@style/btngold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

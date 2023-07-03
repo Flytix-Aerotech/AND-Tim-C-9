@@ -1,22 +1,40 @@
-package com.dwiki.tiketku.model.penumpang
+package com.aerotech.flytix.model.penumpang
 
-data class PenumpangData (
-    var ktppaspor: String,
-    var dateofbirth: String,
-    var familyName: String,
-    var citizenship: String,
-    var name: String,
-    var role: String,
+import com.aerotech.flytix.model.books.Passenger
+import com.aerotech.flytix.model.books.Seat
+import com.google.gson.annotations.SerializedName
+
+data class PenumpangData(
+    @SerializedName("birth_date")
+    var birthDate: String,
+    @SerializedName("booking_id")
+    var bookingId: Int,
+    @SerializedName("clan_name")
+    var clanName: String,
+    @SerializedName("full_name")
+    var fullName: String,
+    @SerializedName("nationality")
+    var nationality: String,
+    @SerializedName("nik_number")
+    var nikNumber: String,
+    @SerializedName("passenger_role")
+    var passengerRole: String
 )
 
+data class ticket(
+    var id : Int
+)
 data class PenumpangRequest(
-    var ticketsId:String,
-    var passengers:List<PenumpangData>,
-    var total_passenger:Int
+    @SerializedName("books")
+    val books: List<ticket>,
+    @SerializedName("passengers")
+    val passengers: List<Passenger>,
+    @SerializedName("seats")
+    val seats: List<Seat>
 )
 
 
 data class Penumpang(
-    var penumpang:String,
-    var role:String
+    var penumpang: String,
+    var role: String
 )

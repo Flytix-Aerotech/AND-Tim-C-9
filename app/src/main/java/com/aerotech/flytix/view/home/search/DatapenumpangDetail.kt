@@ -9,20 +9,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentDatapenumpangDetailBinding
-import com.aerotech.flytix.viewmodel.PenumpangViewModel
-import com.dwiki.tiketku.model.penumpang.PenumpangData
+import com.aerotech.flytix.model.books.Passenger
+import com.aerotech.flytix.viewmodel.BiodataViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 
 @AndroidEntryPoint
 class DatapenumpangDetail : BottomSheetDialogFragment() {
-    private lateinit var binding:FragmentDatapenumpangDetailBinding
-    private val penumpangViewModel:PenumpangViewModel by activityViewModels()
-    private var titleAd:String? = null
-
-
+    private lateinit var binding: FragmentDatapenumpangDetailBinding
+    private val biodataViewModel: BiodataViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,30 +40,27 @@ class DatapenumpangDetail : BottomSheetDialogFragment() {
         val penumpang = arguments?.getString("penumpang")
         val role = arguments?.getString("role")
         val indexPenumpang = arguments?.getInt("index")
-        //val hintTitle = resources.getStringArray(R.array.title)
         binding.tvPassengers.text = role
         binding.tvJudulPenumpang.text = "Biodata Penumpang $penumpang"
+        val dataList = biodataViewModel.getDataList()
 
-        val dataList = penumpangViewModel.getDataList()
-        //formTitle(hintTitle)
-
-        if (dataList.isNotEmpty()){
-            if (indexPenumpang in dataList.indices){
-                Log.d("Data","${dataList.indices}")
-                Log.d("Data","${dataList[0]}")
+        if (dataList.isNotEmpty()) {
+            if (indexPenumpang in dataList.indices) {
+                Log.d("Data", "${dataList.indices}")
+                Log.d("Data", "${dataList[0]}")
                 val itemPenumpang = dataList[indexPenumpang!!]
-                binding.tvPassengers.setText(itemPenumpang.role)
-                binding.etNamaLengkapPenumpang.setText(itemPenumpang.name)
-                binding.etNameClan.setText(itemPenumpang.familyName)
-                binding.etDateOfBirthPassenger.setText(itemPenumpang.dateofbirth)
-                binding.etCitizenship.setText(itemPenumpang.citizenship)
-                binding.etIDorPassport.setText(itemPenumpang.ktppaspor)
+                binding.tvPassengers.setText(itemPenumpang.passengerRole)
+                binding.etNamaLengkapPenumpang.setText(itemPenumpang.fullName)
+                binding.etNameClan.setText(itemPenumpang.clanName)
+                binding.etDateOfBirthPassenger.setText(itemPenumpang.birthDate)
+                binding.etCitizenship.setText(itemPenumpang.nationality)
+                binding.etIDorPassport.setText(itemPenumpang.nikNumber)
                 editData(dataList, indexPenumpang)
             } else {
-                sumbitData()
+                submitData()
             }
         } else {
-            sumbitData()
+            submitData()
         }
 
         binding.optionClan.setOnCheckedChangeListener { p0, isChecked ->
@@ -84,21 +80,28 @@ class DatapenumpangDetail : BottomSheetDialogFragment() {
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             val datePickerDialog = DatePickerDialog(
-                requireContext(),R.style.DateDialogTheme,
+                requireContext(), R.style.DateDialogTheme,
                 { _, year, month, dayOfMonth ->
-                    val tanggalLahir = "$year-0${month+1}-$dayOfMonth"
+                    val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    val tanggalLahir = dateFormat.format(Calendar.getInstance().apply {
+                        set(Calendar.YEAR, year)
+                        set(Calendar.MONTH, month)
+                        set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                    }.time)
                     binding.etDateOfBirthPassenger.setText(tanggalLahir)
                 },
                 year, month, day,
             )
             datePickerDialog.show()
-            datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.black))
-            datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.black))
+            datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
+                .setTextColor(resources.getColor(R.color.black))
+            datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE)
+                .setTextColor(resources.getColor(R.color.black))
         }
     }
 
     private fun editData(
-        dataList: List<PenumpangData>,
+        dataList: List<Passenger>,
         indexPenumpang: Int?
     ) {
         binding.btnSimpan.setOnClickListener {
@@ -112,17 +115,17 @@ class DatapenumpangDetail : BottomSheetDialogFragment() {
 
             Log.d("detail biodata", "$name")
 
-            dataList[indexPenumpang!!].role = role
-            dataList[indexPenumpang!!].name = name
-            dataList[indexPenumpang].familyName = namaKeluarga
-            dataList[indexPenumpang].dateofbirth = tanggalLahir
-            dataList[indexPenumpang].citizenship = kewarganegaraan
-            dataList[indexPenumpang].ktppaspor = ktp
+            dataList[indexPenumpang!!].passengerRole = role
+            dataList[indexPenumpang!!].fullName = name
+            dataList[indexPenumpang].clanName = namaKeluarga
+            dataList[indexPenumpang].birthDate = tanggalLahir
+            dataList[indexPenumpang].nationality = kewarganegaraan
+            dataList[indexPenumpang].nikNumber = ktp
             dismiss()
         }
     }
 
-    private fun sumbitData() {
+    private fun submitData() {
         binding.btnSimpan.setOnClickListener {
             Log.d("Detail Biodata", "On Clicckkk Submit Data")
             val role = binding.tvPassengers.text.toString()
@@ -131,23 +134,11 @@ class DatapenumpangDetail : BottomSheetDialogFragment() {
             val tanggalLahir = binding.etDateOfBirthPassenger.text.toString()
             val kewarganegaraan = binding.etCitizenship.text.toString()
             val ktp = binding.etIDorPassport.text.toString()
-
             val dataPenumpang =
-                PenumpangData(ktp, tanggalLahir, namaKeluarga, kewarganegaraan, name, role)
-            penumpangViewModel.addData(dataPenumpang)
+                Passenger(tanggalLahir, 0, namaKeluarga, name, kewarganegaraan, ktp, role)
+            biodataViewModel.addData(dataPenumpang)
             dismiss()
+            Log.d("Data Penumpang", dataPenumpang.toString())
         }
     }
-
-//    private fun formTitle(hintTitle: Array<String>) {
-//        binding.edtTitle.apply {
-//            val adapterTitle = ArrayAdapter(requireContext(), R.layout.dropdown_item, hintTitle)
-//            setAdapter(adapterTitle)
-//            hint = "Title"
-//            onItemClickListener = AdapterView.OnItemClickListener{ _, _, position, _ ->
-//                titleAd = adapterTitle.getItem(position).toString()
-//            }
-//        }
-//    }
-
 }

@@ -44,4 +44,29 @@ class FlightViewModel @Inject constructor(
             })
     }
 
+
+    private val getDetailFlightBack: MutableLiveData<DataGetTicketIDResponse> = MutableLiveData()
+    val flightDetailBack: LiveData<DataGetTicketIDResponse> get() = getDetailFlightBack
+
+    fun getFlightDetailBack(id : Int){
+        client.getFlightDetailBack(id)
+            .enqueue(object : Callback<DataGetTicketIDResponse> {
+                override fun onResponse(
+                    call: Call<DataGetTicketIDResponse>,
+                    response: Response<DataGetTicketIDResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            repository.getFlightDetailBack(id)
+                            getDetailFlightBack.postValue(response.body())
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<DataGetTicketIDResponse>, t: Throwable) {
+                }
+            })
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.dwiki.tiketku.model.penumpang
+package com.aerotech.flytix.model.penumpang
 
 import com.google.gson.annotations.SerializedName
 

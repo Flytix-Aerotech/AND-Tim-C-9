@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aerotech.flytix.databinding.ItemJenisPenumpanBinding
-import com.dwiki.tiketku.model.penumpang.Penumpang
+import com.aerotech.flytix.model.penumpang.Penumpang
 
 class DataPenumpangAdapter(private val listDewasa:List<Penumpang>):RecyclerView.Adapter<DataPenumpangAdapter.ViewHolder>() {
 

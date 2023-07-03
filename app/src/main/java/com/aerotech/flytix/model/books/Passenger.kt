@@ -1,21 +1,21 @@
-package com.aerotech.flytix.model.penumpang.request
+package com.aerotech.flytix.model.books
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Passenger(
     @SerializedName("birth_date")
-    val birthDate: String,
+    var birthDate: String,
     @SerializedName("booking_id")
     val bookingId: Int,
     @SerializedName("clan_name")
-    val clanName: String,
+    var clanName: String,
     @SerializedName("full_name")
-    val fullName: String,
+    var fullName: String,
     @SerializedName("nationality")
-    val nationality: String,
+    var nationality: String,
     @SerializedName("nik_number")
-    val nikNumber: String,
+    var nikNumber: String,
     @SerializedName("passenger_role")
-    val passengerRole: String
+    var passengerRole: String
 )

@@ -9,7 +9,42 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11d894e8-67f0-4e5b-a957-ab92b6c93d59" name="Changes" comment="round trip dan List biodata" />
+    <list default="true" id="11d894e8-67f0-4e5b-a957-ab92b6c93d59" name="Changes" comment="round trip dan List biodata">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/model/books/Books.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/model/books/DataBooksResponse.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/model/books/Seat.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/viewmodel/BiodataViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/data/MainRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/data/MainRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/model/penumpang/Penumpang.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/model/penumpang/Penumpang.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/model/penumpang/ResponsePenumpang.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/model/penumpang/ResponsePenumpang.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/model/penumpang/request/DataPassengersResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/model/penumpang/request/Passenger.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/model/books/Passenger.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/network/ApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/network/ApiService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/adapter/DataPenumpangAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/adapter/DataPenumpangAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Darimana.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Darimana.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Home.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Home.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Penumpang.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Penumpang.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Tujuan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/Tujuan.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/DataPemesan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/DataPemesan.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/DataPenumpang.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/DataPenumpang.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/DatapenumpangDetail.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/DatapenumpangDetail.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/DetailOw.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/DetailOw.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/DetailRt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/DetailRt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/PencarianTicketOw.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/PencarianTicketOw.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/PencarianTicketRt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/PencarianTicketRt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/PencarianTicketRtDep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/view/home/search/PencarianTicketRtDep.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/viewmodel/FlightViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/viewmodel/FlightViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/viewmodel/KotaViewModel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/viewmodel/PenumpangViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/aerotech/flytix/viewmodel/PenumpangViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_data_penumpang.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_data_penumpang.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_rt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_rt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/navigation_app.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/navigation_app.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -410,7 +445,21 @@
       <option name="project" value="LOCAL" />
       <updated>1688119090338</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="round trip dan List biodata">
+      <created>1688119187557</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1688119187557</updated>
+    </task>
+    <task id="LOCAL-00030" summary="round trip dan List biodata">
+      <created>1688119195266</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1688119195266</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

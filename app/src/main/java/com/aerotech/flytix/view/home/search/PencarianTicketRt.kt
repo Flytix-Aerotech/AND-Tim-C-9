@@ -32,6 +32,7 @@ class PencarianTicketRt : Fragment(), ResultSearchBackAdapter.ListSearchBackInte
     private lateinit var KotaKeberangkatan: String
     private lateinit var KotaDestinasi: String
     private lateinit var KelasKursi: String
+    private lateinit var bundle: Bundle
 
 
     override fun onCreateView(
@@ -39,6 +40,7 @@ class PencarianTicketRt : Fragment(), ResultSearchBackAdapter.ListSearchBackInte
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        bundle = Bundle()
         searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         flightViewModel = ViewModelProvider(this).get(FlightViewModel::class.java)
         binding = FragmentPencarianTicketRtBinding.inflate(inflater, container, false)
@@ -134,8 +136,11 @@ class PencarianTicketRt : Fragment(), ResultSearchBackAdapter.ListSearchBackInte
             binding.tvJamSampai.text = dataItemTicket.flight.arrivalTime
             binding.tvKotaKeberangkatan.text = dataItemTicket.flight.departureLocation
             binding.tvKotaSampai.text = dataItemTicket.flight.arrivalLocation
-            val getPrice = arguments?.getInt("pricePergi")
-            binding.tvHarga.text = dataItemTicket.price.toString()
+
+            var hargaTiketPergi = dataItemTicket.price
+            binding.tvHarga.text = hargaTiketPergi.toString()
+            bundle.putInt("HargaTiketPergi", hargaTiketPergi)
+            Log.d("Harga Tiket Pergi", "$hargaTiketPergi")
             binding.tvKotakeberangkatan.text = dataItemTicket.flight.departureLocation
             binding.tvKotadestinasi.text = dataItemTicket.flight.arrivalLocation
             binding.tvPesawat.text = "${dataItemTicket.flight.airline} - ${dataItemTicket.typeOfClass}"
@@ -148,8 +153,8 @@ class PencarianTicketRt : Fragment(), ResultSearchBackAdapter.ListSearchBackInte
         val adapter = ResultSearchBackAdapter(this)
         binding.apply {
             searchViewModel.getDataSearchTicketsRt(
-                KotaDestinasi,
                 KotaKeberangkatan,
+                KotaDestinasi,
                 TanggalKembali,
                 KelasKursi,
             )
@@ -179,14 +184,17 @@ class PencarianTicketRt : Fragment(), ResultSearchBackAdapter.ListSearchBackInte
 
 
     override fun onItemClickBack(id: Int) {
-        val bund = Bundle()
-        bund.putInt("id_ticket_back", id)
-        bund.putString("TanggalKeberangkatan", TanggalKeberangkatan)
-        bund.putString("KotaKeberangkatan", KotaKeberangkatan)
-        bund.putString("KotaDestinasi", KotaDestinasi)
-        bund.putString("TanggalKembali", TanggalKembali)
+        val idTicketPergi = arguments?.getInt("id_ticket_go").toString()
+        bundle.putInt("id_ticket_back", id)
+        bundle.putInt("id_ticket_go", idTicketPergi.toInt())
+        bundle.putString("TanggalKeberangkatan", TanggalKeberangkatan)
+        bundle.putString("KotaKeberangkatan", KotaKeberangkatan)
+        bundle.putString("KotaDestinasi", KotaDestinasi)
+        bundle.putString("TanggalKembali", TanggalKembali)
+
+
         searchViewModel.simpanidTicketKepulangan(id.toString())
-        findNavController().navigate(R.id.action_pencarianTicketRt_to_detail, bund)
+        findNavController().navigate(R.id.action_pencarianTicketRt_to_detailRt, bundle)
     }
 }
 //private fun returnOnly(

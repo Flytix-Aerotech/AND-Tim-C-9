@@ -1,60 +1,137 @@
 package com.aerotech.flytix.view.home.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.aerotech.flytix.R
+import androidx.lifecycle.ViewModelProvider
+import com.aerotech.flytix.databinding.FragmentDetailRtBinding
+import com.aerotech.flytix.viewmodel.FlightViewModel
+import com.aerotech.flytix.viewmodel.SearchViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailRt.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class DetailRt : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var binding: FragmentDetailRtBinding
+    private var isClicked = false
+    private lateinit var searchViewModel: SearchViewModel
+    private lateinit var flightViewModel: FlightViewModel
+    var hargaPergi = 0
+    var hargaPulang = 0
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_rt, container, false)
+        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
+        binding = FragmentDetailRtBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailRt.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailRt().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        flightViewModel = ViewModelProvider(this)[FlightViewModel::class.java]
+        getDetailDeparture()
+        getDetailArrival()
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    fun getDetailDeparture() {
+        var id = arguments?.getInt("id_ticket_go")
+        if (id != null) {
+            flightViewModel.getFlightDetail(id)
+            flightViewModel.flightDetail.observe(viewLifecycleOwner) {
+                binding.apply {
+                    if (it != null) {
+                        binding.tvAsal.text =
+                            "${it.data!!.flight!!.departureLocation} -> ${it.data!!.flight!!.arrivalLocation}"
+                        binding.tvJamkeberangkatan.text = it.data.flight.departureTime
+                        binding.tvTanggalKeberangkatan.text = it.data.flight.departureDate
+                        binding.tvBandaraAsal.text = it.data.airport!!.departureName
+                        binding.tvTerminalbandara.text = " - " + it.data.airport.departureTerminal
+                        binding.tvJenisPesawat.text = it.data.flight.airline
+                        binding.tvKelaspesawat.text = " - " + it.data.typeOfClass
+                        binding.tvKodePesawat.text = it.data.flight.flightNumber
+                        binding.tvKedatangan.text = it.data.flight.arrivalTime
+                        binding.tvTanggalKedatangan.text = it.data.flight.departureDate
+                        binding.tvBandaraKedatangan.text = it.data.airport.arrivalName
+                        hargaPergi = it.data.price
+                        Log.d("Harga Tiket Pergi", "$hargaPergi")
+                    }
                 }
             }
+        }
     }
+
+    fun getDetailArrival() {
+        var id = arguments?.getInt("id_ticket_back")
+        if (id != null) {
+            flightViewModel.getFlightDetailBack(id)
+            flightViewModel.flightDetailBack.observe(viewLifecycleOwner) {
+                binding.apply {
+                    if (it != null) {
+                        binding.tvAsalKepulangan.text =
+                            "${it.data!!.flight!!.departureLocation} <- ${it.data!!.flight!!.arrivalLocation}"
+                        binding.tvJamkepulangan.text = it.data.flight.departureTime
+                        binding.tvTanggalKepulangan.text = it.data.flight.departureDate
+                        binding.tvTerminalbandarakepulangan.text = it.data.airport!!.departureName
+                        binding.tvTerminalbandarakepulangan.text =
+                            " - " + it.data.airport.departureTerminal
+                        binding.tvJenisPesawatkepulangan.text = it.data.flight.airline
+                        binding.tvKelaspesawatkepulangan.text = " - " + it.data.typeOfClass
+                        binding.tvKodePesawatkepulangan.text = it.data.flight.flightNumber
+                        binding.tvKedatangankepulangan.text = it.data.flight.arrivalTime
+                        binding.tvTanggalKedatangankepulangan.text = it.data.flight.departureDate
+                        binding.tvBandaraKedatangankepulangan.text = it.data.airport.arrivalName
+                        hargaPulang = it.data.price
+                        var hargaTiketPergi = arguments?.getInt("HargaTiketPergi")
+                        var total = hargaPulang + hargaTiketPergi!!
+                        binding.tvTotalPembayaran.text = "${total}/Pax"
+                        Log.d("Harga Tiket Pulang", "${hargaPulang}")
+                        Log.d("Harga total Tiket", "${total}")
+                    }
+                }
+            }
+        }
+    }
+
+
+//    private fun booking(){
+//        binding.btnBooking.setOnClickListener{
+//            searchViewModel.getValueTripOneway().observe(viewLifecycleOwner){
+//                val id_ticket_go = arguments?.getInt("id_ticket_go")
+//                val bund = Bundle()
+//                if (id_ticket_go != null) {
+//                    bund.putInt("id_ticket_go", id_ticket_go)
+//                    Log.e("DetailPenerbanganOw", "ticket dengan id: $id_ticket_go")
+//                }
+//                if (it == false){
+//                    findNavController().navigate(R.id.action_detailOw_to_dataPemesan, bund)
+//                }
+//                else {
+//                    val departureDate = arguments?.getString("TanggalKeberangkatan")
+//                    val departureCity = arguments?.getString("KotaKeberangkatan")
+//                    val destinationCity = arguments?.getString("KotaDestinasi")
+//                    val returnDate = arguments?.getString("TanggalKembali")
+//                    val id_ticket_back = arguments?.getInt("id_ticket_back")
+//                    if (id_ticket_back != 0){
+//                        if (id_ticket_back != null) {
+//                            bund.putInt("id_ticket_back", id_ticket_back)
+//                        }
+//                        findNavController().navigate(R.id.action_detailOw_to_dataPemesan, bund)
+//                    } else {
+//                        bund.putString("departureDate", departureDate)
+//                        bund.putString("departureCity", departureCity)
+//                        bund.putString("destinationCity", destinationCity)
+//                        bund.putString("returnDate", returnDate)
+//                        findNavController().navigate(R.id.pencarianTicketOw, bund)
+//                    }
+//                }
+//            }
+//        }
+//    }
 }

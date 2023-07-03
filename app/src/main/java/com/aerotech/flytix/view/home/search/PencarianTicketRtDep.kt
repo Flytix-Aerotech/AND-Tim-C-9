@@ -16,15 +16,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentPencarianTicketRtDepBinding
 import com.aerotech.flytix.view.adapter.ResultSearchAdapter
+import com.aerotech.flytix.viewmodel.FlightViewModel
 import com.aerotech.flytix.viewmodel.SearchViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PencarianTicketRtDep : Fragment(),ResultSearchAdapter.ListSearchGoInterface {
+class PencarianTicketRtDep : Fragment(), ResultSearchAdapter.ListSearchGoInterface {
     private lateinit var binding: FragmentPencarianTicketRtDepBinding
     private lateinit var pref: SharedPreferences
     private lateinit var searchViewModel: SearchViewModel
+    private lateinit var flightViewModel: FlightViewModel
     private lateinit var TanggalKeberangkatan: String
     var TanggalKembali: String? = null
     private lateinit var KotaKeberangkatan: String
@@ -38,6 +40,7 @@ class PencarianTicketRtDep : Fragment(),ResultSearchAdapter.ListSearchGoInterfac
     ): View? {
         // Inflate the layout for this fragment
         searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
+        flightViewModel = ViewModelProvider(this).get(FlightViewModel::class.java)
         binding = FragmentPencarianTicketRtDepBinding.inflate(inflater, container, false)
         return binding.root
     }

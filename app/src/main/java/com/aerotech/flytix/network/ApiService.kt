@@ -1,5 +1,7 @@
 package com.aerotech.flytix.network
 
+import com.aerotech.flytix.model.books.DataBooksResponse
+import com.aerotech.flytix.model.penumpang.PenumpangRequest
 import com.aerotech.flytix.model.ticket.DataGetTicketIDResponse
 import com.aerotech.flytix.model.ticket.DataGetTicketResponse
 import com.aerotech.flytix.model.ticket.DataPostticketSearch
@@ -10,8 +12,6 @@ import com.aerotech.flytix.model.user.DataUserResponse
 import com.aerotech.flytix.model.user.DataVerifyOtpItem
 import com.aerotech.flytix.model.user.NewUser
 import com.aerotech.flytix.model.user.User
-import com.dwiki.tiketku.model.penumpang.PenumpangRequest
-import com.dwiki.tiketku.model.penumpang.ResponsePenumpang
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -76,6 +76,9 @@ interface ApiService {
     @GET("tickets/{id}")
     fun getFlightDetail(@Path("id") id: Int) : Call<DataGetTicketIDResponse>
 
+    @GET("tickets/{id}")
+    fun getFlightDetailBack(@Path("id") id: Int) : Call<DataGetTicketIDResponse>
+
     // search
     @GET("tickets/search")
     fun search(@Query("dl")departureLocation : String, @Query("al")arrivalLocation: String,
@@ -113,36 +116,10 @@ interface ApiService {
         "Content-Type:application/json",
         "Accept:*/*"
     )
-    @POST("checkout")
+    @POST("booking")
     fun postCheckoutPenumpang(
         @Header("Authorization") token:String,
         @Body requestPenumpang: PenumpangRequest
-    ):Call<ResponsePenumpang>
+    ):Call<DataBooksResponse>
 
-//    @GET("histories/filter")
-//    fun getTransactionFilter(@Header("Authorization")token: String, @Query("status")status: String) : Call<TransactionHistory>
-//    @POST("booking")
-//    fun addTransaction(@Header("Authorization")token: String, @Body request : AddTransaction) : Call<TransactionResponse>
-//
-//    @GET("booking/{id}")
-//    fun getTransactionId(@Header("Authorization") token: String, @Path("id") id: Int?) : Call<TransactionResponse>
-//
-//    @DELETE("booking/{id}")
-//    fun cancelTransaction(@Header("Authorization") token: String, @Path("id") id: Int?) : Call<CancelResponse>
-//    @GET("payment")
-//    fun updatePayment(@Header("Authorization") token: String, @Body request: PaymentRequest) : Call<PaymentResponse>
-//
-//
-
-//    @POST("/api/notification/")
-//    fun createNotification(@Header("Authorization") token: String, @Body request: NotificationRequest): Call<NotificationCreateResponse>
-//
-//    @GET("/api/notification")
-//    fun getNotification(@Header("Authorization") token: String): Call<NotificationResponse>
-//
-//    @GET("/api/notification/{id}")
-//    fun getNotificationDetail(@Header("Authorization") token: String, @Path("id") id: Int?): Call<NotificationIdResponse>
-//
-//    @DELETE("/api/notification/delete/{id}")
-//    fun deleteNotification(@Header("Authorization") token: String, @Path("id") id: Int?): Call<DeleteResponse>
 }

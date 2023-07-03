@@ -10,6 +10,7 @@ class MainRepository @Inject constructor(private val Client: ApiService) {
     fun getFlight() = Client.getFlight()
 
     fun getFlightDetail(id: Int) = Client.getFlightDetail(id)
+    fun getFlightDetailBack(id: Int) = Client.getFlightDetailBack(id)
 
 //    fun getAirport() = Client.getAirport()
 

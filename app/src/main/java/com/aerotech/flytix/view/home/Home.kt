@@ -13,12 +13,9 @@ import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentHomeBinding
 import com.aerotech.flytix.viewmodel.SearchViewModel
-import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Date
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -29,7 +26,6 @@ class Home : Fragment(),
     private lateinit var binding: FragmentHomeBinding
     private lateinit var searchViewModel: SearchViewModel
     lateinit var bund: Bundle
-    private var tanggalPergi: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -166,7 +162,10 @@ class Home : Fragment(),
                         searchViewModel.hapusTanggalKembali()
                         findNavController().navigate(R.id.action_home3_to_pencarianTicketOw, bund)
                     } else {
-                        findNavController().navigate(R.id.action_home3_to_pencarianTicketRtDep,bund)
+                        findNavController().navigate(
+                            R.id.action_home3_to_pencarianTicketRtDep,
+                            bund
+                        )
                     }
                 }
             }
@@ -182,8 +181,13 @@ class Home : Fragment(),
         val datePickerDialog = DatePickerDialog(
             requireContext(), R.style.DateDialogTheme,
             { _, year, month, dayOfMonth ->
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val tanggalPerginya = dateFormat.format(Calendar.getInstance().apply {
+                    set(Calendar.YEAR, year)
+                    set(Calendar.MONTH, month)
+                    set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                }.time)
 //                val bulan =nameMonth[month]
-                var tanggalPerginya = "$year-0${month + 1}-$dayOfMonth"
                 binding.etKeberangkatan.setText(tanggalPerginya)
                 searchViewModel.simpanTanggalKeberangkatan(tanggalPerginya)
             },
@@ -205,8 +209,13 @@ class Home : Fragment(),
         val datePickerDialog = DatePickerDialog(
             requireContext(), R.style.DateDialogTheme,
             { _, year, month, dayOfMonth ->
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val tanggalPerginya = dateFormat.format(Calendar.getInstance().apply {
+                    set(Calendar.YEAR, year)
+                    set(Calendar.MONTH, month)
+                    set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                }.time)
 //                val bulan =nameMonth[month]
-                var tanggalPerginya = "$year-0${month + 1}-$dayOfMonth"
                 binding.etKepulangan.setText(tanggalPerginya)
                 searchViewModel.simpanTanggalKembali(tanggalPerginya)
             },
@@ -217,37 +226,6 @@ class Home : Fragment(),
             .setTextColor(resources.getColor(R.color.black))
         datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE)
             .setTextColor(resources.getColor(R.color.black))
-//        val today = MaterialDatePicker.todayInUtcMilliseconds()
-//        val materialDateBuilder = MaterialDatePicker.Builder.datePicker()
-//            .setTitleText("Pilih Tanggal")
-//            .setSelection(today)
-//            .setCalendarConstraints(
-//                CalendarConstraints.Builder()
-////                    .setValidator(DateValidatorPointForward.now())
-//                    .build()
-//            )
-//        val materialDatePicker = materialDateBuilder.build()
-//
-//        if (materialDatePicker.dialog == null && !materialDatePicker.isVisible) {
-//            materialDatePicker.show(childFragmentManager, "MATERIAL_DATE_PICKER")
-//        }
-//
-//        materialDatePicker.addOnPositiveButtonClickListener {
-//
-//            val selecteddateInMillis = it as Long
-//            var selectedDate = Date(selecteddateInMillis)
-//
-////            if (selectedDate.before(selectedDate)) {
-////                // Jika tanggal yang dipilih sebelum hari ini, atur tanggal kembali ke hari ini
-////                selectedDate = selectedDate
-////            }
-//            val simpleFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-//            val formattedDate = simpleFormat.format(selectedDate)
-//            binding.etKepulangan.text = formattedDate
-//            searchViewModel.getValueTanggalKembali().observe(viewLifecycleOwner) {
-//                searchViewModel.simpanTanggalKembali(formattedDate)
-//            }
-//        }
     }
 
     override fun pilihKelasKursi(kelas: String) {
@@ -266,149 +244,6 @@ class Home : Fragment(),
         super.onResume()
         getListViewDS()
     }
-
-    private fun tripOneway() {
-        searchViewModel.simpanTripOneway(true)
-        searchViewModel.hapusTanggalKembali()
-        searchViewModel.getTanggalKeberangkatan().observe(viewLifecycleOwner) {
-            if (it != null) {
-                binding.etKeberangkatan.text
-            }
-        }
-
-        val today = MaterialDatePicker.todayInUtcMilliseconds()
-        val materialDateBuilder = MaterialDatePicker.Builder.datePicker()
-            .setTitleText("Pilih Tanggal")
-            .setSelection(today)
-            .setCalendarConstraints(
-                CalendarConstraints.Builder()
-//                    .setValidator(DateValidatorPointForward.now())
-                    .build()
-            )
-        val materialDatePicker = materialDateBuilder.build()
-
-        if (materialDatePicker.dialog == null && !materialDatePicker.isVisible) {
-            materialDatePicker.show(childFragmentManager, "MATERIAL_DATE_PICKER")
-        }
-        materialDatePicker.addOnPositiveButtonClickListener {
-
-            val selecteddateInMillis = it as Long
-            var selectedDate = Date(selecteddateInMillis)
-            val simpleFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val formattedDate = simpleFormat.format(selectedDate)
-            binding.etKeberangkatan.text = formattedDate
-            searchViewModel.getValueTanggalKeberangkatan().observe(viewLifecycleOwner) {
-                searchViewModel.simpanTanggalKeberangkatan(formattedDate)
-            }
-        }
-    }
-
-    private fun roundTrip() {
-        searchViewModel.hapusOnewayTrip()
-        val today = MaterialDatePicker.todayInUtcMilliseconds()
-        val materialDateBuilder = MaterialDatePicker.Builder.datePicker()
-            .setTitleText("Pilih Tanggal")
-            .setSelection(today)
-            .setCalendarConstraints(
-                CalendarConstraints.Builder()
-//                    .setValidator(DateValidatorPointForward.now())
-                    .build()
-            )
-        val materialDatePicker = materialDateBuilder.build()
-
-        if (materialDatePicker.dialog == null && !materialDatePicker.isVisible) {
-            materialDatePicker.show(childFragmentManager, "MATERIAL_DATE_PICKER")
-        }
-
-        materialDatePicker.addOnPositiveButtonClickListener {
-
-            val selecteddateInMillis = it as Long
-            var selectedDate = Date(selecteddateInMillis)
-
-            if (selectedDate.before(selectedDate)) {
-                // Jika tanggal yang dipilih sebelum hari ini, atur tanggal kembali ke hari ini
-                selectedDate = selectedDate
-            }
-            val simpleFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val formattedDate = simpleFormat.format(selectedDate)
-            binding.etKepulangan.text = formattedDate
-            searchViewModel.getValueTanggalKembali().observe(viewLifecycleOwner) {
-                searchViewModel.simpanTanggalKembali(formattedDate)
-            }
-        }
-    }
-
-    private fun getListView() {
-        val bund = Bundle()
-        searchViewModel.getKotaKeberangkatan().observe(viewLifecycleOwner) {
-            if (it != null) {
-                val editableText = Editable.Factory.getInstance().newEditable(it)
-                binding.etAsallokasi.text = editableText
-                bund.putString("KotaKeberangkatan", it)
-            }
-        }
-        searchViewModel.getKotaDestinasi().observe(viewLifecycleOwner) {
-            if (it != null) {
-                val editableText = Editable.Factory.getInstance().newEditable(it)
-                binding.etTujuanlokasi.text = editableText
-                bund.putString("KotaDestinasi", it)
-            }
-        }
-        searchViewModel.getTanggalKeberangkatan().observe(viewLifecycleOwner) {
-            if (it != null) {
-                bund.putString("TanggalKeberangkatan", it.toString())
-            }
-        }
-
-        searchViewModel.getJumlahTotalPenumpang().observe(viewLifecycleOwner) {
-            if (it != null) {
-                var editableText = Editable.Factory.getInstance().newEditable(it + " Penumpang")
-                binding.etPenumpang.text = editableText
-            }
-        }
-
-//        searchViewModel.getJumlahPenumpangDewasa().observe(viewLifecycleOwner){
-//            if (it!=null){
-//                val editableText = Editable.Factory.getInstance().newEditable(it)
-//                binding.etPenumpang.text = editableText
-//            }
-//        }
-//        searchViewModel.getJumlahPenumpang().observe(viewLifecycleOwner) {
-//            if (it != null) {
-//                val editableText = Editable.Factory.getInstance().newEditable(it.toString())
-//                binding.etPenumpang.text = editableText
-//                bund.putString("JumlahPenumpang", )
-//
-//            }
-//        }
-
-        searchViewModel.getKelasKursi().observe(viewLifecycleOwner) {
-            if (it != null) {
-                val editableText = Editable.Factory.getInstance().newEditable(it)
-                binding.etKelaskursi.text = editableText
-                bund.putString("KelasKursi", it)
-            }
-        }
-        searchViewModel.getValueTripOneway().observe(viewLifecycleOwner) {
-            if (it == true) {
-                searchViewModel.hapusTanggalKembali()
-                bund.putString("TanggalKembali", "")
-            } else {
-                searchViewModel.getTanggalKembali().observe(viewLifecycleOwner) {
-                    if (it != null) {
-                        bund.putString("TanggalKembali", it.toString())
-                    }
-                }
-            }
-        }
-
-//        binding.btnCaripenerbangan.setOnClickListener {
-//            findNavController().navigate(R.id.action_home3_to_resultSearch,bund)
-//        }
-//        val numSeatPassenger = searchViewModel.dataPassenger.value
-//        bund.putIntArray("DATA_LIST_NUM_SEAT", numSeatPassenger!!.toIntArray())
-    }
-
 }
 
 

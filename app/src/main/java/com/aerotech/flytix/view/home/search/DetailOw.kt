@@ -17,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DetailOw : Fragment() {
     lateinit var binding: FragmentDetailOwBinding
-    private var isClicked = false
     private lateinit var searchViewModel: SearchViewModel
     private lateinit var flightViewModel: FlightViewModel
 
@@ -37,7 +36,6 @@ class DetailOw : Fragment() {
         flightViewModel = ViewModelProvider(this)[FlightViewModel::class.java]
         getDetail()
         booking()
-//        getDataDataTicket()
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -54,14 +52,8 @@ class DetailOw : Fragment() {
             flightViewModel.flightDetail.observe(viewLifecycleOwner) {
                 binding.apply {
                     if (it != null) {
-//                        var simpleDateFormat = SimpleDateFormat("LLL dd")
-//                        var departure : Date? = it.data?.departureDate
-//                        var departure_date = simpleDateFormat.format(departure?.time).toString()
-//
-//                        var arrival : Date? = it.data?.arrivalDate
-//                        var arrivalDate = simpleDateFormat.format(arrival?.time).toString()
-
-                        binding.tvAsal.text = "${it.data!!.flight!!.departureLocation} -> ${it.data!!.flight!!.arrivalLocation}"
+                        binding.tvAsal.text =
+                            "${it.data!!.flight!!.departureLocation} -> ${it.data!!.flight!!.arrivalLocation}"
                         binding.tvJamkeberangkatan.text = it.data.flight.departureTime
                         binding.tvTanggalKeberangkatan.text = it.data.flight.departureDate
                         binding.tvBandaraAsal.text = it.data.airport!!.departureName
@@ -72,32 +64,31 @@ class DetailOw : Fragment() {
                         binding.tvKedatangan.text = it.data.flight.arrivalTime
                         binding.tvTanggalKedatangan.text = it.data.flight.departureDate
                         binding.tvBandaraKedatangan.text = it.data.airport.arrivalName
-                        binding.tvTotalPembayaran.text = it.data.price.toString()+ "/pax"
+                        binding.tvTotalPembayaran.text = it.data.price.toString() + "/pax"
                     }
                 }
             }
         }
     }
 
-    private fun booking(){
-        binding.btnBooking.setOnClickListener{
-            searchViewModel.getValueTripOneway().observe(viewLifecycleOwner){
+    private fun booking() {
+        binding.btnBooking.setOnClickListener {
+            searchViewModel.getValueTripOneway().observe(viewLifecycleOwner) {
                 val id_ticket_go = arguments?.getInt("id_ticket_go")
                 val bund = Bundle()
                 if (id_ticket_go != null) {
-                    bund.putInt("id_oneway", id_ticket_go)
+                    bund.putInt("id_ticket_go", id_ticket_go)
                     Log.e("DetailPenerbanganOw", "ticket dengan id: $id_ticket_go")
                 }
-                if (it == false){
+                if (it == false) {
                     findNavController().navigate(R.id.action_detailOw_to_dataPemesan, bund)
-                }
-                else {
+                } else {
                     val departureDate = arguments?.getString("TanggalKeberangkatan")
                     val departureCity = arguments?.getString("KotaKeberangkatan")
                     val destinationCity = arguments?.getString("KotaDestinasi")
                     val returnDate = arguments?.getString("TanggalKembali")
                     val id_ticket_back = arguments?.getInt("id_ticket_back")
-                    if (id_ticket_back != 0){
+                    if (id_ticket_back != 0) {
                         if (id_ticket_back != null) {
                             bund.putInt("id_ticket_back", id_ticket_back)
                         }

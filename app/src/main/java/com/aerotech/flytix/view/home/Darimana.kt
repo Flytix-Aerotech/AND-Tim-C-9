@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aerotech.flytix.databinding.FragmentDarimanaBinding
 import com.aerotech.flytix.model.ticket.DataKota
 import com.aerotech.flytix.view.adapter.KotaAdapter
-import com.aerotech.flytix.viewmodel.KotaViewModel
 import com.aerotech.flytix.viewmodel.SearchViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,7 +26,6 @@ class Darimana : BottomSheetDialogFragment(), KotaAdapter.ItemSelectionListener 
     private var mList = ArrayList<DataKota>()
     private lateinit var adapterList: KotaAdapter
     private lateinit var binding: FragmentDarimanaBinding
-    lateinit var kotaViewModel: KotaViewModel
     internal var listener: getItemkotaListener? = null
     lateinit var selectedKota: String
 
@@ -69,10 +67,10 @@ class Darimana : BottomSheetDialogFragment(), KotaAdapter.ItemSelectionListener 
 
     private fun getSearchList(query: String?) {
         if (query != null) {
-            val filteredList = if (query.isBlank()){
+            val filteredList = if (query.isBlank()) {
                 mList
-            }else{
-                mList.filter { item->
+            } else {
+                mList.filter { item ->
                     item.namaKota.lowercase(Locale.ROOT).contains(query.lowercase(Locale.ROOT))
                 }
             }
@@ -124,52 +122,4 @@ class Darimana : BottomSheetDialogFragment(), KotaAdapter.ItemSelectionListener 
     interface getItemkotaListener {
         fun getItemKota(kota: String)
     }
-//        binding.icClearsearchview.setOnClickListener {
-//            val searchText = binding.etSearch.text.toString()
-//            getSearch(searchText)
-//        }
-    //}
-
-
-//    fun getSearch(kota: String?) {
-//        if (kota != null) {
-//            kotaViewModel.getkotabySearch(kota)
-//            kotaViewModel.kotaList.observe(viewLifecycleOwner) {
-//                for (i in it){
-//                    if (i.namaKota.lowercase(Locale.ROOT).contains(kota)){
-//                        it.
-//                    }
-//                }
-//                if (it != null) {
-//                    showSearchLocation(it)
-//                } else{
-//                    Toast.makeText(context, "Kota Tidak Ada",Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        } else {
-//            kotaViewModel.getkota()
-//            kotaViewModel.kotaList.observe(viewLifecycleOwner) {
-//                if (it != null) {
-//                    showLocation(it)
-//                }
-//            }
-//        }
-//    }
-
-//    fun showSearchLocation(data: List<DataKota>) {
-//        val searchAdapter = KotaAdapter(data, this)
-//        binding.rvDarimana.adapter = searchAdapter
-//        binding.rvDarimana.adapter
-//        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-//        binding.rvDarimana.layoutManager = layoutManager
-//    }
-//
-//    fun showLocation(data: List<DataKota>) {
-//        val searchAdapter = KotaAdapter(data, this)
-//        binding.rvDarimana.adapter = searchAdapter
-//        binding.rvDarimana.adapter
-//        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-//        binding.rvDarimana.layoutManager = layoutManager
-//    }
-
 }

@@ -1,6 +1,5 @@
 package com.aerotech.flytix.view.home.search
 
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -23,11 +22,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class PencarianTicketOw : Fragment(), ResultSearchAdapter.ListSearchGoInterface {
     private lateinit var binding: FragmentPencarianTicketOwBinding
-    private lateinit var pref: SharedPreferences
     private lateinit var searchViewModel: SearchViewModel
 
-    //    private lateinit var ticketAdapter: ResultSearchAdapter
-    private var tanggalPergi: String? = null
     private lateinit var TanggalKeberangkatan: String
     var TanggalKembali: String? = null
     private lateinit var KotaKeberangkatan: String
@@ -59,11 +55,9 @@ class PencarianTicketOw : Fragment(), ResultSearchAdapter.ListSearchGoInterface 
         searchViewModel.getValueTripOneway().observe(viewLifecycleOwner) {
             if (it == false) {
                 Log.d("tipe", it.toString())
-//                departureOnly(KotaKeberangkatan, KotaDestinasi, TanggalKeberangkatan, KelasKursi)
                 departureOnly()
             } else {
                 Log.d("tipe", it.toString())
-                //getRoundtrip()
             }
         }
         binding.tvKotakeberangkatan.text = KotaKeberangkatan
@@ -115,53 +109,3 @@ class PencarianTicketOw : Fragment(), ResultSearchAdapter.ListSearchGoInterface 
         Log.d("DATA_PASSENGER", searchViewModel.dataPassenger.value.toString())
     }
 }
-
-//val adapter = ResultSearchAdapter(this)
-//        searchViewModel.getLiveDataSearchTicketow().observe(viewLifecycleOwner) {
-//            if (it != null) {
-//                ticketAdapter.setData(it)
-////                binding.rvDataFlight.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-////                ticketAdapter = TicketsAdapter(it){itemTicket ->
-////                    val id = itemTicket.id
-////                    val hargaTicketPergi = itemTicket.price
-////                    val bundle = Bundle()
-////                    searchViewModel.simpanidTicketKeberangkatan(id.toString())
-////                    bundle.putInt("id_ticket_go", id)
-////                    bundle.putInt("hargaPergi",hargaTicketPergi)
-////                    findNavController().navigate(
-////                        R.id.action_pencarianTicketOw_to_detail,
-////                        bundle
-////                    )
-////                }
-////                binding.rvDataFlight.adapter = ticketAdapter
-//
-//            } else {
-//                Snackbar.make(binding.root, "Data Gagal Dimuat", Snackbar.LENGTH_SHORT)
-//                    .setBackgroundTint(
-//                        ContextCompat.getColor(
-//                            requireContext(),
-//                            R.color.merah
-//                        )
-//                    )
-//                    .setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-//                    .show()
-//            }
-
-
-//            binding.rvDataFlight.apply {
-//                layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-//                ticketAdapter = TicketsAdapter(it) { itemTicket ->
-//                    val id = itemTicket.id
-//                    val hargaTicketPergi = itemTicket.price
-//                    val bundle = Bundle()
-//                    searchViewModel.simpanidTicketKeberangkatan(id.toString())
-//                    bundle.putInt("id_ticket_go", id)
-//                    bundle.putInt("hargaPergi",hargaTicketPergi)
-//                    findNavController().navigate(
-//                        R.id.action_pencarianTicketOw_to_detail,
-//                        bundle
-//                    )
-//                }
-//                adapter = ticketAdapter
-//                isNestedScrollingEnabled = false
-//            }

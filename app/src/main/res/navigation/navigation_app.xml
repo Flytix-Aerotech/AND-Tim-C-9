@@ -147,8 +147,8 @@
         android:label="fragment_pencarian_ticket_rt"
         tools:layout="@layout/fragment_pencarian_ticket_rt" >
         <action
-            android:id="@+id/action_pencarianTicketRt_to_detail"
-            app:destination="@id/detail" />
+            android:id="@+id/action_pencarianTicketRt_to_detailRt"
+            app:destination="@id/detailRt" />
     </fragment>
     <fragment
         android:id="@+id/detailOw"

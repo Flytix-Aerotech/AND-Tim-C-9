@@ -48,7 +48,7 @@ class DataPemesan : Fragment() {
         btnSimpan()
     }
 
-    fun getdataPemesan() :DataUserProfilePutItem{
+    fun getdataPemesan(): DataUserProfilePutItem {
         val token = pref.getString("token", "").toString()
         val email = binding.etEmail.text.toString()
         val noHp = binding.etEmail.text.toString()
@@ -62,7 +62,7 @@ class DataPemesan : Fragment() {
             binding.etnamapemesan.setText(it.user.fullName)
             binding.etUsername.setText(it.user.username)
         }
-        return DataUserProfilePutItem(email,noHp,fullname,username)
+        return DataUserProfilePutItem(email, noHp, fullname, username)
     }
 
     fun btnSimpan() {
@@ -71,7 +71,7 @@ class DataPemesan : Fragment() {
                 val id_ticket_go = arguments?.getInt("id_ticket_go")
                 val bund = Bundle()
                 if (id_ticket_go != null) {
-                    bund.putInt("id_oneway", id_ticket_go)
+                    bund.putInt("id_ticket_go", id_ticket_go)
                 }
                 if (it == false) {
 //                    val getListSeatPassenger = arguments?.getIntArray("DATA_LIST_NUM_SEAT")
@@ -99,34 +99,6 @@ class DataPemesan : Fragment() {
                     }
                 }
             }
-//            if(true){
-//            if (getTypeRoundTrip != null) {
-//                if (getTypeRoundTrip) {
-//                    val putBundleDataFlight = Bundle().apply {
-//                        putIntArray("ListJumlahPenumpang", getListSeatPassenger)
-//                        putBoolean("TYPE_TRIP_ROUNDTRIP", true)
-//                        putSerializable("DATA_FLIGHT_ROUND_TRIP", flightTicketRoundTrip)
-//                        putSerializable("DATA_PEMESAN", setDataPemesan())
-//                    }
-//
-//                    findNavController().navigate(
-//                        R.id.action_biodataPemesanFragment_to_biodataPenumpangFragment,
-//                        putBundleDataFlight
-//                    )
-//                } else {
-//                    val putBundleDataFlight = Bundle().apply {
-//                        putIntArray("DATA_LIST_NUM_SEAT", getListSeatPassenger)
-//                        putBoolean("TYPE_TRIP_ROUNDTRIP", false)
-//                        putSerializable("DATA_FLIGHT_ONE_TRIP", flightTicketOneTrip)
-//                        putSerializable("DATA_PEMESAN", setDataPemesan())
-//                    }
-//
-//                    findNavController().navigate(
-//                        R.id.action_biodataPemesanFragment_to_biodataPenumpangFragment,
-//                        putBundleDataFlight
-//                    )
-//                }
-//            }
         }
     }
 }
