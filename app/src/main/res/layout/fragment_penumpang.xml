@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.home.Penumpang">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_tbpenumpang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/emas">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ic_closebottomsheet"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/ic_close">
+
+            </com.google.android.material.imageview.ShapeableImageView>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_penumpangdewasa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cv_tbpenumpang"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_dewasa"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                app:srcCompat="@drawable/ic_dewasa">
+
+            </com.google.android.material.imageview.ShapeableImageView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_dewasa"
+                style="@style/texttitle18bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/iv_dewasa"
+                android:text="Dewasa" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_usiadewasa"
+                style="@style/textbody14reguler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_dewasa"
+                android:layout_toEndOf="@id/iv_dewasa"
+                android:text="(12 Tahun Keatas)" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_addboxdewasa"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/ic_addbox" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_jumlahdewasa"
+                style="@style/textheading24bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_addboxdewasa"
+                android:text="0"
+                android:textColor="@color/black" />
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_minboxdewasa"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="35dp"
+                android:layout_toStartOf="@id/iv_addboxdewasa"
+                app:srcCompat="@drawable/ic_minbox" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_penumpanganak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cv_penumpangdewasa"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_anak"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                app:srcCompat="@drawable/ic_anak">
+
+            </com.google.android.material.imageview.ShapeableImageView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_anak"
+                style="@style/texttitle18bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/iv_anak"
+                android:text="Anak" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_usiaanak"
+                style="@style/textbody14reguler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_anak"
+                android:layout_toEndOf="@id/iv_anak"
+                android:text="(2-11 Tahun)" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_addboxanak"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/ic_addbox" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_jumlahanak"
+                style="@style/textheading24bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_toStartOf="@id/iv_addboxanak"
+                android:text="0"
+                android:textColor="@color/black" />
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_minboxanak"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="35dp"
+                android:layout_toStartOf="@id/iv_addboxanak"
+                app:srcCompat="@drawable/ic_minbox" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_penumpangbayi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cv_penumpanganak"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_bayi"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                app:srcCompat="@drawable/ic_bayi">
+
+            </com.google.android.material.imageview.ShapeableImageView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_bayi"
+                style="@style/texttitle18bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/iv_bayi"
+                android:text="Bayi" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_usiabayi"
+                style="@style/textbody14reguler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_bayi"
+                android:layout_toEndOf="@id/iv_bayi"
+                android:text="(Dibawah 2 Tahun)" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_addboxbayi"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/ic_addbox" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_jumlahbayi"
+                style="@style/textheading24bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_addboxbayi"
+                android:text="0"
+                android:textColor="@color/black" />
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_minboxbayi"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="35dp"
+                android:layout_toStartOf="@id/iv_addboxbayi"
+                app:srcCompat="@drawable/ic_minbox" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_simpanpenumpang"
+        style="@style/btngold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cv_penumpangbayi"
+        android:layout_margin="10dp"
+        android:text="SIMPAN"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+</RelativeLayout>

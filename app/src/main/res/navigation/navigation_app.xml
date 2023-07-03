@@ -3,31 +3,174 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/home2">
-
+    app:startDestination="@id/home3">
     <fragment
-        android:id="@+id/home2"
-        android:name="com.aerotech.flytix.view.Home"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/splashScreen"
+        android:name="com.aerotech.flytix.view.home.SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_login2"
+            app:destination="@id/login2" />
+        <action
+            android:id="@+id/action_splashScreen_to_home3"
+            app:destination="@id/home3" />
+    </fragment>
     <fragment
-        android:id="@+id/history"
-        android:name="com.aerotech.flytix.view.History"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        android:id="@+id/register"
+        android:name="com.aerotech.flytix.view.user.Register"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_register_to_login2"
+            app:destination="@id/login2" />
+        <action
+            android:id="@+id/action_register_to_otp"
+            app:destination="@id/otp" />
+    </fragment>
     <fragment
-        android:id="@+id/notifikasi"
-        android:name="com.aerotech.flytix.view.Notifikasi"
+        android:id="@+id/notifikasi2"
+        android:name="com.aerotech.flytix.view.notifikasi.Notifikasi"
         android:label="fragment_notifikasi"
         tools:layout="@layout/fragment_notifikasi" />
     <fragment
-        android:id="@+id/akun"
-        android:name="com.aerotech.flytix.view.Akun"
+        android:id="@+id/history"
+        android:name="com.aerotech.flytix.view.riwayat.History"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_history_to_login2"
+            app:destination="@id/login2" />
+    </fragment>
+    <fragment
+        android:id="@+id/akun2"
+        android:name="com.aerotech.flytix.view.akun.Akun"
         android:label="fragment_akun"
-        tools:layout="@layout/fragment_akun" />
+        tools:layout="@layout/fragment_akun" >
+        <action
+            android:id="@+id/action_akun2_to_profile"
+            app:destination="@id/profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.aerotech.flytix.view.akun.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_to_akun2"
+            app:destination="@id/akun2" />
+    </fragment>
+    <fragment
+        android:id="@+id/login2"
+        android:name="com.aerotech.flytix.view.user.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login2_to_home3"
+            app:destination="@id/home3" />
+        <action
+            android:id="@+id/action_login2_to_register"
+            app:destination="@id/register" />
+    </fragment>
+    <fragment
+        android:id="@+id/home3"
+        android:name="com.aerotech.flytix.view.home.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home3_to_pencarianTicketOw"
+            app:destination="@id/pencarianTicketOw" />
+        <action
+            android:id="@+id/action_home3_to_pencarianTicketRtDep"
+            app:destination="@id/pencarianTicketRtDep" />
+    </fragment>
     <fragment
         android:id="@+id/detail"
-        android:name="com.aerotech.flytix.view.Detail"
+        android:name="com.aerotech.flytix.view.home.search.Detail"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detail_to_dataPemesan"
+            app:destination="@id/dataPemesan" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataPemesan"
+        android:name="com.aerotech.flytix.view.home.search.DataPemesan"
+        android:label="fragment_data_pemesan"
+        tools:layout="@layout/fragment_data_pemesan" >
+        <action
+            android:id="@+id/action_dataPemesan_to_history"
+            app:destination="@id/history" />
+        <action
+            android:id="@+id/action_dataPemesan_to_dataPenumpang"
+            app:destination="@id/dataPenumpang" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataPenumpang"
+        android:name="com.aerotech.flytix.view.home.search.DataPenumpang"
+        android:label="fragment_data_penumpang"
+        tools:layout="@layout/fragment_data_penumpang" >
+        <action
+            android:id="@+id/action_dataPenumpang_to_beforeCheckout"
+            app:destination="@id/beforeCheckout" />
+    </fragment>
+    <fragment
+        android:id="@+id/beforeCheckout"
+        android:name="com.aerotech.flytix.view.home.search.BeforeCheckout"
+        android:label="fragment_before_checkout"
+        tools:layout="@layout/fragment_before_checkout" />
+    <fragment
+        android:id="@+id/otp"
+        android:name="com.aerotech.flytix.view.user.Otp"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otp_to_login2"
+            app:destination="@id/login2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pencarianTicketOw"
+        android:name="com.aerotech.flytix.view.home.search.PencarianTicketOw"
+        android:label="fragment_pencarian_ticket_ow"
+        tools:layout="@layout/fragment_pencarian_ticket_ow" >
+        <action
+            android:id="@+id/action_pencarianTicketOw_to_detail"
+            app:destination="@id/detail" />
+        <action
+            android:id="@+id/action_pencarianTicketOw_to_detailOw"
+            app:destination="@id/detailOw" />
+    </fragment>
+    <fragment
+        android:id="@+id/pencarianTicketRt"
+        android:name="com.aerotech.flytix.view.home.search.PencarianTicketRt"
+        android:label="fragment_pencarian_ticket_rt"
+        tools:layout="@layout/fragment_pencarian_ticket_rt" >
+        <action
+            android:id="@+id/action_pencarianTicketRt_to_detailRt"
+            app:destination="@id/detailRt" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailOw"
+        android:name="com.aerotech.flytix.view.home.search.DetailOw"
+        android:label="fragment_detail_ow"
+        tools:layout="@layout/fragment_detail_ow" >
+        <action
+            android:id="@+id/action_detailOw_to_dataPemesan"
+            app:destination="@id/dataPemesan" />
+    </fragment>
+    <fragment
+        android:id="@+id/pencarianTicketRtDep"
+        android:name="com.aerotech.flytix.view.home.search.PencarianTicketRtDep"
+        android:label="fragment_pencarian_ticket_rt_dep"
+        tools:layout="@layout/fragment_pencarian_ticket_rt_dep" >
+        <action
+            android:id="@+id/action_pencarianTicketRtDep_to_pencarianTicketRt"
+            app:destination="@id/pencarianTicketRt" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailRt"
+        android:name="com.aerotech.flytix.view.home.search.DetailRt"
+        android:label="fragment_detail_rt"
+        tools:layout="@layout/fragment_detail_rt" />
 </navigation>

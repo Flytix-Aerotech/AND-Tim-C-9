@@ -3,14 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_fargment"
-    tools:context=".view.History">
+    android:background="@drawable/bguniversal"
+    tools:context=".view.riwayat.History">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/layoutlogin_histori"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="@color/putih"
-        android:text="histori" />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="visible"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anda Sudah Login"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/layout_no_login_histori"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Silahkan Login Terlebih Dahulu"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:text="Login"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
 </FrameLayout>

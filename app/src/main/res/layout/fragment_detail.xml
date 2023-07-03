@@ -1,14 +1,319 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Detail">
+    android:background="@drawable/bguniversal"
+    android:padding="20dp"
+    tools:context=".view.home.search.Detail">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_judulpenerbangan"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_asal"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:fontFamily="@font/gothambold"
+                android:text="Jakarta"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_ke"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tv_asal"
+                android:fontFamily="@font/gothambold"
+                android:text=" -> "
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/tv_tujuan"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tv_ke"
+                android:fontFamily="@font/gothambold"
+                android:text=" Melbourn "
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/tv_jangkawaktu"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tv_tujuan"
+                android:fontFamily="@font/gothambold"
+                android:text="(4h 0m)"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_biodatapemesan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cv_judulpenerbangan"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_Keberangkatan"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/gothambold"
+                android:text="Keberangkatan"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_jamkeberangkatan"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/gothambold"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/tv_tanggalKeberangkatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_Keberangkatan"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_bandaraAsal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tanggalKeberangkatan"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_terminalbandara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_bandaraAsal"
+                android:layout_below="@id/tv_tanggalKeberangkatan"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_kapasitasPesawat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_bandaraAsal"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    tools:ignore="RtlHardcoded">
+
+                    <TextView
+                        android:id="@+id/tv_jenisPesawat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:fontFamily="@font/gothambold"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/tv_kelaspesawat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gothambold"
+                        android:layout_toRightOf="@id/tv_jenisPesawat"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/tv_kodePesawat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_jenisPesawat"
+                        android:layout_marginLeft="30dp"
+                        android:fontFamily="@font/gothambold"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_below="@id/tv_kodePesawat"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/img" />
+
+                    <TextView
+                        android:id="@+id/tv_informasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_kodePesawat"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20sp"
+                        android:fontFamily="@font/gothambold"
+                        android:text="Informasi: "
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/tv_baggage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_informasi"
+                        android:layout_marginLeft="30dp"
+                        android:text="Baggage 20 kg"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/tv_cabin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_baggage"
+                        android:layout_marginLeft="30dp"
+                        android:text="Cabin baggage 7 Kg"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/tv_inFlight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_cabin"
+                        android:layout_marginLeft="30dp"
+                        android:text="In Flight Entertainment"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_jamKedatangan"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cv_kapasitasPesawat"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/gothambold"
+                android:text="Tiba"
+                android:textColor="@color/gold"
+                tools:ignore="HardcodedText" />
+
+
+            <TextView
+                android:id="@+id/tv_tanggalKedatangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_jamKedatangan"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_bandaraKedatangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tanggalKedatangan"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_kedatangan"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cv_kapasitasPesawat"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/gothambold"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/tv_total"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_bandaraKedatangan"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/gothambold"
+                android:text="Total"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_totalPembayaran"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_bandaraKedatangan"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/gothambold"
+                android:textColor="@color/gold"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/btn_booking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_totalPembayaran"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/gold"
+                android:text="Pilih"
+                android:textAllCaps="true"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

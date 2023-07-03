@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.home.KelasKursi">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_tbKelasKursi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/emas">
+
+            <TextView
+                android:id="@+id/tv_judulkelaskursi"
+                style="@style/textheading20bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Pilih Kelas"
+                android:textAllCaps="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ic_closebottomsheetKelasKursi"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/ic_close">
+
+            </com.google.android.material.imageview.ShapeableImageView>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_kelaskursi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cv_tbKelasKursi"
+        android:layout_marginTop="12dp"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_kelaskursi"/>
+</RelativeLayout>
