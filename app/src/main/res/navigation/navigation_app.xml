@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_app"
-    app:startDestination="@id/kursi">
+    app:startDestination="@id/home3">
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.aerotech.flytix.view.home.SplashScreen"
@@ -89,6 +89,9 @@
         <action
             android:id="@+id/action_home3_to_biodataPemesan"
             app:destination="@id/biodataPemesan" />
+        <action
+            android:id="@+id/action_home3_to_kursi"
+            app:destination="@id/kursi" />
     </fragment>
     <fragment
         android:id="@+id/detail"

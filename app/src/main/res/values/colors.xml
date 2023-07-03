@@ -17,4 +17,5 @@
     <color name="merah">#FF0000</color>
     <color name="hijau">#00a000</color>
     <color name="transparent"> #ff000000</color>
+    <color name="kuning"> #FFFF00</color>
 </resources>

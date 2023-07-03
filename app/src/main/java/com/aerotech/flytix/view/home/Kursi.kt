@@ -1,6 +1,7 @@
 package com.aerotech.flytix.view.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,16 +9,23 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentKursiBinding
+import com.aerotech.flytix.viewmodel.SearchViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Kursi : Fragment() {
 
     private var _binding: FragmentKursiBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var searchViewModel: SearchViewModel
     private lateinit var seatAdapter: SeatAdapter
+    private var pilihJumlah =0 // Jumlah kursi yang dipilih
+    private var selectedSeatsCount = 0 // Jumlah kursi yang telah dipilih
+    lateinit var kursi : String
 
     private val seats: Array<Array<Seat>> = arrayOf(
         arrayOf(Seat(null, "A"), Seat(null, "B"), Seat(null, "C"), Seat(null, ""), Seat(null, "D"), Seat(null, "E"), Seat(null, "F")),
@@ -33,30 +41,32 @@ class Kursi : Fragment() {
         arrayOf(Seat(10, "A"), Seat(10, "B"), Seat(10, "C"), Seat(10, ""), Seat(10, "D"), Seat(10, "E"), Seat(10, "F"))
     )
 
-    private var maxSelectedSeats = 1 // Jumlah maksimal kursi yang dapat dipilih
-    private var selectedSeatsCount = 0 // Jumlah kursi yang telah dipilih
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        kursi = arguments?.getString("jumlahPenumpang")!!
+        //Log.d("jumlah Penumpang", kursi)
         _binding = FragmentKursiBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
 
         seatAdapter = SeatAdapter()
         binding.gridViewSeats.adapter = seatAdapter
 
-        binding.btnSelesai.setOnClickListener {
-            if (selectedSeatsCount == maxSelectedSeats) {
-                findNavController().navigate(R.id.action_kursi_to_detail)
-            } else {
-                Toast.makeText(requireContext(), "Jumlah kursi yang dipilih tidak sesuai", Toast.LENGTH_SHORT).show()
-            }
-        }
+              binding.btnSelesai.setOnClickListener {
+                    if (selectedSeatsCount == kursi.toInt()) {
+                        findNavController().navigate(R.id.action_kursi_to_detail)
+                    } else {
+                        Toast.makeText(requireContext(), "Jumlah kursi yang dipilih tidak sesuai", Toast.LENGTH_SHORT).show()
+                    }
+                }
     }
 
     override fun onDestroyView() {
@@ -104,12 +114,12 @@ class Kursi : Fragment() {
                             seatView.setBackgroundColor(resources.getColor(R.color.putih))
                             selectedSeatsCount--
                         } else {
-                            if (selectedSeatsCount < maxSelectedSeats) {
+                            if (selectedSeatsCount < kursi.toInt()) {
                                 seat.isOccupied = true
                                 seatView.setBackgroundColor(resources.getColor(R.color.hijau))
                                 selectedSeatsCount++
                             } else {
-                                Toast.makeText(requireContext(), "Anda hanya dapat memilih $maxSelectedSeats kursi", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), "Anda hanya dapat memilih $pilihJumlah kursi", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -123,5 +133,5 @@ class Kursi : Fragment() {
         }
     }
 
-    class Seat(val number: Int?, val row: String, var isOccupied: Boolean = false)
+    data class Seat(val number: Int?, val row: String, var isOccupied: Boolean = false)
 }
