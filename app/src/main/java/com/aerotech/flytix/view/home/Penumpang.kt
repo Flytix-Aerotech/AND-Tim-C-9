@@ -1,10 +1,13 @@
 package com.aerotech.flytix.view.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.aerotech.flytix.databinding.FragmentPenumpangBinding
+import com.aerotech.flytix.viewmodel.SearchViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -12,87 +15,118 @@ import dagger.hilt.android.AndroidEntryPoint
 class Penumpang : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentPenumpangBinding
+    private lateinit var searchVM: SearchViewModel
+
     private var totalDewasa = 0
     private var totalAnak = 0
     private var totalBayi = 0
-    var total = 0
-    internal var listener: totalPenumpangListener? = null
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentPenumpangBinding.inflate(inflater, container, false)
+        searchVM = ViewModelProvider(this).get(SearchViewModel::class.java)
+        binding = FragmentPenumpangBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.icClosebottomsheet.setOnClickListener {
-            dismiss()
-        }
         hitungDewasa()
         hitungAnak()
         hitungBayi()
-//        updateTotalPenumpang()
+        setClose()
+
+        binding.btnSimpanpenumpang.setOnClickListener {
+            dismiss()
+        }
+        Log.d("Sheet set Penumpang", "onViewCreated")
+    }
+
+    fun saveData() {
+        val tvDewasa = binding.tvJumlahdewasa.text.toString()
+        val tvBayi = binding.tvJumlahbayi.text.toString()
+        val tvAnak = binding.tvJumlahanak.text.toString()
+        searchVM.simpanJumlahPenumpang(tvDewasa, tvAnak, tvBayi)
+        var total = tvDewasa.toInt() + tvBayi.toInt() + tvAnak.toInt()
+        searchVM.simpanJumlahTotalPenumpang(total.toString())
+    }
+
+    private fun setClose() {
+        binding.icClosebottomsheet.setOnClickListener {
+            dismiss()
+        }
     }
 
     private fun updateTotal() {
         binding.tvJumlahdewasa.text = totalDewasa.toString()
         binding.tvJumlahanak.text = totalAnak.toString()
         binding.tvJumlahbayi.text = totalBayi.toString()
-        var totalPenumpang = totalDewasa + totalAnak + totalBayi
-        binding.btnSimpanpenumpang.setOnClickListener {
-            total = totalPenumpang
-            listener?.totalPenumpang(total.toString())
-            dismiss()
-        }
+        saveData()
     }
 
     fun hitungDewasa(): Int {
-        binding.ivMinboxdewasa.setOnClickListener {
-            if (totalDewasa > 0) {
-                totalDewasa--
-                updateTotal()
+        searchVM.getJumlahPenumpangDewasa().observe(viewLifecycleOwner) {
+            if (it != null) {
+                totalDewasa = it.toInt()
+                binding.ivMinboxdewasa.setOnClickListener {
+                    if (totalDewasa > 0) {
+                        totalDewasa--
+                        updateTotal()
+                    }
+                }
+                binding.ivAddboxdewasa.setOnClickListener {
+                    totalDewasa++
+                    updateTotal()
+                }
             }
-        }
-        binding.ivAddboxdewasa.setOnClickListener {
-            totalDewasa++
-            updateTotal()
         }
         return totalDewasa
     }
 
     fun hitungAnak(): Int {
-        binding.ivMinboxanak.setOnClickListener {
-            if (totalAnak > 0) {
-                totalAnak--
-                updateTotal()
+        searchVM.getJumlahPenumpangAnak().observe(viewLifecycleOwner) {
+            if (it != null) {
+                totalAnak = it.toInt()
+                binding.ivMinboxanak.setOnClickListener {
+                    if (totalAnak > 0) {
+                        totalAnak--
+                        updateTotal()
+                    }
+                }
+                binding.ivAddboxanak.setOnClickListener {
+                    totalAnak++
+                    updateTotal()
+                }
             }
-        }
-        binding.ivAddboxanak.setOnClickListener {
-            totalAnak++
-            updateTotal()
         }
         return totalAnak
     }
 
 
     fun hitungBayi(): Int {
-        binding.ivMinboxbayi.setOnClickListener {
-            if (totalBayi > 0) {
-                totalBayi--
-                updateTotal()
+        searchVM.getJumlahPenumpangBayi().observe(viewLifecycleOwner) {
+            if (it != null) {
+                totalBayi = it.toInt()
+                binding.ivMinboxbayi.setOnClickListener {
+                    if (totalBayi > 0) {
+                        totalBayi--
+                        updateTotal()
+                    }
+                }
+                binding.ivAddboxbayi.setOnClickListener {
+                    totalBayi++
+                    updateTotal()
+                }
             }
-        }
-        binding.ivAddboxbayi.setOnClickListener {
-            totalBayi++
-            updateTotal()
         }
         return totalBayi
     }
 
-    interface totalPenumpangListener {
-        fun totalPenumpang(total: String)
+    override fun onResume() {
+        super.onResume()
+        updateTotal()
     }
 }

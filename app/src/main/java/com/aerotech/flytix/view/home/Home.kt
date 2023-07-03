@@ -127,8 +127,9 @@ class Home : Fragment(),
         searchViewModel.getJumlahTotalPenumpang().observe(viewLifecycleOwner) {
             if (it != null) {
                 var editableText = Editable.Factory.getInstance().newEditable(it + " Penumpang")
-                bund.putString("jumlahPenumpang",it)
                 binding.etPenumpang.text = editableText
+                bund.putString("jumlahPenumpang",it)
+
             }
         }
 

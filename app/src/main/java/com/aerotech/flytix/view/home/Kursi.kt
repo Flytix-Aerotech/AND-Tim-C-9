@@ -1,7 +1,6 @@
 package com.aerotech.flytix.view.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentKursiBinding
 import com.aerotech.flytix.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class Kursi : Fragment() {
@@ -25,7 +25,7 @@ class Kursi : Fragment() {
     private lateinit var seatAdapter: SeatAdapter
     private var pilihJumlah =0 // Jumlah kursi yang dipilih
     private var selectedSeatsCount = 0 // Jumlah kursi yang telah dipilih
-    lateinit var kursi : String
+    var kursi by Delegates.notNull<Int>()
 
     private val seats: Array<Array<Seat>> = arrayOf(
         arrayOf(Seat(null, "A"), Seat(null, "B"), Seat(null, "C"), Seat(null, ""), Seat(null, "D"), Seat(null, "E"), Seat(null, "F")),
@@ -45,7 +45,8 @@ class Kursi : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        kursi = arguments?.getString("jumlahPenumpang")!!
+        var kursii = arguments?.getString("jumlahPenumpang")!!.toInt()
+        kursi = kursii
         //Log.d("jumlah Penumpang", kursi)
         _binding = FragmentKursiBinding.inflate(inflater, container, false)
         return binding.root
@@ -61,7 +62,7 @@ class Kursi : Fragment() {
         binding.gridViewSeats.adapter = seatAdapter
 
               binding.btnSelesai.setOnClickListener {
-                    if (selectedSeatsCount == kursi.toInt()) {
+                    if (selectedSeatsCount == kursi) {
                         findNavController().navigate(R.id.action_kursi_to_detail)
                     } else {
                         Toast.makeText(requireContext(), "Jumlah kursi yang dipilih tidak sesuai", Toast.LENGTH_SHORT).show()
@@ -114,12 +115,12 @@ class Kursi : Fragment() {
                             seatView.setBackgroundColor(resources.getColor(R.color.putih))
                             selectedSeatsCount--
                         } else {
-                            if (selectedSeatsCount < kursi.toInt()) {
+                            if (selectedSeatsCount < kursi) {
                                 seat.isOccupied = true
                                 seatView.setBackgroundColor(resources.getColor(R.color.hijau))
                                 selectedSeatsCount++
                             } else {
-                                Toast.makeText(requireContext(), "Anda hanya dapat memilih $pilihJumlah kursi", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), "Anda hanya dapat memilih $kursi kursi", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
