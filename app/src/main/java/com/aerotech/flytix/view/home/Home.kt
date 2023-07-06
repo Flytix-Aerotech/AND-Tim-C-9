@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentHomeBinding
 import com.aerotech.flytix.view.adapter.DestinasiFavoriteAdapter
@@ -259,8 +259,7 @@ class Home : Fragment(),
         flightViewModel.getFavFlight()
         flightViewModel.favFlight.observe(viewLifecycleOwner){ data ->
             binding.rvHome.apply {
-                layoutManager = LinearLayoutManager(requireContext(),
-                    LinearLayoutManager.HORIZONTAL,false)
+                layoutManager = GridLayoutManager(requireContext(),3)
                 adapterfavDestinasi = DestinasiFavoriteAdapter(data.data ?: emptyList())
                 adapter = adapterfavDestinasi
             }
