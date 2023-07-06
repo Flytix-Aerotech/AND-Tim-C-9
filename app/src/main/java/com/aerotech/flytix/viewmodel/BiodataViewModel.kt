@@ -20,8 +20,8 @@ class BiodataViewModel @Inject constructor(private val apiService: ApiService): 
     private val _getBiodataPenumpangResponse = MutableLiveData<DataBooksResponse>()
     val getBiodataPenumpangResponse: LiveData<DataBooksResponse> = _getBiodataPenumpangResponse
 
-    fun biodataPenumpang(penumpang: PenumpangRequest, token:String){
-        apiService.postCheckoutPenumpang("Bearer $token",penumpang).enqueue(object :
+    fun biodataPenumpang(penumpang: PenumpangRequest, token:String, id:String, adult:String){
+        apiService.postCheckoutPenumpang("Bearer $token",id,adult,penumpang).enqueue(object :
             Callback<DataBooksResponse> {
             override fun onResponse(
                 call: Call<DataBooksResponse>,

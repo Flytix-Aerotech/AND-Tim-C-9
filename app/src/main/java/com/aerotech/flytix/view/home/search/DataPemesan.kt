@@ -37,7 +37,6 @@ class DataPemesan : Fragment() {
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         userVm = ViewModelProvider(this).get(ProfileViewModel::class.java)
         pref = requireContext().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
-
         binding = FragmentDataPemesanBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -61,6 +60,11 @@ class DataPemesan : Fragment() {
             binding.etNoHp.setText(it.user.phoneNumber)
             binding.etnamapemesan.setText(it.user.fullName)
             binding.etUsername.setText(it.user.username)
+            val sharedPref =pref.edit()
+            sharedPref.putString("emailUser", it.user.email)
+            sharedPref.putString("telephoneUser", it.user.phoneNumber)
+            sharedPref.putString("fullnameUser", it.user.fullName)
+            sharedPref.apply()
         }
         return DataUserProfilePutItem(email, noHp, fullname, username)
     }
@@ -69,9 +73,12 @@ class DataPemesan : Fragment() {
         binding.btnSimpanPemesan.setOnClickListener {
             searchViewModel.getValueTripOneway().observe(viewLifecycleOwner) {
                 val id_ticket_go = arguments?.getInt("id_ticket_go")
+                val HargaTiketPergi = arguments?.getInt("HargaTiketPergi")
+                Log.e("HargaTiketPergi-pesan", "Harga: $HargaTiketPergi")
                 val bund = Bundle()
-                if (id_ticket_go != null) {
+                if (id_ticket_go != null && HargaTiketPergi !=null) {
                     bund.putInt("id_ticket_go", id_ticket_go)
+                    bund.putInt("HargaTiketPergi", HargaTiketPergi)
                 }
                 if (it == false) {
 //                    val getListSeatPassenger = arguments?.getIntArray("DATA_LIST_NUM_SEAT")

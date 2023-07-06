@@ -41,18 +41,21 @@ class RegisterViewModel @Inject constructor(private val Client: ApiService) : Vi
     }
 
     private val _postOtp: MutableLiveData<DataSendOtpItem> = MutableLiveData()
-    val postOtp : LiveData<DataSendOtpItem> = _postOtp
-    fun sendOtpRequest(email: String){
-        Client.postSendOtp(email).enqueue(object :Callback<DataSendOtpItem>{
-            override fun onResponse(call: Call<DataSendOtpItem>, response: Response<DataSendOtpItem>) {
-                if (response.isSuccessful){
+    val postOtp: LiveData<DataSendOtpItem> = _postOtp
+    fun sendOtpRequest(email: String) {
+        Client.postSendOtp(email).enqueue(object : Callback<DataSendOtpItem> {
+            override fun onResponse(
+                call: Call<DataSendOtpItem>,
+                response: Response<DataSendOtpItem>
+            ) {
+                if (response.isSuccessful) {
                     _postOtp.value = response.body()
                     Log.i("data", response.body().toString())
-                }
-                else{
+                } else {
                     Log.e("onFailure", "Cannot send data")
                 }
             }
+
             override fun onFailure(call: Call<DataSendOtpItem>, t: Throwable) {
                 Log.e("onFailure", "a")
             }

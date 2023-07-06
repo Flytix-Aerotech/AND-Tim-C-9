@@ -11,7 +11,6 @@ import com.aerotech.flytix.data.MainRepository
 import com.aerotech.flytix.data.SearchDataStore
 import com.aerotech.flytix.model.ticket.DataGetTicketItem
 import com.aerotech.flytix.model.ticket.DataGetTicketResponse
-import com.aerotech.flytix.model.ticket.DataPostticketSearch
 import com.aerotech.flytix.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -101,123 +100,6 @@ class SearchViewModel @Inject constructor(
                 }
 
             })
-    }
-
-    private val _search: MutableLiveData<List<DataGetTicketItem>?> = MutableLiveData()
-    fun getLiveDataSearch(): MutableLiveData<List<DataGetTicketItem>?> = _search
-
-    fun getDataSearch(
-        departureLocation: String,
-        arrivalLocation: String,
-        arrivaldate: String,
-        tOc: String
-    ) {
-        client.search(departureLocation, arrivalLocation, arrivaldate, tOc)
-            .enqueue(object : Callback<DataGetTicketResponse> {
-                override fun onResponse(
-                    call: Call<DataGetTicketResponse>,
-                    response: Response<DataGetTicketResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        repository.search(
-                            departureLocation,
-                            arrivalLocation,
-                            arrivaldate,
-                            tOc
-                        )
-                        _search.postValue(response.body()?.data)
-                    } else {
-                        _search.postValue(null)
-                        Log.d("notSuccess", response.body().toString())
-                    }
-                }
-
-                override fun onFailure(call: Call<DataGetTicketResponse>, t: Throwable) {
-                    _search.postValue(null)
-                    Log.d("Failed", t.message.toString())
-                }
-
-            })
-    }
-
-    fun getDataSearchRoundtrip(
-        departureLocation: String,
-        arrivalLocation: String,
-        arrivalDate: String,
-        tOc: String
-    ) {
-        client.searchwithad(departureLocation, arrivalLocation, arrivalDate, tOc)
-            .enqueue(object : Callback<DataGetTicketResponse> {
-                override fun onResponse(
-                    call: Call<DataGetTicketResponse>,
-                    response: Response<DataGetTicketResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        repository.searchroundtrip(
-                            departureLocation,
-                            arrivalLocation,
-                            arrivalDate,
-                            tOc
-                        )
-                        _search.postValue(response.body()?.data)
-                    } else {
-                        _search.postValue(null)
-                        Log.d("notSuccess", response.body().toString())
-                    }
-                }
-
-                override fun onFailure(call: Call<DataGetTicketResponse>, t: Throwable) {
-                    _search.postValue(null)
-                    Log.d("Failed", t.message.toString())
-                }
-
-            })
-    }
-
-
-    private val searchTicketUser: MutableLiveData<List<DataGetTicketItem>?> = MutableLiveData()
-    fun getLiveDataSearchTicketUser(): MutableLiveData<List<DataGetTicketItem>?> = searchTicketUser
-
-    fun getDataSearchTicketUser(request: DataPostticketSearch) {
-        client.postSearchTicket(request)
-            .enqueue(object : Callback<DataGetTicketResponse> {
-                override fun onResponse(
-                    call: Call<DataGetTicketResponse>,
-                    response: Response<DataGetTicketResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        repository.searchTicketUser(request)
-                        searchTicketUser.postValue(response.body()?.data)
-                        Log.d("Success Search", response.body().toString())
-                    } else {
-                        searchTicketUser.postValue(null)
-                        Log.d("notSuccess", response.body().toString())
-                    }
-                }
-
-                override fun onFailure(call: Call<DataGetTicketResponse>, t: Throwable) {
-                    searchTicketUser.postValue(null)
-                    Log.d("Failed", t.message.toString())
-                }
-
-            })
-    }
-
-    //menyimpan data jumlah penumpang sesuai usianya
-    private val _dataPassenger = MutableLiveData<MutableList<Int>>()
-    val dataPassenger: LiveData<MutableList<Int>> get() = _dataPassenger
-
-    init {
-        _dataPassenger.value = mutableListOf(1, 0, 0)
-    }
-
-    fun setDataPassenger(index: Int, num: Int) {
-        _dataPassenger.value?.apply {
-            if (index in indices) {
-                set(index, num)
-//                _dataPassenger.value = this
-            }
-        }
     }
 
     fun simpanKeberangkatan(

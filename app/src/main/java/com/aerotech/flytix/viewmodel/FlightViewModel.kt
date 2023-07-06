@@ -23,7 +23,7 @@ class FlightViewModel @Inject constructor(
     private val getDetailFlight: MutableLiveData<DataGetTicketIDResponse> = MutableLiveData()
     val flightDetail: LiveData<DataGetTicketIDResponse> get() = getDetailFlight
 
-    fun getFlightDetail(id : Int){
+    fun getFlightDetail(id: Int) {
         client.getFlightDetail(id)
             .enqueue(object : Callback<DataGetTicketIDResponse> {
                 override fun onResponse(
@@ -48,7 +48,7 @@ class FlightViewModel @Inject constructor(
     private val getDetailFlightBack: MutableLiveData<DataGetTicketIDResponse> = MutableLiveData()
     val flightDetailBack: LiveData<DataGetTicketIDResponse> get() = getDetailFlightBack
 
-    fun getFlightDetailBack(id : Int){
+    fun getFlightDetailBack(id: Int) {
         client.getFlightDetailBack(id)
             .enqueue(object : Callback<DataGetTicketIDResponse> {
                 override fun onResponse(

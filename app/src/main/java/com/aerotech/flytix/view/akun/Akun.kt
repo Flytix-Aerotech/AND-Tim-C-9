@@ -18,15 +18,15 @@ import dagger.hilt.android.AndroidEntryPoint
 class Akun : Fragment() {
 
     private lateinit var binding: FragmentAkunBinding
-    private lateinit var userVm : ProfileViewModel
-    private lateinit var pref : SharedPreferences
+    private lateinit var userVm: ProfileViewModel
+    private lateinit var pref: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentAkunBinding.inflate(layoutInflater,container,false)
+        binding = FragmentAkunBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -62,4 +62,22 @@ class Akun : Fragment() {
             .show()
     }
 
+    private fun isLogin() {
+        pref = requireContext().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+        if (pref.getString("token", "").toString().isNotEmpty()) {
+            if (findNavController().currentDestination!!.id == R.id.akun2) {
+                binding.layoutloginHistori.visibility = View.VISIBLE
+                binding.layoutNoLoginHistori.visibility = View.GONE
+            }
+        } else {
+            binding.layoutloginHistori.visibility = View.GONE
+            binding.layoutNoLoginHistori.visibility = View.VISIBLE
+            findNavController().navigate(R.id.checkLoginUser)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isLogin()
+    }
 }

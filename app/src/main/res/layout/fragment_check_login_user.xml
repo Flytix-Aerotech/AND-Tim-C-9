@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_no_login"
+    android:layout_width="match_parent"
+    android:layout_height="648dp"
+    android:orientation="vertical"
+    android:paddingHorizontal="25dp"
+    android:paddingTop="18dp"
+    tools:context=".view.CheckLoginUser">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        style="@style/textheading20bold"
+        android:text="Silahkan Login Terlebih Dahulu"
+        android:textAllCaps="true"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:layout_width="278dp"
+        android:layout_height="342dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/img_2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login"
+        style="@style/btngold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Masuk"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_Nanti"
+        style="@style/btngold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nanti Saja"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+
+</LinearLayout>
+
+

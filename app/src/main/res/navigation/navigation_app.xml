@@ -173,4 +173,13 @@
         android:name="com.aerotech.flytix.view.home.search.DetailRt"
         android:label="fragment_detail_rt"
         tools:layout="@layout/fragment_detail_rt" />
+    <dialog
+        android:id="@+id/checkLoginUser"
+        android:name="com.aerotech.flytix.view.CheckLoginUser"
+        android:label="fragment_check_login_user"
+        tools:layout="@layout/fragment_check_login_user" >
+        <action
+            android:id="@+id/action_checkLoginUser_to_login2"
+            app:destination="@id/login2" />
+    </dialog>
 </navigation>

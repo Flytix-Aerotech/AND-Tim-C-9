@@ -22,11 +22,24 @@ data class PenumpangData(
 )
 
 data class ticket(
-    var id : Int
+//    @SerializedName("clan_name")
+//    val clanName: String,
+    @SerializedName("email")
+    val email: String,
+    @SerializedName("full_name")
+    val fullName: String,
+    @SerializedName("phone_number")
+    val phoneNumber: String,
+    @SerializedName("ticket_id")
+    val ticketId: Int,
+    @SerializedName("total_price")
+    val totalPrice: Int
 )
+
+
 data class PenumpangRequest(
     @SerializedName("books")
-    val books: List<ticket>,
+    val books: ticket,
     @SerializedName("passengers")
     val passengers: List<Passenger>,
     @SerializedName("seats")

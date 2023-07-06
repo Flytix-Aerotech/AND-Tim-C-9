@@ -16,12 +16,9 @@ class Penumpang : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentPenumpangBinding
     private lateinit var searchVM: SearchViewModel
-
     private var totalDewasa = 0
     private var totalAnak = 0
     private var totalBayi = 0
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -71,67 +71,11 @@ class PencarianTicketRt : Fragment(), ResultSearchBackAdapter.ListSearchBackInte
         }
     }
 
-//    private fun departureOnly(
-//        KOTAKEBERANGKATAN: String?,
-//        KOTADESTINASI: String?,
-//        TANGGALKEBERANGKATAN: String?,
-//        KELASKURSI: String?
-//    ) {
-//
-//        searchViewModel.getDataSearchTicketsOw(KOTAKEBERANGKATAN!!,KOTADESTINASI!!,
-//            TANGGALKEBERANGKATAN!!, KELASKURSI!!
-//        )
-//        searchViewModel.getLiveDataSearchTicketow().observe(viewLifecycleOwner) {
-//
-//            binding.rvDeparture.apply {
-//                layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-//                ticketAdapter = TicketsAdapter(it) { itemTicket ->
-//                    val id = itemTicket.id
-//                    val bundle = Bundle()
-//                    bundle.putInt("idTicketKeberangkatan", id)
-//                    findNavController().navigate(
-//                        R.id.action_pencarianTicketOw_to_detail,
-//                        bundle
-//                    )
-//                }
-//                adapter = ticketAdapter
-//                isNestedScrollingEnabled = false
-//            }
-//        }
-//
-//
-//    }
 
     private fun getDepartureTicket(idDeparture: String?) {
         flightViewModel.getFlightDetail(idDeparture!!.toInt())
         flightViewModel.flightDetail.observe(viewLifecycleOwner){it ->
             val dataItemTicket = it.data
-
-//            val timeTakeoff = dataItemTicket?.dateTakeoff
-//            val timeLanding = dataItemTicket?.dateLanding
-//
-//            val takeOffSplit = timeTakeoff?.split(":")
-//            val landingSplit = timeLanding?.split(":")
-//
-//            val takeOffHour = takeOffSplit!![0].toInt()
-//            val takeOffMinute = takeOffSplit!![1].toInt()
-//
-//            val landingHour = landingSplit!![0].toInt()
-//            val landingMinute = landingSplit!![1].toInt()
-//
-//            var hourDiff = landingHour - takeOffHour
-//            var minuteDiff = landingMinute - takeOffMinute
-//
-//            if (minuteDiff < 0) {
-//                hourDiff -= 1
-//                minuteDiff += 60
-//            }
-//
-//            if (hourDiff < 0) {
-//                hourDiff += 24
-//            }
-
-//            binding.tvDurasi.text = "${hourDiff}h ${minuteDiff}m"
             binding.tvJamKeberangkatan.text = dataItemTicket!!.flight.departureTime
             binding.tvJamSampai.text = dataItemTicket.flight.arrivalTime
             binding.tvKotaKeberangkatan.text = dataItemTicket.flight.departureLocation
@@ -197,35 +141,3 @@ class PencarianTicketRt : Fragment(), ResultSearchBackAdapter.ListSearchBackInte
         findNavController().navigate(R.id.action_pencarianTicketRt_to_detailRt, bundle)
     }
 }
-//private fun returnOnly(
-//    KOTAKEBERANGKATAN: String?,
-//    KOTADESTINASI: String?,
-//    TANGGALEPULANGAN: String?,
-//    KELASKURSI: String?
-//) {
-//    searchViewModel.getDataSearchTicketsRt(KOTAKEBERANGKATAN!!, KOTADESTINASI!!,TANGGALEPULANGAN!!, KELASKURSI!!)
-//    searchViewModel.getLiveDataSearchTicketRt().observe(viewLifecycleOwner) {
-//        binding.rvDeparture.apply {
-////                binding.emptyResult.visibility = View.GONE
-//            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-//            ticketAdapter = TicketsAdapter(it) { itemTicket ->
-//                val idReturn = itemTicket.id
-//                val priceReturn = itemTicket.price
-//                val idDeparture = arguments?.getString("idDep")
-//                val hargaPergi = arguments?.getInt("pricePergi")
-//                val bundle = Bundle()
-//                searchViewModel.simpanidTicketKepulangan(idReturn.toString())
-//                bundle.putInt("idReturn", idReturn)
-//                bundle.putString("idDeparture",idDeparture)
-//                if (hargaPergi != null) {
-//                    bundle.putInt("hargaPergi",hargaPergi)
-//                }
-//                bundle.putInt("hargaPulang",priceReturn)
-//                findNavController().navigate(R.id.action_pencarianTicketRt_to_detail,bundle)
-//            }
-//            adapter = ticketAdapter
-//            isNestedScrollingEnabled = false
-//        }
-//    }
-//
-//}

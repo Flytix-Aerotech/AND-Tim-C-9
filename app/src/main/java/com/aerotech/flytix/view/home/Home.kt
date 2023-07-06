@@ -1,6 +1,8 @@
 package com.aerotech.flytix.view.home
 
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -26,6 +28,7 @@ class Home : Fragment(),
     private lateinit var binding: FragmentHomeBinding
     private lateinit var searchViewModel: SearchViewModel
     lateinit var bund: Bundle
+    lateinit var pref: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +37,7 @@ class Home : Fragment(),
         // Inflate the layout for this fragment
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         bund = Bundle()
+        pref = requireContext().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -129,6 +133,9 @@ class Home : Fragment(),
             if (it != null) {
                 var editableText = Editable.Factory.getInstance().newEditable(it + " Penumpang")
                 binding.etPenumpang.text = editableText
+                val sharedPref = pref.edit()
+                sharedPref.putString("jumlahPenumpang", it)
+                sharedPref.apply()
             }
         }
 

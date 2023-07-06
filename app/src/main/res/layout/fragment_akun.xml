@@ -1,123 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bguniversal"
-    tools:context=".view.akun.Akun">
+    tools:context=".view.notifikasi.Notifikasi">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/layoutlogin_histori"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:padding="20dp">
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="visible"
+        >
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_home"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="10dp"
-            app:strokeColor="@color/black"
-            app:strokeWidth="2dp">
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:padding="20dp">
 
-
-            <RelativeLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_home"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="2dp">
 
-                <TextView
-                    android:id="@+id/tv_akun"
-                    style="@style/textheading24bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Akun"
-                    android:textColor="@color/black" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/frame_etubahprofile"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_akun"
-                    app:boxBackgroundColor="@color/white"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/black"
-                    app:startIconDrawable="@drawable/baseline_edit_24"
-                    app:startIconTint="#3193ED">
+                    android:layout_height="wrap_content">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_ubahprofile"
-                        style="@style/texttitle16bold"
+                    <TextView
+                        android:id="@+id/tv_akun"
+                        style="@style/textheading24bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Akun"
+                        android:textColor="@color/black" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/frame_etubahprofile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:text="Ubah Profil"
-                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                        android:layout_below="@id/tv_akun"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeColor="@color/black"
+                        app:startIconDrawable="@drawable/baseline_edit_24"
+                        app:startIconTint="#3193ED">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_ubahprofile"
+                            style="@style/texttitle16bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:text="Ubah Profil"
+                            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/frame_etPengaturanAkun"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/frame_etubahprofile"
-                    android:layout_marginTop="10dp"
-                    app:boxBackgroundColor="@color/white"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/black"
-                    app:startIconDrawable="@drawable/baseline_settings_24"
-                    app:startIconTint="#3193ED"
-                    tools:ignore="NotSibling">
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_pengaturan"
-                        style="@style/texttitle16bold"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/frame_etPengaturanAkun"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:text="Pengaturan Akun"
-                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                        android:layout_below="@id/frame_etubahprofile"
+                        android:layout_marginTop="10dp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeColor="@color/black"
+                        app:startIconDrawable="@drawable/baseline_settings_24"
+                        app:startIconTint="#3193ED"
+                        tools:ignore="NotSibling">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_pengaturan"
+                            style="@style/texttitle16bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:text="Pengaturan Akun"
+                            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/frame_etKeluar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/frame_etPengaturanAkun"
-                    android:layout_marginTop="10dp"
-                    android:textColorHint="@color/black"
-                    app:boxBackgroundColor="@color/white"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/black"
-                    app:startIconDrawable="@drawable/baseline_logout_24"
-                    app:startIconTint="#3193ED">
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_keluar"
-                        style="@style/texttitle16bold"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/frame_etKeluar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:text="Keluar"
-                        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                        android:layout_below="@id/frame_etPengaturanAkun"
+                        android:layout_marginTop="10dp"
+                        android:textColorHint="@color/black"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeColor="@color/black"
+                        app:startIconDrawable="@drawable/baseline_logout_24"
+                        app:startIconTint="#3193ED">
 
-                </com.google.android.material.textfield.TextInputLayout>
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_keluar"
+                            style="@style/texttitle16bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:text="Keluar"
+                            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
+    </LinearLayout>
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:id="@+id/layout_no_login_histori"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        >
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Silahkan Login Terlebih Dahulu"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+</FrameLayout>

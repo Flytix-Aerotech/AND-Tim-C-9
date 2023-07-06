@@ -43,6 +43,7 @@ class Register : Fragment() {
             findNavController().navigate(R.id.action_register_to_login2)
         }
     }
+
     private fun register() {
         val username = binding.username.text.toString()
         val email = binding.etEmailLogin.text.toString()
@@ -52,10 +53,21 @@ class Register : Fragment() {
 //        val alamat = binding.address.text.toString()
 //        val poto = binding.foto.text.toString()
         //val currentDateTime: LocalDateTime = LocalDateTime.now()
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || fullName.isEmpty() ||noHp.isEmpty()) {
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || fullName.isEmpty() || noHp.isEmpty()) {
             Toast.makeText(requireContext(), "Please fill all the field", Toast.LENGTH_SHORT).show()
         } else {
-            userVM.postUserRegister(dataUsers = NewUser(email,fullName,0,password,noHp, "user", username,false))
+            userVM.postUserRegister(
+                dataUsers = NewUser(
+                    email,
+                    fullName,
+                    0,
+                    password,
+                    noHp,
+                    "user",
+                    username,
+                    false
+                )
+            )
             Toast.makeText(requireContext(), "Registration Success", Toast.LENGTH_SHORT).show()
             userVM.dataPostUser.observe(viewLifecycleOwner) {
                 userVM.sendOtpRequest(email)

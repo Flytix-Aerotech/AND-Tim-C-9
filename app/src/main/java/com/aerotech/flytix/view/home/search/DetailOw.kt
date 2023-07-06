@@ -1,5 +1,7 @@
 package com.aerotech.flytix.view.home.search
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +21,8 @@ class DetailOw : Fragment() {
     lateinit var binding: FragmentDetailOwBinding
     private lateinit var searchViewModel: SearchViewModel
     private lateinit var flightViewModel: FlightViewModel
+    lateinit var sharedPref: SharedPreferences
+    lateinit var bund: Bundle
 
 
     override fun onCreateView(
@@ -27,6 +31,7 @@ class DetailOw : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
+        bund = Bundle()
         binding = FragmentDetailOwBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -64,7 +69,9 @@ class DetailOw : Fragment() {
                         binding.tvKedatangan.text = it.data.flight.arrivalTime
                         binding.tvTanggalKedatangan.text = it.data.flight.departureDate
                         binding.tvBandaraKedatangan.text = it.data.airport.arrivalName
-                        binding.tvTotalPembayaran.text = it.data.price.toString() + "/pax"
+                        var hargaTiketPergi = it.data.price
+                        binding.tvTotalPembayaran.text = "$hargaTiketPergi/pax"
+                        bund.putInt("HargaTiketPergi", hargaTiketPergi)
                     }
                 }
             }
@@ -73,34 +80,43 @@ class DetailOw : Fragment() {
 
     private fun booking() {
         binding.btnBooking.setOnClickListener {
-            searchViewModel.getValueTripOneway().observe(viewLifecycleOwner) {
-                val id_ticket_go = arguments?.getInt("id_ticket_go")
-                val bund = Bundle()
-                if (id_ticket_go != null) {
-                    bund.putInt("id_ticket_go", id_ticket_go)
-                    Log.e("DetailPenerbanganOw", "ticket dengan id: $id_ticket_go")
-                }
-                if (it == false) {
-                    findNavController().navigate(R.id.action_detailOw_to_dataPemesan, bund)
-                } else {
-                    val departureDate = arguments?.getString("TanggalKeberangkatan")
-                    val departureCity = arguments?.getString("KotaKeberangkatan")
-                    val destinationCity = arguments?.getString("KotaDestinasi")
-                    val returnDate = arguments?.getString("TanggalKembali")
-                    val id_ticket_back = arguments?.getInt("id_ticket_back")
-                    if (id_ticket_back != 0) {
-                        if (id_ticket_back != null) {
-                            bund.putInt("id_ticket_back", id_ticket_back)
+            sharedPref = requireContext().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+            if (sharedPref.getString("token", "").toString().isNotEmpty()) {
+                if (findNavController().currentDestination!!.id == R.id.detailOw) {
+                    searchViewModel.getValueTripOneway().observe(viewLifecycleOwner) {
+                        val id_ticket_go = arguments?.getInt("id_ticket_go")
+                        if (id_ticket_go != null) {
+                            bund.putInt("id_ticket_go", id_ticket_go)
+                            Log.e("DetailPenerbanganOw", "ticket dengan id: $id_ticket_go")
                         }
-                        findNavController().navigate(R.id.action_detailOw_to_dataPemesan, bund)
-                    } else {
-                        bund.putString("departureDate", departureDate)
-                        bund.putString("departureCity", departureCity)
-                        bund.putString("destinationCity", destinationCity)
-                        bund.putString("returnDate", returnDate)
-                        findNavController().navigate(R.id.pencarianTicketOw, bund)
+                        if (it == false) {
+                            findNavController().navigate(R.id.action_detailOw_to_dataPemesan, bund)
+                        } else {
+                            val departureDate = arguments?.getString("TanggalKeberangkatan")
+                            val departureCity = arguments?.getString("KotaKeberangkatan")
+                            val destinationCity = arguments?.getString("KotaDestinasi")
+                            val returnDate = arguments?.getString("TanggalKembali")
+                            val id_ticket_back = arguments?.getInt("id_ticket_back")
+                            if (id_ticket_back != 0) {
+                                if (id_ticket_back != null) {
+                                    bund.putInt("id_ticket_back", id_ticket_back)
+                                }
+                                findNavController().navigate(
+                                    R.id.action_detailOw_to_dataPemesan,
+                                    bund
+                                )
+                            } else {
+                                bund.putString("departureDate", departureDate)
+                                bund.putString("departureCity", departureCity)
+                                bund.putString("destinationCity", destinationCity)
+                                bund.putString("returnDate", returnDate)
+                                findNavController().navigate(R.id.pencarianTicketOw, bund)
+                            }
+                        }
                     }
                 }
+            } else {
+                findNavController().navigate(R.id.checkLoginUser)
             }
         }
     }

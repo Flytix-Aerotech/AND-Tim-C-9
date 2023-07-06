@@ -24,7 +24,7 @@ class Otp : Fragment() {
     lateinit var sharedPreferences: SharedPreferences
     lateinit var binding: FragmentOtpBinding
     lateinit var otpViewModel: OtpViewModel
-    lateinit var registerVM : RegisterViewModel
+    lateinit var registerVM: RegisterViewModel
     private lateinit var setTimer: CountDownTimer
 
     override fun onCreateView(
@@ -70,6 +70,7 @@ class Otp : Fragment() {
             }
         }
     }
+
     private fun timer() {
         setTimer = object : CountDownTimer(60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -88,17 +89,20 @@ class Otp : Fragment() {
                 binding.tvKirimulang.setOnClickListener {
                     resendOtp()
                     resetTimer()
-                    Toast.makeText(requireContext(), "Kode OTP telah dikirim!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Kode OTP telah dikirim!", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
         setTimer.start()
 
     }
+
     private fun resendOtp() {
         val email = sharedPreferences.getString("email", "")
         registerVM.sendOtpRequest(email!!)
     }
+
     @SuppressLint("SetTextI18n")
     private fun resetTimer() {
         binding.tvKirimulang.isClickable = false
@@ -108,6 +112,7 @@ class Otp : Fragment() {
         setTimer.cancel()
         timer()
     }
+
     override fun onDestroy() {
         super.onDestroy()
         setTimer.cancel()

@@ -38,13 +38,6 @@
             android:text="Silahkan Login Terlebih Dahulu"
             android:layout_gravity="center" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:text="Login"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
     </LinearLayout>
 
 </FrameLayout>

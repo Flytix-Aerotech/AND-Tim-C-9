@@ -31,21 +31,24 @@ class History : Fragment() {
     }
 
     private fun login() {
-        binding.btnLogin.setOnClickListener {
-            view?.post {
-                findNavController().navigate(R.id.action_history_to_login2)
-            }
-        }
+//        binding.btnLogin.setOnClickListener {
+//            view?.post {
+//                findNavController().navigate(R.id.action_history_to_login2)
+//            }
+//        }
     }
 
     private fun isLogin() {
         sharedPref = requireContext().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
-        if (sharedPref.getString("token", "")!!.isEmpty()) {
+        if (sharedPref.getString("token", "").toString().isNotEmpty()) {
+            if (findNavController().currentDestination!!.id == R.id.history) {
+                binding.layoutloginHistori.visibility = View.VISIBLE
+                binding.layoutNoLoginHistori.visibility = View.GONE
+            }
+        } else {
             binding.layoutloginHistori.visibility = View.GONE
             binding.layoutNoLoginHistori.visibility = View.VISIBLE
-        } else {
-            binding.layoutloginHistori.visibility = View.VISIBLE
-            binding.layoutNoLoginHistori.visibility = View.GONE
+            findNavController().navigate(R.id.checkLoginUser)
         }
     }
 

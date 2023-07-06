@@ -3,6 +3,7 @@ package com.aerotech.flytix.view.home.search
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,15 +11,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentDataPenumpangBinding
-import com.aerotech.flytix.model.books.Seat
 import com.aerotech.flytix.model.penumpang.Penumpang
-import com.aerotech.flytix.model.penumpang.PenumpangRequest
-import com.aerotech.flytix.model.penumpang.ticket
 import com.aerotech.flytix.view.adapter.DataPenumpangAdapter
 import com.aerotech.flytix.viewmodel.BiodataViewModel
-import com.aerotech.flytix.viewmodel.PenumpangViewModel
+import com.aerotech.flytix.viewmodel.ProfileViewModel
 import com.aerotech.flytix.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,13 +28,11 @@ class DataPenumpang : Fragment() {
 
     private lateinit var binding: FragmentDataPenumpangBinding
     private val searchViewModel: SearchViewModel by viewModels()
-    private val penumpangViewModel: PenumpangViewModel by activityViewModels()
+    private val profileViewModel: ProfileViewModel by viewModels()
     private lateinit var penumpangAdapter: DataPenumpangAdapter
-    private val biodataViewModel: BiodataViewModel by viewModels()
+    private val biodataViewModel: BiodataViewModel by activityViewModels()
     private lateinit var sharedPref: SharedPreferences
-//    private val biodataViewModel:BiodataViewModel by viewModels()
-//    private val loginViewModel: LoginViewModel by viewModels()
-
+    lateinit var bundle: Bundle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -45,6 +43,8 @@ class DataPenumpang : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        sharedPref = requireContext().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+        bundle = Bundle()
         binding = FragmentDataPenumpangBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -54,31 +54,26 @@ class DataPenumpang : Fragment() {
 
         initDewasaAdapter()
         binding.btnLanjut.setOnClickListener {
-//            val departureDate = arguments?.getString("TanggalKeberangkatan")
-//            val departureCity = arguments?.getString("KotaKeberangkatan")
-//            val destinationCity = arguments?.getString("KotaDestinasi")
-//            val returnDate = arguments?.getString("TanggalKembali")
-//
-            val idticketDep = arguments?.getInt("id_ticket_go")
+            val idticketDep = arguments?.getInt("id_ticket_go")!!
+            val HargaTiketPergi = arguments?.getInt("HargaTiketPergi")!!
+            val jumlahPenumpang = sharedPref.getString("jumlahPenumpang", "")!!
+            val totalBayar = HargaTiketPergi * jumlahPenumpang.toInt()
+            Toast.makeText(
+                requireContext(),
+                "Berhasil Menambahkan data penumpang",
+                Toast.LENGTH_SHORT
+            ).show()
             val dataList = biodataViewModel.getDataList()
-            val passenger: ArrayList<ticket> = ArrayList()
-            val seats: ArrayList<Seat> = ArrayList()
-            passenger.add(ticket(idticketDep!!))
-            seats.add(Seat("1"))
-
-            val penumpangData = PenumpangRequest(passenger, dataList, seats)
-            sharedPref = requireContext().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
-            val tokenUser = sharedPref.getString("token", "")!!
-            biodataViewModel.biodataPenumpang(penumpangData!!, tokenUser)
-            biodataViewModel.getBiodataPenumpangResponse.observe(viewLifecycleOwner) {
-                if (it.status == "success") {
-                    Toast.makeText(
-                        requireContext(),
-                        "Berhasil Menambahkan data penumpang",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
+            val sharedpref = sharedPref.edit()
+            sharedpref.putInt("HargaTiketPergi", HargaTiketPergi)
+            sharedpref.putInt("totalBayar", totalBayar)
+            sharedpref.putInt("id_ticket_go", idticketDep)
+            sharedpref.apply()
+            Log.e("HargaTiketPergi-penum", "Harga: $HargaTiketPergi")
+            Log.e("jumlahPenumpang-penum", "jumlahPenumpang: $jumlahPenumpang")
+            Log.d("dataListPenumpang", "Penumpang : $dataList")
+            Log.e("HargatotalBayar-penum", "totalBayar: $totalBayar")
+            findNavController().navigate(R.id.action_dataPenumpang_to_beforeCheckout)
         }
     }
 
@@ -134,6 +129,5 @@ class DataPenumpang : Fragment() {
             isNestedScrollingEnabled = false
             setHasFixedSize(true)
         }
-
     }
 }

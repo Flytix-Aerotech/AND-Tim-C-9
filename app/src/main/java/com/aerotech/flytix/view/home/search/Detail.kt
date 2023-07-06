@@ -53,13 +53,6 @@ class Detail : Fragment() {
             flightViewModel.flightDetail.observe(viewLifecycleOwner) {
                 binding.apply {
                     if (it != null) {
-//                        var simpleDateFormat = SimpleDateFormat("LLL dd")
-//                        var departure : Date? = it.data?.departureDate
-//                        var departure_date = simpleDateFormat.format(departure?.time).toString()
-//
-//                        var arrival : Date? = it.data?.arrivalDate
-//                        var arrivalDate = simpleDateFormat.format(arrival?.time).toString()
-
                         binding.tvAsal.text = it.data!!.flight!!.departureLocation
                         binding.tvTujuan.text = it.data.flight!!.arrivalLocation
                         binding.tvJamkeberangkatan.text = it.data.flight.departureTime

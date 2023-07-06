@@ -106,6 +106,5 @@ class PencarianTicketOw : Fragment(), ResultSearchAdapter.ListSearchGoInterface 
         bund.putString("TanggalKembali", TanggalKembali)
         searchViewModel.simpanidTicketKeberangkatan(id.toString())
         findNavController().navigate(R.id.action_pencarianTicketOw_to_detailOw, bund)
-        Log.d("DATA_PASSENGER", searchViewModel.dataPassenger.value.toString())
     }
 }
