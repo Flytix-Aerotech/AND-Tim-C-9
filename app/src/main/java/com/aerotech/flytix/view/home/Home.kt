@@ -12,8 +12,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.aerotech.flytix.R
 import com.aerotech.flytix.databinding.FragmentHomeBinding
+import com.aerotech.flytix.view.adapter.DestinasiFavoriteAdapter
+import com.aerotech.flytix.viewmodel.FlightViewModel
 import com.aerotech.flytix.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -27,8 +30,10 @@ class Home : Fragment(),
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var searchViewModel: SearchViewModel
+    private lateinit var flightViewModel: FlightViewModel
     lateinit var bund: Bundle
     lateinit var pref: SharedPreferences
+    lateinit var adapterfavDestinasi: DestinasiFavoriteAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +41,7 @@ class Home : Fragment(),
     ): View {
         // Inflate the layout for this fragment
         searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
+        flightViewModel = ViewModelProvider(this)[FlightViewModel::class.java]
         bund = Bundle()
         pref = requireContext().getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
         binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -250,6 +256,15 @@ class Home : Fragment(),
     override fun onResume() {
         super.onResume()
         getListViewDS()
+        flightViewModel.getFavFlight()
+        flightViewModel.favFlight.observe(viewLifecycleOwner){ data ->
+            binding.rvHome.apply {
+                layoutManager = LinearLayoutManager(requireContext(),
+                    LinearLayoutManager.HORIZONTAL,false)
+                adapterfavDestinasi = DestinasiFavoriteAdapter(data.data ?: emptyList())
+                adapter = adapterfavDestinasi
+            }
+        }
     }
 }
 

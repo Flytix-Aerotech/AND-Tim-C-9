@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.aerotech.flytix.data.MainRepository
 import com.aerotech.flytix.model.ticket.DataGetTicketIDResponse
+import com.aerotech.flytix.model.ticket.DataGetTicketResponse
 import com.aerotech.flytix.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
@@ -65,6 +66,30 @@ class FlightViewModel @Inject constructor(
                 }
 
                 override fun onFailure(call: Call<DataGetTicketIDResponse>, t: Throwable) {
+                }
+            })
+    }
+
+    private val getFavFlight: MutableLiveData<DataGetTicketResponse> = MutableLiveData()
+    val favFlight: LiveData<DataGetTicketResponse> get() = getFavFlight
+
+    fun getFavFlight() {
+        client.getFlight()
+            .enqueue(object : Callback<DataGetTicketResponse> {
+                override fun onResponse(
+                    call: Call<DataGetTicketResponse>,
+                    response: Response<DataGetTicketResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            repository.getFlight()
+                            getFavFlight.postValue(response.body())
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<DataGetTicketResponse>, t: Throwable) {
                 }
             })
     }

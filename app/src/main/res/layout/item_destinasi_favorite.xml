@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFilm"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/black"
+        android:layout_margin="5dp"
+        app:strokeWidth="2dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="130dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/pesawaterbang" />
+
+            <TextView
+                android:id="@+id/tv_asal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView2"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
+                android:hint="asal"
+                android:textSize="10dp"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_ke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView2"
+                android:layout_toRightOf="@id/tv_asal"
+                android:hint=" -> "
+                android:textColor="@color/black"
+                android:textSize="10dp"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_tujuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView2"
+                android:layout_toRightOf="@id/tv_ke"
+                android:hint="tujuan"
+                android:textSize="10dp"
+                android:textColor="@color/black"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_pesawat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_asal"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/gold"
+                android:textStyle="bold"
+                android:hint="AirAsia"
+                android:textSize="10dp"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_pesawat"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/gold"
+                android:hint="10-20 Maret 2023"
+                android:textSize="10dp"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_mulaidari"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tanggal"
+                android:layout_marginLeft="5dp"
+                android:text="Mulai dari "
+                android:textColor="@color/black"
+                android:textSize="10dp"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_idr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tanggal"
+                android:text="IDR "
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/tv_mulaidari"
+                android:textColor="@color/merah"
+                android:textSize="10dp"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tv_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_tanggal"
+                android:layout_toRightOf="@id/tv_idr"
+                android:hint="harga"
+                android:textSize="10dp"
+                android:textColor="@color/merah"
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck" />
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>
