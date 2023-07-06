@@ -44,7 +44,7 @@ interface ApiService {
     fun postSendOtp(@Field("email") email: String): Call<DataSendOtpItem>
 
     @FormUrlEncoded
-    @POST("auth/verify-account/{email}?")
+    @POST("auth/verify-account/{email}")
     fun postVerifyOtp(
         @Path("email") email:String,
         @Field("otp") otp:String

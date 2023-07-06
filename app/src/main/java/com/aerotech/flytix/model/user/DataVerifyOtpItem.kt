@@ -7,6 +7,6 @@ data class DataVerifyOtpItem(
     val email: String,
     @SerializedName("otp")
     val otp: String,
-    @SerializedName("message")
+    @SerializedName("msg")
     val message: String
 )
